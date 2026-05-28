@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Das Straßencafé im House of Hope Siegen – jeden Donnerstag ab 17:30 Uhr. Warmes Abendessen, Musik, Andacht und Gemeinschaft für alle, die es brauchen.">
+  <title>Straßencafé – Hands of Hope</title>
+
+  <!-- <link rel="icon" href="../assets/favicons/favicon.ico"> -->
+
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/navigation.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/sections.css">
+  <link rel="stylesheet" href="../styles/forms.css">
+  <link rel="stylesheet" href="../styles/gallery.css">
+  <link rel="stylesheet" href="../styles/responsive.css">
+
+  <script src="../scripts/includes.js" defer></script>
+  <script src="../scripts/navigation.js" defer></script>
+  <script src="../scripts/animations.js" defer></script>
+  <script src="../scripts/lazyload.js" defer></script>
+
+  <style>
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.revealed { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── TEAL TOKENS ── */
+    :root {
+      --house-light: #d0eaed;
+      --house-dim:   rgba(71,142,154,0.12);
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      background: var(--light-bg);
+      padding: 0.85rem var(--section-pad-h);
+      font-size: 13px;
+      color: var(--text-light);
+    }
+    .breadcrumb a { color: var(--blue); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.5rem; opacity: 0.5; }
+
+    /* ── HERO OVERRIDES ── */
+    .hero-content { position: relative; }
+    .hero-content::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 20%; bottom: 20%;
+      width: 4px;
+      background: var(--house);
+      border-radius: 0 4px 4px 0;
+    }
+    .hero-tag-teal {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(71,142,154,0.2);
+      border: 1px solid rgba(71,142,154,0.45);
+      color: var(--house-light);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+      width: fit-content;
+    }
+    .hero-badge {
+      position: absolute;
+      bottom: 2rem; right: 2rem;
+      z-index: 2;
+      background: var(--house);
+      color: var(--white);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 0.7rem 1.2rem;
+      border-radius: var(--radius-md);
+      box-shadow: 0 6px 24px rgba(5,41,55,0.3);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* ── INTRO STATS ── */
+    .intro-stats {
+      background: var(--house);
+      padding: 3rem var(--section-pad-h);
+    }
+    .intro-stats-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+    .stat-item {
+      border-left: 3px solid rgba(255,255,255,0.3);
+      padding-left: 1.5rem;
+    }
+    .stat-num {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 2.2rem;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .stat-label { font-size: 0.88rem; color: rgba(255,255,255,0.78); line-height: 1.5; }
+
+    /* ── DONNERSTAGSCAFÉ ── */
+    .donnerstag-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .donnerstag-photo {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      box-shadow: var(--shadow-deep);
+    }
+    .donnerstag-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .donnerstag-badge {
+      position: absolute;
+      bottom: 1.5rem; left: 1.5rem;
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 0.6rem 1rem;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--dark);
+      box-shadow: var(--shadow-hover);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .time-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--house-dim);
+      color: var(--house);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(71,142,154,0.25);
+      margin-bottom: 1.25rem;
+    }
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--light-bg);
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--house);
+    }
+    .feature-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+    .feature-text strong {
+      display: block;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--dark);
+      margin-bottom: 0.25rem;
+    }
+    .feature-text span { font-size: 0.9rem; color: var(--text-light); }
+
+    /* ── PROGRAMM-KARTEN ── */
+    .programm-section { background: var(--light-bg); }
+    .programm-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+    .prog-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1.75rem 1.5rem;
+      border-top: 4px solid var(--house);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .prog-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .prog-icon { font-size: 1.8rem; margin-bottom: 0.25rem; }
+    .prog-time {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: var(--house);
+    }
+    .prog-title {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--dark);
+    }
+    .prog-desc { font-size: 0.88rem; color: var(--text-light); line-height: 1.65; }
+
+    /* ── GOTTESDIENST ── */
+    .gottesdienst-section {
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .gottesdienst-section::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      top: -200px; right: -100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(71,142,154,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .gottesdienst-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .gottesdienst-section .section-label { color: var(--house-light); }
+    .gottesdienst-section .section-title { color: var(--white); }
+    .gottesdienst-section .section-desc { color: rgba(255,255,255,0.68); margin-bottom: 2rem; }
+
+    .gs-highlight {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      background: rgba(71,142,154,0.18);
+      border: 1px solid rgba(71,142,154,0.4);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 2rem;
+    }
+    .gs-highlight-icon { font-size: 2.5rem; flex-shrink: 0; }
+    .gs-highlight-text strong {
+      display: block;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+    .gs-highlight-text span { font-size: 0.9rem; color: rgba(255,255,255,0.65); }
+
+    .gs-features { display: flex; flex-direction: column; gap: 1rem; }
+    .gs-feat { display: flex; align-items: flex-start; gap: 0.85rem; }
+    .gs-feat-dot {
+      width: 8px; height: 8px;
+      background: var(--house);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+    .gs-feat-text { font-size: 0.95rem; color: rgba(255,255,255,0.75); line-height: 1.6; }
+    .gs-feat-text strong { color: var(--white); font-family: 'Nunito', sans-serif; font-weight: 700; }
+
+    .gottesdienst-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(200,216,226,0.15);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .gs-photo { height: 240px; overflow: hidden; position: relative; }
+    .gs-photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); }
+    .gs-photo-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(5,41,55,0.7));
+    }
+    .gs-photo-label {
+      position: absolute;
+      bottom: 1.25rem; left: 1.5rem;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--white);
+    }
+    .gs-card-body { padding: 1.75rem; }
+    .gs-info-row {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(200,216,226,0.1);
+    }
+    .gs-info-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .gs-info-icon {
+      width: 36px; height: 36px;
+      border-radius: var(--radius-sm);
+      background: rgba(71,142,154,0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .gs-info-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 2px;
+    }
+    .gs-info-value {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--white);
+    }
+
+    /* ── BIBELVERS ── */
+    .vers-band {
+      background: var(--house);
+      padding: 5rem var(--section-pad-h);
+      text-align: center;
+    }
+    .vers-inner { max-width: 800px; margin: 0 auto; }
+    .vers-icon { font-size: 2.5rem; margin-bottom: 1.5rem; opacity: 0.65; }
+    .vers-band blockquote {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+      color: var(--white);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .vers-band cite {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      font-style: normal;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── STIMMEN ── */
+    .stimmen-section { background: var(--white); }
+    .stimmen-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .stimme-card {
+      background: var(--light-bg);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      position: relative;
+    }
+    .stimme-quote {
+      font-size: 3rem;
+      color: var(--house);
+      font-family: 'Nunito', sans-serif;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+      opacity: 0.6;
+    }
+    .stimme-text {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    .stimme-name {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: var(--dark);
+    }
+    .stimme-desc { font-size: 0.82rem; color: var(--text-light); }
+
+    /* ── KONTAKT CTA ── */
+    .kontakt-cta-section { background: var(--dark); }
+    .kontakt-cta-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .kontakt-cta-section .section-label { color: var(--house-light); }
+    .kontakt-cta-section .section-title { color: var(--white); }
+    .kontakt-cta-section .section-desc { color: rgba(255,255,255,0.68); margin-bottom: 2rem; }
+    .kontakt-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-teal {
+      display: inline-block;
+      background: var(--house);
+      color: var(--white);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-teal:hover { background: #2d6e79; transform: translateY(-1px); }
+    .btn-outline-white {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.85);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: background var(--transition);
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.08); }
+
+    .kontakt-info-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(200,216,226,0.15);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+    }
+    .kontakt-info-card h4 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .contact-line {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.85rem;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.72);
+    }
+    .contact-line .icon {
+      width: 34px; height: 34px;
+      border-radius: var(--radius-sm);
+      background: rgba(71,142,154,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+    .contact-line a { color: var(--house-light); text-decoration: none; }
+    .contact-line a:hover { text-decoration: underline; }
+    .contact-divider { height: 1px; background: rgba(200,216,226,0.1); margin: 1.25rem 0; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .breadcrumb { padding: 0.75rem 2rem; }
+      .intro-stats { padding: 2.5rem 2rem; }
+      .intro-stats-inner { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+      .donnerstag-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .donnerstag-photo { display: none; }
+      .programm-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .gottesdienst-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .stimmen-grid { grid-template-columns: 1fr; }
+      .kontakt-cta-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-content::before { display: none; }
+    }
+    @media (max-width: 600px) {
+      .intro-stats-inner { grid-template-columns: 1fr; }
+      .programm-grid { grid-template-columns: 1fr; }
+      .hero-badge { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER (injected by includes.js) -->
+  <div data-include="header"></div>
+  <div class="nav-spacer"></div>
+
+  <main id="main-content">
+
+    <!-- ══════════════════════════════════════════
+         BREADCRUMB
+    ══════════════════════════════════════════ -->
+    <div class="breadcrumb">
+      <a href="../">Startseite</a>
+      <span>›</span>
+      Straßencafé
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════ -->
+    <section class="hero" aria-label="Straßencafé">
+      <div class="hero-content">
+        <span class="hero-tag-teal">Seit 2009 · Hagener Straße 78, Siegen</span>
+        <h1>Wo <em style="color: var(--house-light);">alle</em> willkommen sind – ohne Wenn und Aber</h1>
+        <p class="hero-sub">
+          Das Straßencafé ist ein Ort der offenen Tür. Jeden Donnerstag und einmal im Monat sonntags laden wir ein:
+          zu einem warmen Abendessen, zur Musik, zur Begegnung – und manchmal zu einem Gottesdienst,
+          der keine Vorkenntnisse braucht.
+        </p>
+        <div class="hero-actions">
+          <a href="#donnerstag" class="btn btn-primary" style="background: var(--house);">Donnerstagscafé entdecken</a>
+          <a href="#gottesdienst" class="btn btn-ghost">Sonntagsgottesdienst</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-photo-wrap">
+          <!-- Foto: Menschen beim gemeinsamen Essen / Café-Atmosphäre → hero.jpg -->
+          <img src="hero.jpg" alt="Menschen beim gemeinsamen Essen im Straßencafé" loading="eager">
+          <div class="hero-photo-overlay"></div>
+        </div>
+        <div class="hero-badge">☕ Donnerstags ab 17:30 Uhr</div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         STATS
+    ══════════════════════════════════════════ -->
+    <div class="intro-stats" aria-label="Kennzahlen">
+      <div class="intro-stats-inner">
+        <div class="stat-item reveal">
+          <div class="stat-num">2009</div>
+          <div class="stat-label">Gründungsjahr der Straßencaféarbeit in Siegen</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-1">
+          <div class="stat-num">~100</div>
+          <div class="stat-label">Menschen kommen jeden Donnerstag – bedürftige, einsame und obdachlose Gäste</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-2">
+          <div class="stat-num">17:30</div>
+          <div class="stat-label">Donnerstags geöffnet – mit Musik, Andacht und kostenlosem Abendessen</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-3">
+          <div class="stat-num">1× / Mo.</div>
+          <div class="stat-label">Sonntagsgottesdienst – jeden 1. Sonntag um 10:30 Uhr, offen für alle</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         DONNERSTAGSCAFÉ
+    ══════════════════════════════════════════ -->
+    <section id="donnerstag" aria-labelledby="donnerstag-title" style="padding: var(--section-pad-v) var(--section-pad-h);">
+      <div class="donnerstag-inner">
+
+        <div class="donnerstag-photo reveal">
+          <!-- Foto: Gemeinsames Abendessen / Café-Szene → donnerstag.jpg -->
+          <img src="donnerstag.jpg" alt="Gemeinsames Abendessen im Straßencafé" loading="lazy">
+          <div class="donnerstag-badge">📍 Hagener Straße 78, Siegen</div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <span class="section-label">Jeden Donnerstag</span>
+          <h2 class="section-title" id="donnerstag-title">Ein Abend, der zählt</h2>
+          <div class="time-pill">🕠 ab 17:30 Uhr</div>
+          <p class="section-desc">
+            Seit Juni 2009 öffnen wir jeden Donnerstagabend unsere Türen für alle, die es brauchen. Das Straßencafé
+            ist mehr als ein Essen – es ist ein Ort der Würde, der Begegnung und der Hoffnung. Obdachlose,
+            sozial schwache und einsame Menschen sind herzlich willkommen.
+          </p>
+
+          <ul class="feature-list">
+            <li class="feature-item">
+              <span class="feature-icon">🍽️</span>
+              <div class="feature-text">
+                <strong>Warmes Abendessen – kostenlos</strong>
+                <span>Jeden Donnerstag wird für alle gekocht. Ein vollständiges, kostenloses Abendessen – ohne Bedingungen.</span>
+              </div>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">🎸</span>
+              <div class="feature-text">
+                <strong>Livemusik</strong>
+                <span>Musik schafft Atmosphäre. Bei uns spielen regelmäßig Bands und Musiker live – Gemeinschaft beginnt oft mit einem Lied.</span>
+              </div>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">📖</span>
+              <div class="feature-text">
+                <strong>Andacht aus der Bibel</strong>
+                <span>Ein kurzer, persönlicher Impuls – zugänglich und einladend, ohne religiösen Druck.</span>
+              </div>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">🤝</span>
+              <div class="feature-text">
+                <strong>Herzliche Gemeinschaft</strong>
+                <span>Im Straßencafé ist jeder jemand. Namen werden gekannt, Geschichten gehört, Würde geachtet.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         PROGRAMM-ABLAUF
+    ══════════════════════════════════════════ -->
+    <section class="programm-section" aria-labelledby="programm-title">
+      <div class="section-inner">
+        <span class="section-label reveal">Der Abend im Überblick</span>
+        <h2 class="section-title reveal reveal-delay-1" id="programm-title">Was Sie erwartet, wenn Sie kommen</h2>
+        <p class="section-desc reveal reveal-delay-2">
+          Der Donnerstagabend im Straßencafé hat einen festen Rhythmus – locker und herzlich, aber mit Struktur,
+          damit alle wissen, was sie erwartet.
+        </p>
+
+        <div class="programm-grid">
+          <div class="prog-card reveal">
+            <div class="prog-icon">🚪</div>
+            <div class="prog-time">17:30</div>
+            <div class="prog-title">Türen auf</div>
+            <p class="prog-desc">Der Einlass beginnt. Jeder ist willkommen – ohne Anmeldung, ohne Bedingungen. Einfach kommen.</p>
+          </div>
+          <div class="prog-card reveal reveal-delay-1">
+            <div class="prog-icon">🎶</div>
+            <div class="prog-time">18:00</div>
+            <div class="prog-title">Livemusik</div>
+            <p class="prog-desc">Bands oder Einzelmusiker spielen live auf. Musik verbindet – und macht Lust auf mehr.</p>
+          </div>
+          <div class="prog-card reveal reveal-delay-2">
+            <div class="prog-icon">📖</div>
+            <div class="prog-time">18:30</div>
+            <div class="prog-title">Andacht &amp; Abendessen</div>
+            <p class="prog-desc">Ein kurzer Bibelimpuls, gefolgt vom warmen, gemeinsamen Abendessen – gratis für alle Gäste.</p>
+          </div>
+          <div class="prog-card reveal reveal-delay-3">
+            <div class="prog-icon">💬</div>
+            <div class="prog-time">ab 19:00</div>
+            <div class="prog-title">Gemeinschaft</div>
+            <p class="prog-desc">Gespräche, Begegnungen, Zuhören. Mancher kommt fürs Essen – und bleibt wegen der Menschen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         GOTTESDIENST
+    ══════════════════════════════════════════ -->
+    <section class="gottesdienst-section" id="gottesdienst" aria-labelledby="gs-title" style="padding: var(--section-pad-v) var(--section-pad-h);">
+      <div class="gottesdienst-inner">
+
+        <div class="reveal">
+          <span class="section-label">Jeden 1. Sonntag im Monat</span>
+          <h2 class="section-title" id="gs-title">Gottesdienst, der kein Vorwissen braucht</h2>
+          <p class="section-desc">
+            Seit einigen Jahren feiern wir einmal im Monat einen besonderen Gottesdienst – und er ist anders als das,
+            was die meisten von „Kirche" erwarten. Viele unserer Straßencafé-Gäste, die noch nie einen Fuß in eine
+            Kirche gesetzt haben, kommen. Und bleiben.
+          </p>
+
+          <div class="gs-highlight">
+            <div class="gs-highlight-icon">🕊️</div>
+            <div class="gs-highlight-text">
+              <strong>Kein Dresscode. Keine Ahnung nötig. Kein Druck.</strong>
+              <span>Dieser Gottesdienst ist so gestaltet, dass Menschen, die mit Kirche bisher nichts anfangen konnten, sich wirklich willkommen fühlen. Weil es so gemeint ist.</span>
+            </div>
+          </div>
+
+          <div class="gs-features">
+            <div class="gs-feat">
+              <div class="gs-feat-dot"></div>
+              <div class="gs-feat-text"><strong>Bekannte Gesichter:</strong> Viele Gäste kommen aus dem Donnerstagscafé – ein vertrautes Umfeld, das Mut macht, zu bleiben.</div>
+            </div>
+            <div class="gs-feat">
+              <div class="gs-feat-dot"></div>
+              <div class="gs-feat-text"><strong>Ehrlich und menschlich:</strong> Keine Kirchensprache, kein frommer Ton. Nur echte Worte – über das Leben, den Glauben und die Hoffnung.</div>
+            </div>
+            <div class="gs-feat">
+              <div class="gs-feat-dot"></div>
+              <div class="gs-feat-text"><strong>Musik, die berührt:</strong> Auch im Gottesdienst spielt Musik eine zentrale Rolle – live, lebendig, einladend.</div>
+            </div>
+            <div class="gs-feat">
+              <div class="gs-feat-dot"></div>
+              <div class="gs-feat-text"><strong>Danach: Kaffee trinken:</strong> Im Anschluss sitzen alle zusammen – Kaffee, Gespräche, kein Aufbruch nach Plan.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gottesdienst-card reveal reveal-delay-1">
+          <div class="gs-photo">
+            <!-- Foto: Gottesdienst / Gemeinschaft / Raum → gottesdienst.jpg -->
+            <img src="gottesdienst.jpg" alt="Gemeinsamer Gottesdienst im Straßencafé" loading="lazy">
+            <div class="gs-photo-overlay"></div>
+            <div class="gs-photo-label">Sonntagsgottesdienst</div>
+          </div>
+          <div class="gs-card-body">
+            <div class="gs-info-row">
+              <div class="gs-info-icon">📅</div>
+              <div>
+                <div class="gs-info-label">Termin</div>
+                <div class="gs-info-value">Jeden 1. Sonntag im Monat</div>
+              </div>
+            </div>
+            <div class="gs-info-row">
+              <div class="gs-info-icon">🕥</div>
+              <div>
+                <div class="gs-info-label">Uhrzeit</div>
+                <div class="gs-info-value">10:30 Uhr</div>
+              </div>
+            </div>
+            <div class="gs-info-row">
+              <div class="gs-info-icon">📍</div>
+              <div>
+                <div class="gs-info-label">Ort</div>
+                <div class="gs-info-value">Hagener Straße 78, 57072 Siegen</div>
+              </div>
+            </div>
+            <div class="gs-info-row">
+              <div class="gs-info-icon">☕</div>
+              <div>
+                <div class="gs-info-label">Im Anschluss</div>
+                <div class="gs-info-value">Gemeinsames Kaffeetrinken</div>
+              </div>
+            </div>
+            <div class="gs-info-row">
+              <div class="gs-info-icon">🚪</div>
+              <div>
+                <div class="gs-info-label">Einlass</div>
+                <div class="gs-info-value">Offen für alle – einfach kommen</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         BIBELVERS
+    ══════════════════════════════════════════ -->
+    <div class="vers-band" role="complementary" aria-label="Bibelvers">
+      <div class="vers-inner reveal">
+        <div class="vers-icon">✦</div>
+        <blockquote>
+          „Dann sagte der Herr zu seinem Knecht: Geh auf die Straßen und Wege und nötige die Leute,
+          hereinzukommen, damit mein Haus voll wird."
+        </blockquote>
+        <cite>Lukas 14,23 – Das Gleichnis vom großen Gastmahl</cite>
+      </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         STIMMEN
+    ══════════════════════════════════════════ -->
+    <section class="stimmen-section" aria-labelledby="stimmen-title">
+      <div class="section-inner" style="text-align: center;">
+        <span class="section-label reveal">Was Menschen sagen</span>
+        <h2 class="section-title reveal reveal-delay-1" id="stimmen-title">Begegnungen, die bleiben</h2>
+        <p class="section-desc reveal reveal-delay-2" style="margin: 0 auto 0;">
+          Drei Eindrücke – stellvertretend für viele Geschichten, die sich im Straßencafé ereignen.
+        </p>
+        <div class="stimmen-grid">
+          <div class="stimme-card reveal">
+            <div class="stimme-quote">"</div>
+            <p class="stimme-text">
+              Ich bin das erste Mal nur wegen dem Essen gekommen. Inzwischen komme ich jeden Donnerstag –
+              wegen den Menschen. Ich fühle mich hier einfach gesehen.
+            </p>
+            <div class="stimme-name">Klaus, 58</div>
+            <div class="stimme-desc">Gast seit 2021</div>
+          </div>
+          <div class="stimme-card reveal reveal-delay-1">
+            <div class="stimme-quote">"</div>
+            <p class="stimme-text">
+              Den Sonntagsgottesdienst hätte ich mir früher nie vorstellen können. Aber hier ist das anders.
+              Man muss nichts wissen, nichts können – und fühlt sich trotzdem nicht deplatziert.
+            </p>
+            <div class="stimme-name">Miriam, 34</div>
+            <div class="stimme-desc">Zum ersten Mal beim Sonntagsgottesdienst 2024</div>
+          </div>
+          <div class="stimme-card reveal reveal-delay-2">
+            <div class="stimme-quote">"</div>
+            <p class="stimme-text">
+              Ich war obdachlos, völlig allein. Das Straßencafé hat mir nicht nur ein Abendessen gegeben –
+              sondern das Gefühl, dass jemand weiß, dass ich existiere.
+            </p>
+            <div class="stimme-name">Thomas, 46</div>
+            <div class="stimme-desc">Heute in eigener Wohnung</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         KONTAKT CTA
+    ══════════════════════════════════════════ -->
+    <section class="kontakt-cta-section" id="kontakt" aria-labelledby="kontakt-title" style="padding: var(--section-pad-v) var(--section-pad-h);">
+      <div class="kontakt-cta-inner">
+        <div class="reveal">
+          <span class="section-label">Einfach kommen</span>
+          <h2 class="section-title" id="kontakt-title">Sie müssen nicht wissen, ob Sie dazugehören. Sie tun es.</h2>
+          <p class="section-desc">
+            Das Straßencafé braucht keine Anmeldung, keinen besonderen Anlass und kein Hintergrundwissen über
+            Glauben oder Kirche. Kommen Sie vorbei – ob donnerstags oder sonntags.
+          </p>
+          <div class="kontakt-actions">
+            <a href="mailto:strassencafe@handsofhope.de" class="btn-teal">E-Mail schreiben</a>
+            <a href="tel:+4927133884093" class="btn-outline-white">Anrufen</a>
+          </div>
+        </div>
+
+        <div class="kontakt-info-card reveal reveal-delay-1">
+          <h4>Straßencafé – Kontakt &amp; Adresse</h4>
+          <div class="contact-line">
+            <div class="icon">📍</div>
+            <div>Hagener Straße 78<br>57072 Siegen</div>
+          </div>
+          <div class="contact-divider"></div>
+          <div class="contact-line">
+            <div class="icon">📞</div>
+            <a href="tel:+4927133884093">+49 (0) 271 – 33 88 40 93</a>
+          </div>
+          <div class="contact-line">
+            <div class="icon">✉</div>
+            <a href="mailto:strassencafe@handsofhope.de">strassencafe@handsofhope.de</a>
+          </div>
+          <div class="contact-divider"></div>
+          <div class="contact-line">
+            <div class="icon">🕠</div>
+            <div><strong style="color: var(--white);">Donnerstags ab 17:30 Uhr</strong></div>
+          </div>
+          <div class="contact-line">
+            <div class="icon">☀️</div>
+            <div><strong style="color: var(--white);">1. Sonntag im Monat, 10:30 Uhr</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER (injected by includes.js) -->
+  <div data-include="footer"></div>
+
+</body>
+</html>

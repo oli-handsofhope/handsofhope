@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Über Hands of Hope – christliche Sozialeinrichtung seit 2002 in Neunkirchen und Siegen. Geschichte, Team, Mitarbeit, FSJ und Spenden.">
+  <title>Über uns – Hands of Hope</title>
+
+  <!-- <link rel="icon" href="../assets/favicons/favicon.ico"> -->
+
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/navigation.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/sections.css">
+  <link rel="stylesheet" href="../styles/forms.css">
+  <link rel="stylesheet" href="../styles/gallery.css">
+  <link rel="stylesheet" href="../styles/responsive.css">
+
+  <script src="../scripts/includes.js" defer></script>
+  <script src="../scripts/navigation.js" defer></script>
+  <script src="../scripts/animations.js" defer></script>
+  <script src="../scripts/lazyload.js" defer></script>
+
+  <style>
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.revealed { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      background: var(--light-bg);
+      padding: 0.85rem var(--section-pad-h);
+      font-size: 13px;
+      color: var(--text-light);
+    }
+    .breadcrumb a { color: var(--blue); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.5rem; opacity: 0.5; }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      background: var(--blue);
+      padding: 2.5rem var(--section-pad-h);
+    }
+    .stats-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .stat { display: flex; align-items: flex-start; gap: 0.85rem; }
+    .stat-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .stat-text h4 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .stat-text p { font-size: 0.83rem; color: rgba(255,255,255,0.7); line-height: 1.45; }
+
+    /* ── GESCHICHTE ── */
+    .geschichte-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .geschichte-photo {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      box-shadow: var(--shadow-deep);
+      position: sticky;
+      top: calc(var(--nav-height) + 1.5rem);
+      align-self: start;
+    }
+    .geschichte-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline { display: flex; flex-direction: column; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 1.25rem;
+      position: relative;
+    }
+    .timeline-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 27px;
+      top: 52px;
+      bottom: 0;
+      width: 2px;
+      background: rgba(12,70,132,0.12);
+    }
+    .timeline-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-item.muted .timeline-num {
+      background: rgba(12,70,132,0.15);
+      color: var(--blue);
+    }
+    .timeline-content { padding-bottom: 2.5rem; }
+    .timeline-content h4 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--dark);
+      margin-bottom: 0.4rem;
+      padding-top: 12px;
+    }
+    .timeline-content p { font-size: 0.92rem; color: var(--text-light); line-height: 1.7; }
+    .timeline-badge {
+      display: inline-block;
+      background: rgba(12,70,132,0.08);
+      color: var(--blue);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-top: 0.5rem;
+    }
+
+    /* ── VERS ── */
+    .vers-band {
+      background: var(--blue);
+      padding: 5rem var(--section-pad-h);
+      text-align: center;
+    }
+    .vers-inner { max-width: 800px; margin: 0 auto; }
+    .vers-icon { font-size: 3rem; margin-bottom: 1.5rem; opacity: 0.6; }
+    .vers-band blockquote {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      color: var(--white);
+      line-height: 1.45;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .vers-band cite {
+      font-size: 0.9rem;
+      color: var(--mid-blue);
+      font-style: normal;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── TEAM ── */
+    .team-section { background: var(--light-bg); }
+    .team-intro {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: end;
+      max-width: var(--max-width);
+      margin: 0 auto 3rem;
+    }
+    .team-zahlen { display: flex; gap: 2rem; flex-shrink: 0; }
+    .team-zahl {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.75rem;
+      text-align: center;
+      box-shadow: var(--shadow-card);
+    }
+    .team-zahl .num {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 2rem;
+      color: var(--blue);
+      line-height: 1;
+      display: block;
+    }
+    .team-zahl .lab { font-size: 0.8rem; color: var(--text-light); margin-top: 0.25rem; }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.25rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .team-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 1rem 1.25rem;
+      text-align: center;
+      border-top: 3px solid var(--blue);
+      box-shadow: var(--shadow-card);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .team-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+    .team-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(12,70,132,0.08);
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      margin: 0 auto 0.85rem;
+    }
+    .team-card .name {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: var(--dark);
+      margin-bottom: 0.35rem;
+      line-height: 1.25;
+    }
+    .team-card .role { font-size: 0.78rem; color: var(--text-light); line-height: 1.45; }
+    .team-card .badge {
+      display: inline-block;
+      margin-top: 0.6rem;
+      background: rgba(12,70,132,0.07);
+      color: var(--blue);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 20px;
+    }
+    .team-cta {
+      max-width: var(--max-width);
+      margin: 2.5rem auto 0;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1.75rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      box-shadow: var(--shadow-card);
+    }
+    .team-cta p { font-size: 0.95rem; color: var(--text-light); }
+    .team-cta p strong { color: var(--dark); }
+
+    /* ── MITARBEIT ── */
+    .mitarbeit-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .stellen-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .stellen-card {
+      background: var(--white);
+      border: 1px solid rgba(5,41,55,0.1);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      border-top: 3px solid transparent;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .stellen-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    .stellen-card.vollzeit { border-top-color: var(--blue); }
+    .stellen-card.ehrenamt { border-top-color: #7f9628; }
+    .stellen-card .stype {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .stellen-card.vollzeit .stype { color: var(--blue); }
+    .stellen-card.ehrenamt .stype { color: #7f9628; }
+    .stellen-card .sicon { font-size: 1.6rem; margin-bottom: 0.6rem; }
+    .stellen-card h4 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--dark);
+      margin-bottom: 0.4rem;
+    }
+    .stellen-card p { font-size: 0.85rem; color: var(--text-light); line-height: 1.6; margin-bottom: 0.85rem; }
+    .stellen-card a {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .stellen-card.ehrenamt a { color: #7f9628; }
+    .stellen-card a:hover { text-decoration: underline; }
+
+    .praktikum-box {
+      background: var(--light-bg);
+      border-radius: var(--radius-md);
+      padding: 2.5rem;
+      max-width: var(--max-width);
+      margin: 2rem auto 0;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: center;
+    }
+    .praktikum-box h3 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
+    }
+    .praktikum-box p { font-size: 0.95rem; color: var(--text-light); line-height: 1.75; }
+
+    /* ── FSJ & BFD ── */
+    .fsj-section { background: var(--light-bg); }
+    .fsj-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .fsj-lists { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+    .fsj-list-block {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-card);
+    }
+    .fsj-list-block h4 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: var(--dark);
+      margin-bottom: 0.85rem;
+    }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+    .check-list li::before {
+      content: '✓';
+      color: var(--blue);
+      font-weight: 800;
+      flex-shrink: 0;
+      font-size: 12px;
+      margin-top: 1px;
+    }
+    .fsj-contact {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      box-shadow: var(--shadow-card);
+    }
+    .fsj-contact h3 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--dark);
+      margin-bottom: 1.25rem;
+    }
+    .contact-line {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.92rem;
+      color: var(--text-light);
+    }
+    .contact-line .icon {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
+      background: rgba(12,70,132,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+    .contact-line a { color: var(--blue); text-decoration: none; }
+    .contact-line a:hover { text-decoration: underline; }
+    .contact-divider { height: 1px; background: rgba(5,41,55,0.08); margin: 1rem 0; }
+    .partner-badge {
+      margin-top: 1.25rem;
+      background: rgba(12,70,132,0.06);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .partner-badge p { font-size: 0.82rem; color: var(--text-light); line-height: 1.5; }
+    .partner-badge p strong { color: var(--dark); }
+    .partner-badge a { color: var(--blue); font-size: 0.82rem; }
+
+    /* ── SPENDEN ── */
+    .spenden-section { background: var(--dark); }
+    .spenden-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .spenden-section .section-label { color: var(--mid-blue); }
+    .spenden-section .section-title { color: var(--white); }
+    .spenden-section .section-desc { color: rgba(255,255,255,0.7); margin-bottom: 2rem; }
+    .konto-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(200,216,226,0.2);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+    }
+    .konto-card h4 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .konto-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid rgba(200,216,226,0.1);
+    }
+    .konto-row:last-of-type { border-bottom: none; }
+    .konto-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+    .konto-val { font-size: 0.95rem; color: var(--white); font-family: monospace; letter-spacing: 0.03em; }
+    .konto-val.iban { font-size: 0.88rem; letter-spacing: 0.05em; color: var(--mid-blue); }
+    .btn-white-dark {
+      display: inline-block;
+      background: var(--white);
+      color: var(--dark);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: background var(--transition), transform var(--transition);
+      margin-top: 1.5rem;
+    }
+    .btn-white-dark:hover { background: var(--mid-blue); transform: translateY(-1px); }
+
+    /* ── KONTAKT CTA ── */
+    .kontakt-cta-section { background: var(--blue); }
+    .kontakt-cta-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .kontakt-cta-section .section-label { color: rgba(255,255,255,0.65); }
+    .kontakt-cta-section .section-title { color: var(--white); }
+    .kontakt-cta-section .section-desc { color: rgba(255,255,255,0.75); margin-bottom: 0; }
+    .kontakt-card-group { display: flex; flex-direction: column; gap: 1rem; }
+    .kontakt-card {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+    }
+    .kontakt-card .klabel {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 0.4rem;
+    }
+    .kontakt-card .kval { font-size: 0.92rem; color: var(--white); line-height: 1.55; }
+    .kontakt-card a { color: var(--mid-blue); text-decoration: none; }
+    .kontakt-card a:hover { text-decoration: underline; }
+    .btn-outline-white {
+      display: inline-block;
+      border: 2px solid rgba(255,255,255,0.5);
+      color: var(--white);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 13px 28px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: background var(--transition);
+      margin-top: 1.5rem;
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.12); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .breadcrumb { padding: 0.75rem 2rem; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .geschichte-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .geschichte-photo { display: none; }
+      .team-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .team-zahlen { flex-wrap: wrap; }
+      .team-cta { flex-direction: column; align-items: flex-start; }
+      .mitarbeit-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .stellen-grid { grid-template-columns: 1fr; }
+      .praktikum-box { grid-template-columns: 1fr; gap: 1.5rem; }
+      .fsj-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .fsj-lists { grid-template-columns: 1fr; }
+      .spenden-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .kontakt-cta-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 600px) {
+      .stats-inner { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER (injected by includes.js) -->
+  <div data-include="header"></div>
+  <div class="nav-spacer"></div>
+
+  <main id="main-content">
+
+    <!-- ══════════════════════════════════════════
+         BREADCRUMB
+    ══════════════════════════════════════════ -->
+    <div class="breadcrumb">
+      <a href="../">Startseite</a>
+      <span>›</span>
+      Über uns
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════ -->
+    <section class="hero" aria-label="Über uns">
+      <div class="hero-content">
+        <span class="hero-tag">Seit 2002 · Neunkirchen &amp; Siegen</span>
+        <h1>Wir glauben daran, dass <em>Gott Leben erneuert</em></h1>
+        <p class="hero-sub">
+          Hands of Hope ist eine christliche Sozialeinrichtung, die Menschen in Not begleitet –
+          durch Rehabilitation, Dienstleistungen, das Straßencafé House of Hope und Präventionsarbeit an Schulen.
+        </p>
+        <div class="hero-actions">
+          <a href="#geschichte" class="btn btn-primary">Unsere Geschichte</a>
+          <a href="#team" class="btn btn-ghost">Das Team</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-photo-wrap">
+          <!-- Foto: Teamfoto / Gebäude / Gemeinschaft → hero.jpg -->
+          <img src="hero.jpg" alt="Team von Hands of Hope" loading="eager">
+          <div class="hero-photo-overlay"></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         STATS STRIP
+    ══════════════════════════════════════════ -->
+    <div class="stats-strip" aria-label="Kennzahlen">
+      <div class="stats-inner">
+        <div class="stat reveal">
+          <span class="stat-icon">📅</span>
+          <div class="stat-text">
+            <h4>Seit 2002</h4>
+            <p>Über 20 Jahre Erfahrung in der Begleitung von Menschen in Not</p>
+          </div>
+        </div>
+        <div class="stat reveal reveal-delay-1">
+          <span class="stat-icon">👥</span>
+          <div class="stat-text">
+            <h4>~40 Mitarbeiter</h4>
+            <p>10 Festangestellte und rund 30 Ehrenamtliche tragen den Dienst</p>
+          </div>
+        </div>
+        <div class="stat reveal reveal-delay-2">
+          <span class="stat-icon">🏠</span>
+          <div class="stat-text">
+            <h4>2 Standorte</h4>
+            <p>Neunkirchen (Haupthaus) und Siegen (House of Hope)</p>
+          </div>
+        </div>
+        <div class="stat reveal reveal-delay-3">
+          <span class="stat-icon">🌱</span>
+          <div class="stat-text">
+            <h4>4 Bereiche</h4>
+            <p>Rehabilitation, Dienstleistungen, House of Hope &amp; Prävention</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         GESCHICHTE
+    ══════════════════════════════════════════ -->
+    <section id="geschichte" aria-labelledby="geschichte-title" style="padding: var(--section-pad-v) var(--section-pad-h);">
+      <div class="geschichte-inner">
+
+        <div class="reveal">
+          <span class="section-label">Unsere Geschichte</span>
+          <h2 class="section-title" id="geschichte-title">Vom Traum zur Wirklichkeit</h2>
+          <p class="section-desc">
+            Hands of Hope begann mit der Vision, durch ein christliches Programm Menschen zu helfen, die von der
+            Gesellschaft aufgegeben worden waren. Aus dieser Vision wurde 2002 Realität – und die Arbeit wächst seitdem stetig.
+          </p>
+
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="timeline-num">2002</div>
+              <div class="timeline-content">
+                <h4>Gründung</h4>
+                <p>Achim Paul und Wolfgang Kremer gründen die Rehabilitationseinrichtung <strong>Hands of Hope</strong>
+                   und das Dienstleistungsunternehmen <strong>Helping Hands</strong>. Die ersten Gäste wohnen im Haus
+                   des Mitgründers und arbeiten in Schreinerarbeiten, Entrümpelungen und Fenstereinbau.</p>
+                <span class="timeline-badge">Neunkirchen</span>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-num">2004</div>
+              <div class="timeline-content">
+                <h4>Umzug ins Haupthaus</h4>
+                <p>Die wachsende Zahl an Gästen und Mitarbeitern macht einen Umzug möglich. Hands of Hope bezieht
+                   die heutigen Wohn- und Arbeitshallen in Neunkirchen.</p>
+                <span class="timeline-badge">Neunkirchen, Waldstraße 6</span>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-num" style="font-size: 0.72rem;">2010er</div>
+              <div class="timeline-content">
+                <h4>House of Hope &amp; Straßencafé</h4>
+                <p>Eröffnung des <strong>House of Hope</strong> in Siegen mit dem wöchentlichen Straßencafé –
+                   ein Begegnungsort für Menschen aus sozialen Randlagen mitten in der Stadt.</p>
+                <span class="timeline-badge">Siegen, Hagener Str. 78</span>
+              </div>
+            </article>
+
+            <article class="timeline-item muted">
+              <div class="timeline-num" style="font-size: 0.72rem;">2017+</div>
+              <div class="timeline-content">
+                <h4>Präventionsarbeit</h4>
+                <p>Mit Lebensberichten ehemaliger Betroffener und persönlichem Austausch in Schulklassen wird ein
+                   weiterer Herzenswunsch Wirklichkeit: Menschen rechtzeitig begleiten, bevor ein
+                   selbstzerstörerischer Weg beginnt.</p>
+                <span class="timeline-badge">Schulen in der Region</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Foto rechts, sticky -->
+        <div class="geschichte-photo reveal reveal-delay-1">
+          <!-- Foto: Haupthaus / historisches Foto / Gebäude → geschichte.jpg -->
+          <img src="geschichte.jpg" alt="Hands of Hope – Haupthaus Neunkirchen" loading="lazy">
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         BIBELVERS
+    ══════════════════════════════════════════ -->
+    <div class="vers-band" role="complementary" aria-label="Bibelvers">
+      <div class="vers-inner reveal">
+        <div class="vers-icon">✝</div>
+        <blockquote>„Siehe, ich mache alles neu!"</blockquote>
+        <cite>— Offenbarung 21,5</cite>
+      </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         TEAM
+    ══════════════════════════════════════════ -->
+    <section class="team-section" id="team" aria-labelledby="team-title">
+      <div class="section-inner" style="padding-bottom: 0;">
+        <div class="team-intro">
+          <div>
+            <span class="section-label reveal">Das Team</span>
+            <h2 class="section-title reveal reveal-delay-1" id="team-title">Die Menschen hinter Hands of Hope</h2>
+            <p class="section-desc reveal reveal-delay-2" style="margin-bottom: 0;">
+              Unsere Arbeitszweige werden durch 5 vollzeitlich und 5 halbtags angestellte Mitarbeiter geleitet.
+              Darüber hinaus wird der Dienst – insbesondere im House of Hope – durch rund 30 ehrenamtliche Helfer getragen.
+            </p>
+          </div>
+          <div class="team-zahlen">
+            <div class="team-zahl">
+              <span class="num">10</span>
+              <div class="lab">Festangestellte</div>
+            </div>
+            <div class="team-zahl">
+              <span class="num">~30</span>
+              <div class="lab">Ehrenamtliche</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-inner">
+        <div class="team-grid">
+          <div class="team-card reveal">
+            <div class="team-avatar">CM</div>
+            <div class="name">Ciprian Mihai</div>
+            <div class="role">Psychologische Betreuung / Verwaltung</div>
+            <span class="badge">Geschäftsführer</span>
+          </div>
+          <div class="team-card reveal reveal-delay-1">
+            <div class="team-avatar">NE</div>
+            <div class="name">Nils Erner</div>
+            <div class="role">Leitung House of Hope / Prävention / Mentor</div>
+            <span class="badge">Vollzeit</span>
+          </div>
+          <div class="team-card reveal reveal-delay-2">
+            <div class="team-avatar">MM</div>
+            <div class="name">Mario Mackel</div>
+            <div class="role">Hausvater / Leitung Hausverwaltung</div>
+            <span class="badge">Vollzeit</span>
+          </div>
+          <div class="team-card reveal">
+            <div class="team-avatar">VM</div>
+            <div class="name">Verena Mackel</div>
+            <div class="role">Hausmutter / Küchenverwaltung / Hauswirtschaft</div>
+            <span class="badge">Vollzeit</span>
+          </div>
+          <div class="team-card reveal reveal-delay-1">
+            <div class="team-avatar">CB</div>
+            <div class="name">Christian Brück</div>
+            <div class="role">Leitung Wohngruppe / Pädagogik / Mentor</div>
+            <span class="badge">Vollzeit</span>
+          </div>
+          <div class="team-card reveal reveal-delay-2">
+            <div class="team-avatar">HM</div>
+            <div class="name">Hendrik Moos</div>
+            <div class="role">Leitung Dienstleistungen / Arbeitstherapie / Mentor</div>
+            <span class="badge">Vollzeit</span>
+          </div>
+          <div class="team-card reveal">
+            <div class="team-avatar">JL</div>
+            <div class="name">Jörg Laske</div>
+            <div class="role">Arbeit / Arbeitstherapie / Hausverwaltung / Mentor</div>
+            <span class="badge">Vollzeit</span>
+          </div>
+          <div class="team-card reveal reveal-delay-1">
+            <div class="team-avatar">AU</div>
+            <div class="name">Astrid Uhr</div>
+            <div class="role">Buchhaltung / Verwaltung</div>
+            <span class="badge">Halbzeit</span>
+          </div>
+          <div class="team-card reveal reveal-delay-2">
+            <div class="team-avatar">EN</div>
+            <div class="name">Eva-Maria Nitsch</div>
+            <div class="role">Frauenseelsorge / Mentorin</div>
+            <span class="badge">Halbzeit</span>
+          </div>
+          <div class="team-card reveal">
+            <div class="team-avatar">JG</div>
+            <div class="name">Jason Grossenbacher</div>
+            <div class="role">Arbeit / Arbeitstherapie / Mentor</div>
+            <span class="badge">Halbzeit</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         MITARBEIT & PRAKTIKUM
+    ══════════════════════════════════════════ -->
+    <section id="mitarbeit" aria-labelledby="mitarbeit-title" style="padding: var(--section-pad-v) var(--section-pad-h);">
+      <div class="mitarbeit-inner">
+        <div class="reveal">
+          <span class="section-label">Mitmachen</span>
+          <h2 class="section-title" id="mitarbeit-title">Mitarbeit &amp; Praktikum</h2>
+          <p class="section-desc">
+            Je mehr Schultern wir haben, die Seite an Seite die anfallenden Aufgaben tragen, desto besser können
+            tägliche Herausforderungen gemeistert werden. <strong>Eure Unterstützung zählt!</strong>
+          </p>
+          <p style="font-size: 0.9rem; color: var(--text-light); line-height: 1.7; margin-bottom: 1.5rem;">
+            Die Stellenausschreibungen mit allen Details findet ihr auf der eigenen Unterseite.
+          </p>
+          <a href="jobs/" class="btn btn-blue">Alle Stellenausschreibungen →</a>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <div class="stellen-grid">
+            <div class="stellen-card vollzeit">
+              <div class="sicon">🔨</div>
+              <div class="stype">Voll- / Teilzeit</div>
+              <h4>Dienstleistungen</h4>
+              <p>Mitarbeit in unseren handwerklichen Zweckbetrieben unter Anleitung der WG-Bewohner.</p>
+              <a href="jobs/#dienstleistungen">Zur Ausschreibung →</a>
+            </div>
+            <div class="stellen-card ehrenamt">
+              <div class="sicon">🏠</div>
+              <div class="stype">Ehrenamt</div>
+              <h4>WG – Hauswirtschaft</h4>
+              <p>Unterstützung bei hauswirtschaftlichen Tätigkeiten rund um die Wohngemeinschaft.</p>
+              <a href="jobs/#hauswirtschaft">Zur Ausschreibung →</a>
+            </div>
+            <div class="stellen-card ehrenamt">
+              <div class="sicon">☕</div>
+              <div class="stype">Ehrenamt</div>
+              <h4>Straßencafé</h4>
+              <p>Wöchentliche Mitarbeit im House of Hope in Siegen.</p>
+              <a href="jobs/#strassencafe">Zur Ausschreibung →</a>
+            </div>
+            <div class="stellen-card ehrenamt">
+              <div class="sicon">📸</div>
+              <div class="stype">Ehrenamt</div>
+              <h4>Mediendesign &amp; -pflege</h4>
+              <p>Unterstützung digital und/oder im Print.</p>
+              <a href="jobs/#medien">Zur Ausschreibung →</a>
+            </div>
+            <div class="stellen-card ehrenamt">
+              <div class="sicon">🔧</div>
+              <div class="stype">Ehrenamt</div>
+              <h4>Baustellen</h4>
+              <p>Handwerkliche Unterstützung im Nachsorgehaus und im Haupthaus.</p>
+              <a href="jobs/#baustellen">Zur Ausschreibung →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="praktikum-box reveal">
+        <div>
+          <h3>🎓 Praktikum bei Hands of Hope</h3>
+          <p>
+            In unserer Rehabilitationseinrichtung nehmen wir gerne Praktikantinnen und Praktikanten auf, die
+            unsere Mitarbeiter im Lebensalltag begleiten. Praktikumszeiten sind flexibel und können in Teil-
+            oder Vollzeit absolviert werden.
+          </p>
+        </div>
+        <a href="jobs/#praktikum" class="btn btn-blue" style="white-space: nowrap; flex-shrink: 0;">Mehr erfahren →</a>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         FSJ & BFD
+    ══════════════════════════════════════════ -->
+    <section class="fsj-section" id="fsj" aria-labelledby="fsj-title" style="padding: var(--section-pad-v) var(--section-pad-h);">
+      <div class="fsj-inner">
+        <div class="reveal">
+          <span class="section-label">Freiwilligendienst</span>
+          <h2 class="section-title" id="fsj-title">FSJ &amp; BFD bei Hands of Hope</h2>
+          <p class="section-desc">
+            Du möchtest ein Jahr in den Dienst an Menschen investieren, deinen Erfahrungshorizont erweitern und
+            an deiner Persönlichkeit arbeiten? In Zusammenarbeit mit dem <strong>netzwerk-m</strong> bieten wir
+            FSJ- und BFD-Stellen an.
+          </p>
+
+          <div class="fsj-lists">
+            <div class="fsj-list-block">
+              <h4>Was wir bieten</h4>
+              <ul class="check-list">
+                <li>Taschengeld</li>
+                <li>Unterkunft und Verpflegung</li>
+                <li>Mentoring und regelmäßige Feedbackgespräche</li>
+                <li>Teilnahme an internen Schulungen</li>
+                <li>Freizeitangebote der Calvary Chapel Siegen</li>
+              </ul>
+            </div>
+            <div class="fsj-list-block">
+              <h4>Was du mitbringst</h4>
+              <ul class="check-list">
+                <li>Liebe zu Jesus</li>
+                <li>Herz für hilfesuchende Menschen</li>
+                <li>PKW-Führerschein</li>
+                <li>Männlich</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="fsj-contact reveal reveal-delay-1">
+          <h3>Interesse? Dann bewirb dich!</h3>
+          <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 1.25rem; line-height: 1.7;">
+            Schicke uns per Post oder E-Mail deine Bewerbungsunterlagen mit Anschreiben und Lebenslauf.
+            Wir freuen uns auf dich!
+          </p>
+          <div class="contact-line">
+            <div class="icon">✉</div>
+            <span><a href="mailto:c.mihai@handsofhope.de">c.mihai@handsofhope.de</a></span>
+          </div>
+          <div class="contact-line">
+            <div class="icon">📞</div>
+            <span>02735 – 65 67 10</span>
+          </div>
+          <div class="contact-divider"></div>
+          <div class="partner-badge">
+            <span style="font-size: 1.5rem;">🔗</span>
+            <p>Organisiert durch <strong>netzwerk-m</strong> via <strong>deinjahr.org</strong>.<br>
+            <a href="https://www.deinjahr.org/stelle/1048" target="_blank" rel="noopener">Direkt zur FSJ/BFD-Ausschreibung →</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         SPENDEN
+    ══════════════════════════════════════════ -->
+    <section class="spenden-section" id="spenden" aria-labelledby="spenden-title" style="padding: var(--section-pad-v) var(--section-pad-h);">
+      <div class="spenden-inner">
+        <div class="reveal">
+          <span class="section-label">Unterstützen</span>
+          <h2 class="section-title" id="spenden-title">Mit einer Spende Gutes tun</h2>
+          <p class="section-desc">
+            Mit deiner Spende ermöglichst du Menschen eine neue Chance. Ob Rehabilitation, Straßencafé oder
+            Prävention – jede Gabe macht einen Unterschied. Hands of Hope ist als gemeinnützige gGmbH anerkannt.
+          </p>
+          <a href="spenden/" class="btn-white-dark">Mehr zu Spendenmöglichkeiten →</a>
+        </div>
+
+        <div class="konto-card reveal reveal-delay-1">
+          <h4>Unsere Bankverbindung</h4>
+          <div class="konto-row">
+            <span class="konto-label">Kontoinhaber</span>
+            <span class="konto-val" style="font-family: inherit;">Hands of Hope gGmbH</span>
+          </div>
+          <div class="konto-row">
+            <span class="konto-label">Bank</span>
+            <span class="konto-val" style="font-family: inherit; font-size: 0.85rem;">Volksbank in Südwestfalen eG</span>
+          </div>
+          <div class="konto-row">
+            <span class="konto-label">IBAN</span>
+            <span class="konto-val iban">DE65 4476 1534 2312 0857 01</span>
+          </div>
+          <div class="konto-row">
+            <span class="konto-label">BIC</span>
+            <span class="konto-val">GENODEM1NRD</span>
+          </div>
+          <div class="konto-row">
+            <span class="konto-label">Kto / BLZ</span>
+            <span class="konto-val">2312085701 / 4476 1534</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         KONTAKT CTA
+    ══════════════════════════════════════════ -->
+    <section class="kontakt-cta-section" id="kontakt" aria-labelledby="kontakt-title" style="padding: var(--section-pad-v) var(--section-pad-h);">
+      <div class="kontakt-cta-inner">
+        <div class="reveal">
+          <span class="section-label">Kontakt &amp; Anfahrt</span>
+          <h2 class="section-title" id="kontakt-title">Wir freuen uns von dir zu hören</h2>
+          <p class="section-desc">
+            Ob Besuch, Anfrage, Kooperation oder einfach ein Gespräch – melde dich gerne bei uns.
+          </p>
+          <a href="kontakt/" class="btn-outline-white">Zur Kontaktseite &amp; Karte →</a>
+        </div>
+
+        <div class="kontakt-card-group reveal reveal-delay-1">
+          <div class="kontakt-card">
+            <div class="klabel">Hands of Hope – Haupthaus</div>
+            <div class="kval">
+              Waldstraße 6, 57290 Neunkirchen<br>
+              📞 <a href="tel:+4927356567010">02735 – 65 67 10</a><br>
+              <a href="mailto:info@handsofhope.de">info@handsofhope.de</a>
+            </div>
+          </div>
+          <div class="kontakt-card">
+            <div class="klabel">House of Hope – Straßencafé</div>
+            <div class="kval">
+              Hagener Straße 78, 57072 Siegen<br>
+              📞 <a href="tel:+4927133884093">0271 – 33 88 40 93</a><br>
+              <a href="mailto:strassencafe@handsofhope.de">strassencafe@handsofhope.de</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER (injected by includes.js) -->
+  <div data-include="footer"></div>
+
+</body>
+</html>

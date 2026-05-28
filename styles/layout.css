@@ -1,0 +1,115 @@
+/* ============================================================
+   HANDS OF HOPE – layout.css
+   Grid, flex, spacing utilities
+   ============================================================ */
+
+/* ── CONTAINERS ── */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--section-pad-h);
+}
+
+.container-wide {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.container-narrow {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ── GRID HELPERS ── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+/* ── FLEX HELPERS ── */
+.flex         { display: flex; }
+.flex-center  { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-col     { display: flex; flex-direction: column; }
+.flex-wrap    { flex-wrap: wrap; }
+.gap-1        { gap: 0.5rem; }
+.gap-2        { gap: 1rem; }
+.gap-3        { gap: 1.5rem; }
+.gap-4        { gap: 2rem; }
+
+/* ── SPACING ── */
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+.mt-6 { margin-top: 3rem; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+.mb-6 { margin-bottom: 3rem; }
+
+/* ── TEXT ALIGN ── */
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+
+/* ── DISPLAY ── */
+.hidden { display: none !important; }
+.block  { display: block; }
+
+/* ── ASPECT RATIOS ── */
+.aspect-16-9 { aspect-ratio: 16/9; }
+.aspect-4-3  { aspect-ratio: 4/3; }
+.aspect-1    { aspect-ratio: 1; }
+
+/* ── IMAGE FILL ── */
+.img-fill {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  height: 1px;
+  background: var(--light-bg);
+  border: none;
+  margin: 2rem 0;
+}
+
+/* ── CARD BASE ── */
+.card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+/* ── BADGE ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.badge-blue  { background: rgba(12,70,132,0.1);  color: var(--blue); }
+.badge-green { background: rgba(127,150,40,0.1); color: var(--green); }
+.badge-red   { background: rgba(218,79,56,0.1);  color: var(--red); }
+.badge-house { background: rgba(71,142,154,0.1); color: var(--house); }
+
+/* ── ICON BOX ── */
+.icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}

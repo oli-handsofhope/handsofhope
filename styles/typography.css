@@ -1,0 +1,150 @@
+/* ============================================================
+   HANDS OF HOPE – typography.css
+   ============================================================ */
+
+/* ── HEADINGS ── */
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.7rem, 3vw, 2.5rem); }
+h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
+h4 { font-size: 1.1rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.9rem; }
+
+/* ── BODY TEXT ── */
+p { margin-bottom: 1em; }
+p:last-child { margin-bottom: 0; }
+
+.lead {
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: var(--text-light);
+}
+
+.small {
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+
+.caption {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  letter-spacing: 0.02em;
+}
+
+/* ── ACCENT TEXT ── */
+.text-blue   { color: var(--blue); }
+.text-dark   { color: var(--dark); }
+.text-light  { color: var(--text-light); }
+.text-white  { color: var(--white); }
+.text-green  { color: var(--green); }
+.text-red    { color: var(--red); }
+.text-house  { color: var(--house); }
+
+/* ── PROSE CONTENT ── */
+.prose {
+  max-width: 680px;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.prose h2 {
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  color: var(--dark);
+  margin: 2.5rem 0 1rem;
+}
+
+.prose h3 {
+  font-size: 1.2rem;
+  color: var(--dark);
+  margin: 2rem 0 0.75rem;
+}
+
+.prose p { margin-bottom: 1.25rem; }
+
+.prose ul, .prose ol {
+  margin: 0 0 1.25rem 1.5rem;
+  list-style: disc;
+}
+
+.prose ol { list-style: decimal; }
+
+.prose li { margin-bottom: 0.4rem; }
+
+.prose a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose a:hover { color: var(--dark); }
+
+.prose strong {
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--mid-blue);
+  padding: 0.75rem 1.5rem;
+  margin: 1.5rem 0;
+  background: var(--light-bg);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-style: italic;
+  color: var(--text-light);
+}
+
+/* ── PAGE HEADER (subpages) ── */
+.page-header {
+  background: var(--dark);
+  padding: 5rem var(--section-pad-h) 3.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header-bg {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
+}
+
+.page-header-inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.page-header .breadcrumb {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mid-blue);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.page-header .breadcrumb a {
+  color: rgba(200,216,226,0.7);
+  transition: color var(--transition);
+}
+.page-header .breadcrumb a:hover { color: var(--mid-blue); }
+
+.page-header .breadcrumb .sep { opacity: 0.4; }
+
+.page-header h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--white);
+  margin-bottom: 0.75rem;
+}
+
+.page-header .lead {
+  color: rgba(255,255,255,0.72);
+  max-width: 600px;
+}

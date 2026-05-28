@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hands of Hope – Christlicher diakonischer Dienst in Südwestfalen. Rehabilitation, Dienstleistungen, Straßencafé und Prävention.">
+  <title>Hands of Hope – Hoffnung · Hilfe · Leben</title>
+
+  <!-- Favicons (Platzhalter – bitte austauschen) -->
+  <!-- <link rel="icon" href="assets/favicons/favicon.ico"> -->
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/navigation.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/typography.css">
+  <link rel="stylesheet" href="styles/sections.css">
+  <link rel="stylesheet" href="styles/forms.css">
+  <link rel="stylesheet" href="styles/gallery.css">
+  <link rel="stylesheet" href="styles/responsive.css">
+
+  <!-- Scripts -->
+  <script src="scripts/includes.js" defer></script>
+  <script src="scripts/navigation.js" defer></script>
+  <script src="scripts/animations.js" defer></script>
+  <script src="scripts/lazyload.js" defer></script>
+
+  <!-- Inline Scroll-Reveal CSS -->
+  <style>
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.revealed {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER (injected by includes.js) -->
+  <div data-include="header"></div>
+
+  <!-- NAV SPACER -->
+  <div class="nav-spacer"></div>
+
+  <main id="main-content">
+
+    <!-- ══════════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════ -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-content">
+        <span class="hero-tag">Christlicher diakonischer Dienst</span>
+        <h1>
+          Hoffnung.<br>
+          <em>Hilfe.</em><br>
+          Leben.
+        </h1>
+        <p class="hero-sub">
+          Wir begegnen benachteiligten und hilfesuchenden Menschen mit praktischer Hilfe und der Liebe Gottes – in Südwestfalen und darüber hinaus.
+        </p>
+        <div class="hero-actions">
+          <a href="#bereiche" class="btn btn-primary">Unsere Arbeit entdecken</a>
+          <a href="ueber-uns/" class="btn btn-ghost">Über uns</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-photo-wrap">
+          <!-- Austauschen gegen eigenes Foto: assets/global/hero-startseite.webp -->
+          <img
+            src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=900&q=80&fit=crop"
+            alt="Menschen helfen sich gegenseitig"
+            loading="eager"
+          >
+          <div class="hero-photo-overlay"></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         ARBEITSBEREICHE
+    ══════════════════════════════════════════ -->
+    <section class="bereiche" id="bereiche" aria-labelledby="bereiche-title">
+      <div class="section-inner">
+        <span class="section-label reveal">Unsere Arbeit</span>
+        <h2 class="section-title reveal reveal-delay-1" id="bereiche-title">Vier Wege, Menschen zu helfen</h2>
+        <p class="section-desc reveal reveal-delay-2">
+          Hands of Hope gliedert sich in vier Arbeitsbereiche, die gemeinsam benachteiligten Menschen ein neues Leben ermöglichen.
+        </p>
+
+        <div class="bereiche-grid">
+
+          <a href="rehabilitation/" class="bereich-card reha reveal">
+            <div class="bereich-img">
+              <img
+                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80&fit=crop"
+                alt="Rehabilitation – Wohngemeinschaft"
+                loading="lazy"
+              >
+            </div>
+            <div class="bereich-icon">🏠</div>
+            <h3>Rehabilitation</h3>
+            <p>
+              Unser einjähriges Programm in Neunkirchen richtet sich an Menschen, die ihr Leben nicht mehr alleine meistern können. Wir begleiten sie auf dem Weg zurück in ein selbstständiges, erfülltes Leben.
+            </p>
+            <span class="bereich-link">Mehr erfahren →</span>
+          </a>
+
+          <a href="dienstleistungen/" class="bereich-card dienst reveal reveal-delay-1">
+            <div class="bereich-img">
+              <img
+                src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80&fit=crop"
+                alt="Garten- und Landschaftsbau"
+                loading="lazy"
+              >
+            </div>
+            <div class="bereich-icon">🌳</div>
+            <h3>Dienstleistungen</h3>
+            <p>
+              In unseren gemeinnützigen Arbeitsbetrieben – Garten- &amp; Landschaftsbau, Forstarbeiten, Haushaltsauflösungen – bereiten wir Rehabilitanden auf den Berufsalltag vor.
+            </p>
+            <span class="bereich-link">Mehr erfahren →</span>
+          </a>
+
+          <a href="strassencafe/" class="bereich-card cafe reveal reveal-delay-2">
+            <div class="bereich-img">
+              <img
+                src="https://images.unsplash.com/photo-1543269664-647163fb4e8b?w=600&q=80&fit=crop"
+                alt="Straßencafé – Gemeinschaft"
+                loading="lazy"
+              >
+            </div>
+            <div class="bereich-icon">☕</div>
+            <h3>Straßencafé</h3>
+            <p>
+              Unser wöchentliches Straßencafé bringt benachteiligte Menschen durch Andacht, Musik und eine warme Mahlzeit mit Gottes Liebe in Berührung. Jeder ist willkommen.
+            </p>
+            <span class="bereich-link">Mehr erfahren →</span>
+          </a>
+
+          <a href="praevention/" class="bereich-card prev reveal reveal-delay-3">
+            <div class="bereich-img">
+              <img
+                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80&fit=crop"
+                alt="Prävention in Schulen"
+                loading="lazy"
+              >
+            </div>
+            <div class="bereich-icon">🛡</div>
+            <h3>Prävention</h3>
+            <p>
+              In Schulen und Einrichtungen helfen wir Schülerinnen und Schülern, dysfunktionale Bewältigungsstrategien zu erkennen und gesunde Alternativen zu entwickeln.
+            </p>
+            <span class="bereich-link">Mehr erfahren →</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         MISSION / KENNZAHLEN
+    ══════════════════════════════════════════ -->
+    <section class="mission" aria-labelledby="mission-title">
+      <div class="section-inner">
+        <span class="section-label reveal">Unsere Geschichte</span>
+        <h2 class="section-title reveal reveal-delay-1" id="mission-title">Vom Traum zur Wirklichkeit</h2>
+        <p class="section-desc reveal reveal-delay-2">
+          Was 2002 mit einer kleinen Rehabilitationseinrichtung begann, ist heute ein vielseitiger Dienst für Menschen in schwierigen Lebenssituationen.
+        </p>
+
+        <div class="mission-grid">
+          <div class="mission-item reveal">
+            <div class="mission-num">2002</div>
+            <h4>Gründung</h4>
+            <p>Achim Paul und Wolfgang Kremer gründen die Rehabilitationseinrichtung Hands of Hope – mit dem Ziel, Menschen zu helfen, die ihr Leben nicht mehr alleine meistern können.</p>
+          </div>
+          <div class="mission-item reveal reveal-delay-1">
+            <div class="mission-num">2009</div>
+            <h4>Straßencafé</h4>
+            <p>Ein neuer Arbeitszweig entsteht in Siegen: Das wöchentliche Straßencafé öffnet seine Türen – mit einer warmen Mahlzeit, Andacht und offenem Gespräch für alle.</p>
+          </div>
+          <div class="mission-item reveal reveal-delay-2">
+            <div class="mission-num">2018</div>
+            <h4>Prävention</h4>
+            <p>Hands of Hope weitet seinen Dienst auf Schulen aus: Lebensberichte ehemaliger Betroffener und Präventionsvorträge erreichen seitdem viele Schülerinnen und Schüler.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         ÜBER UNS TEASER
+    ══════════════════════════════════════════ -->
+    <section class="ueber" id="ueber" aria-labelledby="ueber-title">
+      <div class="ueber-inner section-inner">
+
+        <div class="ueber-photo-wrap reveal">
+          <img
+            src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80&fit=crop"
+            alt="Das Team von Hands of Hope"
+            loading="lazy"
+          >
+          <!-- Logo-Badge (Platzhalter) -->
+          <div class="ueber-photo-badge" aria-hidden="true">
+            <span style="font-family:'Nunito',sans-serif;font-weight:900;font-size:12px;color:#052937;letter-spacing:-0.02em;">
+              Hands <span style="color:#0c4684;">of Hope</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="ueber-content reveal reveal-delay-1">
+          <span class="section-label">Wer wir sind</span>
+          <h2 class="section-title" id="ueber-title">Hoffnung, Hilfe und<br>Gottes Liebe – konkret</h2>
+          <p class="section-desc">
+            Hands of Hope ist ein christlicher diakonischer Dienst mit Sitz in Südwestfalen. Wir glauben daran, dass Glaube und praktische Nächstenliebe zusammengehören – und leben das jeden Tag.
+          </p>
+          <ul class="ueber-list">
+            <li>Gegründet 2002 von Achim Paul und Wolfgang Kremer</li>
+            <li>Getragen von hauptamtlichen, ehrenamtlichen Mitarbeitern sowie FSJ- und BFD-Kräften</li>
+            <li>Gemeinnützig organisiert als Hands of Hope gGmbH</li>
+            <li>Vernetzt im Netzwerk mission:mensch</li>
+          </ul>
+          <a href="ueber-uns/" class="btn btn-blue">Unsere Geschichte lesen</a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         NEWSLETTER
+    ══════════════════════════════════════════ -->
+    <section class="newsletter" aria-labelledby="newsletter-title">
+      <div class="newsletter-inner">
+        <div class="reveal">
+          <span class="section-label">Bleib auf dem Laufenden</span>
+          <h2 class="section-title" id="newsletter-title">Newsletter abonnieren</h2>
+          <p class="newsletter-desc">
+            Erhaltet Neuigkeiten aus unserer Arbeit, Einladungen zu Veranstaltungen und Geschichten, die Mut machen – direkt in euer Postfach. Kein Spam, jederzeit abbestellbar.
+          </p>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <div id="newsletter-form" class="newsletter-form">
+            <input
+              type="text"
+              id="nl-name"
+              name="vorname"
+              placeholder="Vorname"
+              autocomplete="given-name"
+              aria-label="Vorname"
+              class="form-control"
+            >
+            <input
+              type="email"
+              id="nl-email"
+              name="email"
+              placeholder="E-Mail-Adresse"
+              autocomplete="email"
+              aria-label="E-Mail-Adresse"
+              class="form-control"
+            >
+            <button type="button" class="btn btn-blue" onclick="submitNewsletter()">Jetzt anmelden</button>
+            <p class="form-privacy-note">
+              Mit der Anmeldung stimmt ihr unserer <a href="datenschutz.html">Datenschutzerklärung</a> zu. Ihr könnt euch jederzeit wieder abmelden.
+            </p>
+          </div>
+
+          <div id="newsletter-success" class="form-success" role="alert">
+            ✉️ &nbsp;Danke! Bitte bestätigt eure Anmeldung per E-Mail.
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         KONTAKT BANNER
+    ══════════════════════════════════════════ -->
+    <div class="kontakt-banner" role="complementary" aria-label="Kontakt">
+      <div class="kontakt-banner-inner">
+        <div class="reveal">
+          <h2>Nehmen Sie Kontakt auf</h2>
+          <p>Wir freuen uns über Ihre Nachricht – egal ob Sie Hilfe suchen, mitarbeiten oder spenden möchten.</p>
+        </div>
+        <div class="kontakt-cards reveal reveal-delay-1">
+          <address class="kontakt-card">
+            <span class="label">Hands of Hope</span>
+            <span class="val">
+              Waldstraße 6<br>
+              57290 Neunkirchen<br>
+              <a href="tel:+4927356567010">+49 2735 – 65 67 10</a><br>
+              <a href="mailto:info@handsofhope.de">info@handsofhope.de</a>
+            </span>
+          </address>
+          <address class="kontakt-card">
+            <span class="label">Straßencafé Siegen</span>
+            <span class="val">
+              Hagener Straße 78<br>
+              57072 Siegen<br>
+              <a href="tel:+49271338840930">+49 271 – 33 88 40 93</a><br>
+              <a href="mailto:strassencafe@handsofhope.de">strassencafe@handsofhope.de</a>
+            </span>
+          </address>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+
+  <!-- FOOTER (injected by includes.js) -->
+  <div data-include="footer"></div>
+
+
+  <script>
+    function submitNewsletter() {
+      const name  = document.getElementById('nl-name').value.trim();
+      const email = document.getElementById('nl-email').value.trim();
+      if (!name || !email || !email.includes('@')) {
+        alert('Bitte Vorname und gültige E-Mail-Adresse eingeben.');
+        return;
+      }
+      document.getElementById('newsletter-form').style.display = 'none';
+      document.getElementById('newsletter-success').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>

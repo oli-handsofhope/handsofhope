@@ -264,10 +264,12 @@
         el.remove();
         return;
       }
-      // Replace placeholder with actual HTML
+      // Replace placeholder with actual HTML.
+      // Array.from() creates a static snapshot BEFORE nodes are moved,
+      // avoiding the live-NodeList bug where spread skips nodes mid-iteration.
       const tmp = document.createElement('div');
       tmp.innerHTML = builder();
-      el.replaceWith(...tmp.childNodes);
+      el.replaceWith(...Array.from(tmp.childNodes));
     });
 
     initNav();

@@ -3,7 +3,7 @@
    ============================================================ */
 
 /* ── NAV WRAPPER ── */
-nav {
+body > nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 200;
@@ -17,7 +17,7 @@ nav {
   transition: box-shadow var(--transition);
 }
 
-nav.scrolled {
+body > nav.scrolled {
   box-shadow: 0 2px 20px rgba(5,41,55,0.08);
 }
 
@@ -207,7 +207,7 @@ nav.scrolled {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  nav { padding: 0 1.5rem; }
+  body > nav { padding: 0 1.5rem; }
 
   .burger { display: flex; }
 

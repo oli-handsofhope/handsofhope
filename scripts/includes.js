@@ -250,27 +250,29 @@
      4. Injection
      ───────────────────────────────────────── */
 
-  const COMPONENTS = {
-    header: buildHeader,
-    footer: buildFooter,
-  };
-
   function inject() {
-    document.querySelectorAll('[data-include]').forEach(function (el) {
-      const key = el.getAttribute('data-include');
-      const builder = COMPONENTS[key];
-      if (!builder) {
-        console.warn('[includes.js] Unknown component:', key);
-        el.remove();
-        return;
-      }
-      // Replace placeholder with actual HTML.
-      // Array.from() creates a static snapshot BEFORE nodes are moved,
-      // avoiding the live-NodeList bug where spread skips nodes mid-iteration.
-      const tmp = document.createElement('div');
-      tmp.innerHTML = builder();
-      el.replaceWith(...Array.from(tmp.childNodes));
-    });
+
+    // Step 1: Replace each [data-include] placeholder via outerHTML setter.
+    // outerHTML is the most reliable single-step element replacement –
+    // no NodeList spread, no fragment juggling, works in every modern browser.
+    var headerEl = document.querySelector('[data-include="header"]');
+    if (headerEl) {
+      headerEl.outerHTML = buildHeader();
+    }
+
+    var footerEl = document.querySelector('[data-include="footer"]');
+    if (footerEl) {
+      footerEl.outerHTML = buildFooter();
+    }
+
+    // Step 2: Fallback – inject directly into <body> if nav/footer are
+    // still missing (e.g. placeholder was absent or outerHTML silently failed).
+    if (!document.querySelector('nav')) {
+      document.body.insertAdjacentHTML('afterbegin', buildHeader());
+    }
+    if (!document.querySelector('footer')) {
+      document.body.insertAdjacentHTML('beforeend', buildFooter());
+    }
 
     initNav();
   }

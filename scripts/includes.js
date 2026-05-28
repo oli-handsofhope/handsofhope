@@ -52,9 +52,7 @@
 
 <nav aria-label="Hauptnavigation">
   <a class="nav-logo" href="${R}" aria-label="Hands of Hope – Startseite">
-    <!-- Sobald das Logo vorhanden ist, Zeile unten einkommentieren: -->
-    <!-- <img src="${R}assets/logos/handsofhope-logo.svg" alt="Hands of Hope" width="140" height="40"> -->
-    <span class="nav-logo-text">Hands <span>of Hope</span></span>
+    <img src="${R}assets/logos/handsofhope-logo.png" alt="Hands of Hope" width="140" height="40">
   </a>
 
   <ul class="nav-links" id="nav-links" role="list">

@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Präventionsarbeit von Hands of Hope – authentische Lebensberichte ehemaliger Betroffener an Schulen der Region. Seit 2018.">
+  <title>Prävention – Hands of Hope</title>
+
+  <!-- <link rel="icon" href="../assets/favicons/favicon.ico"> -->
+
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/navigation.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/sections.css">
+  <link rel="stylesheet" href="../styles/forms.css">
+  <link rel="stylesheet" href="../styles/gallery.css">
+  <link rel="stylesheet" href="../styles/responsive.css">
+
+  <script src="../scripts/includes.js" defer></script>
+  <script src="../scripts/navigation.js" defer></script>
+  <script src="../scripts/animations.js" defer></script>
+  <script src="../scripts/lazyload.js" defer></script>
+
+  <style>
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.revealed { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── GREEN TOKENS ── */
+    :root {
+      --prev-green:      #7f9628;
+      --prev-green-mid:  #c6d88a;
+      --prev-green-dark: #4e5f18;
+      --prev-green-dim:  rgba(127,150,40,0.11);
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      background: var(--light-bg);
+      padding: 0.85rem var(--section-pad-h);
+      font-size: 13px;
+      color: var(--text-light);
+    }
+    .breadcrumb a { color: var(--blue); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.5rem; opacity: 0.5; }
+
+    /* ── HERO ── */
+    .pv-hero {
+      background: var(--dark);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 540px;
+      overflow: hidden;
+    }
+    .pv-hero-content {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: var(--section-pad-v) var(--section-pad-h);
+      color: var(--white); position: relative;
+    }
+    .pv-hero-content::before {
+      content: ''; position: absolute; left: 0; top: 20%; bottom: 20%;
+      width: 4px; background: var(--prev-green); border-radius: 0 4px 4px 0;
+    }
+    .pv-hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(127,150,40,0.2); border: 1px solid rgba(127,150,40,0.45);
+      color: var(--prev-green-mid);
+      font-family: 'Nunito', sans-serif; font-weight: 700;
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 20px; margin-bottom: 1.5rem; width: fit-content;
+    }
+    .pv-hero h1 {
+      font-family: 'Nunito', sans-serif; font-weight: 800;
+      font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.1;
+      margin-bottom: 1.5rem; color: var(--white);
+    }
+    .pv-hero h1 em { font-style: normal; color: var(--prev-green-mid); }
+    .pv-hero-sub {
+      font-size: 1.05rem; color: rgba(255,255,255,0.72);
+      max-width: 440px; margin-bottom: 2.5rem; line-height: 1.75;
+    }
+    .pv-hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-pv-primary {
+      background: var(--prev-green); color: var(--white);
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 15px;
+      padding: 14px 28px; border-radius: 8px; text-decoration: none;
+      transition: background 0.2s, transform 0.15s; display: inline-block;
+    }
+    .btn-pv-primary:hover { background: var(--prev-green-dark); transform: translateY(-1px); }
+    .btn-pv-ghost {
+      border: 1px solid rgba(255,255,255,0.35); color: var(--white);
+      font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 15px;
+      padding: 14px 28px; border-radius: 8px; text-decoration: none;
+      transition: background 0.2s; display: inline-block;
+    }
+    .btn-pv-ghost:hover { background: rgba(255,255,255,0.08); }
+    .pv-hero-visual { position: relative; overflow: hidden; }
+    .pv-hero-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .pv-hero-visual::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(5,41,55,0.55) 0%, rgba(5,41,55,0.08) 100%);
+    }
+    .pv-hero-badge {
+      position: absolute; bottom: 2rem; right: 2rem; z-index: 2;
+      background: var(--prev-green); color: var(--white);
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px;
+      padding: 0.7rem 1.2rem; border-radius: 12px;
+      box-shadow: 0 6px 24px rgba(5,41,55,0.3);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+
+    /* ── STATS BAR ── */
+    .pv-stats { background: var(--prev-green); padding: 3rem var(--section-pad-h); }
+    .pv-stats-inner {
+      max-width: var(--max-width); margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+    }
+    .pv-stat { border-left: 3px solid rgba(255,255,255,0.3); padding-left: 1.5rem; }
+    .pv-stat-num {
+      font-family: 'Nunito', sans-serif; font-weight: 900;
+      font-size: 2.2rem; color: var(--white); line-height: 1; margin-bottom: 0.3rem;
+    }
+    .pv-stat-label { font-size: 0.88rem; color: rgba(255,255,255,0.78); line-height: 1.5; }
+
+    /* ── SECTION LABELS ── */
+    .pv-label {
+      font-family: 'Nunito', sans-serif; font-weight: 800;
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--prev-green); margin-bottom: 1rem;
+    }
+    .pv-title {
+      font-family: 'Nunito', sans-serif; font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--dark);
+      line-height: 1.15; margin-bottom: 1.25rem;
+    }
+    .pv-desc {
+      font-size: 1.05rem; color: var(--text-light);
+      max-width: 620px; line-height: 1.75; margin-bottom: 3rem;
+    }
+
+    /* ── EINLEITUNG ── */
+    .pv-einleitung {
+      padding: var(--section-pad-v) var(--section-pad-h);
+      background: var(--white);
+    }
+    .pv-einleitung-inner {
+      max-width: var(--max-width); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .pv-photo {
+      position: relative; border-radius: 24px; overflow: hidden;
+      aspect-ratio: 4/3; box-shadow: 0 20px 60px rgba(5,41,55,0.15);
+    }
+    .pv-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .pv-photo-badge {
+      position: absolute; bottom: 1.5rem; left: 1.5rem;
+      background: var(--white); border-radius: 10px; padding: 0.6rem 1rem;
+      font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 13px;
+      color: var(--dark); box-shadow: 0 4px 20px rgba(5,41,55,0.18);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .pv-einleitung-text p {
+      font-size: 1rem; color: var(--text-light); line-height: 1.8; margin-bottom: 1.25rem;
+    }
+    .pv-einleitung-text p strong { color: var(--dark); }
+    .btn-pv-green {
+      display: inline-block; background: var(--prev-green); color: var(--white);
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 15px;
+      padding: 14px 28px; border-radius: 8px; text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-pv-green:hover { background: var(--prev-green-dark); transform: translateY(-1px); }
+
+    /* ── KONZEPT ── */
+    .pv-konzept {
+      padding: var(--section-pad-v) var(--section-pad-h);
+      background: var(--light-bg);
+    }
+    .pv-konzept-inner { max-width: var(--max-width); margin: 0 auto; }
+    .pv-konzept-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2rem; margin-top: 3rem; align-items: start;
+    }
+    .pv-block {
+      background: var(--white); border-radius: 20px; padding: 2.5rem;
+      border-top: 4px solid var(--prev-green);
+    }
+    .pv-block-full { grid-column: 1 / -1; border-top-color: var(--dark); }
+    .pv-block-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: var(--prev-green-dim); color: var(--prev-green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 1.25rem;
+    }
+    .pv-block-icon-dark { background: rgba(5,41,55,0.08); color: var(--dark); }
+    .pv-block h3 {
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.15rem;
+      color: var(--dark); margin-bottom: 0.85rem;
+    }
+    .pv-block p {
+      font-size: 0.95rem; color: var(--text-light); line-height: 1.75;
+    }
+    .pv-block p + p { margin-top: 0.85rem; }
+    .pv-block strong { color: var(--dark); }
+
+    .pv-ziel-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; margin-top: 1.25rem; }
+    .pv-ziel-item { display: flex; align-items: flex-start; gap: 0.85rem; }
+    .pv-ziel-dot {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--prev-green); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 800; flex-shrink: 0; margin-top: 2px;
+      font-family: 'Nunito', sans-serif;
+    }
+    .pv-ziel-text { font-size: 0.93rem; color: var(--text-light); line-height: 1.65; }
+    .pv-ziel-text strong { color: var(--dark); }
+
+    /* ── PROGRAMMBAUSTEINE ── */
+    .pv-bausteine {
+      padding: var(--section-pad-v) var(--section-pad-h);
+      background: var(--white);
+    }
+    .pv-bausteine-inner { max-width: var(--max-width); margin: 0 auto; }
+    .pv-bausteine-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .pv-baustein-card {
+      border-radius: 20px; overflow: hidden;
+      display: flex; flex-direction: column;
+      border: 1px solid rgba(5,41,55,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .pv-baustein-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(5,41,55,0.12); }
+    .pv-baustein-header {
+      background: var(--prev-green); padding: 2rem 2rem 1.5rem;
+      display: flex; align-items: flex-start; gap: 1rem;
+    }
+    .pv-baustein-num {
+      font-family: 'Nunito', sans-serif; font-weight: 900;
+      font-size: 2.8rem; line-height: 1; color: rgba(255,255,255,0.25); flex-shrink: 0;
+    }
+    .pv-baustein-duration {
+      display: inline-block; background: rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9); font-family: 'Nunito', sans-serif;
+      font-weight: 700; font-size: 11px; letter-spacing: 0.07em;
+      padding: 3px 10px; border-radius: 20px; margin-bottom: 0.5rem;
+    }
+    .pv-baustein-title {
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.1rem;
+      color: var(--white); line-height: 1.25;
+    }
+    .pv-baustein-body { background: var(--white); padding: 1.75rem; flex: 1; }
+    .pv-baustein-body p {
+      font-size: 0.93rem; color: var(--text-light); line-height: 1.75;
+    }
+    .pv-baustein-body p + p { margin-top: 0.75rem; }
+    .pv-baustein-body strong { color: var(--dark); }
+    .pv-baustein-details { padding: 0 1.75rem 1.75rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .pv-baustein-detail {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      font-size: 0.87rem; color: var(--text-light);
+    }
+    .pv-baustein-detail::before { content: '→'; color: var(--prev-green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── METHODIK ── */
+    .pv-methodik {
+      padding: var(--section-pad-v) var(--section-pad-h);
+      background: var(--dark); position: relative; overflow: hidden;
+    }
+    .pv-methodik::before {
+      content: ''; position: absolute; width: 500px; height: 500px;
+      top: -150px; right: -100px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(127,150,40,0.16) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .pv-methodik-inner {
+      max-width: var(--max-width); margin: 0 auto; position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .pv-methodik .pv-label { color: var(--prev-green-mid); }
+    .pv-methodik .pv-title { color: var(--white); }
+    .pv-methodik .pv-desc { color: rgba(255,255,255,0.68); margin-bottom: 2rem; }
+    .pv-feats { display: flex; flex-direction: column; gap: 1.1rem; }
+    .pv-feat {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1.1rem 1.25rem; border-radius: 12px;
+      background: rgba(255,255,255,0.05); border-left: 3px solid var(--prev-green);
+    }
+    .pv-feat-icon { font-size: 1.35rem; flex-shrink: 0; margin-top: 2px; }
+    .pv-feat-text strong {
+      display: block; font-family: 'Nunito', sans-serif; font-weight: 800;
+      font-size: 0.95rem; color: var(--white); margin-bottom: 0.2rem;
+    }
+    .pv-feat-text span { font-size: 0.88rem; color: rgba(255,255,255,0.62); line-height: 1.5; }
+
+    .pv-contact-card {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(200,216,226,0.14);
+      border-radius: 20px; overflow: hidden;
+    }
+    .pv-contact-card-photo { height: 220px; overflow: hidden; position: relative; }
+    .pv-contact-card-photo img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); }
+    .pv-contact-card-photo-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 30%, rgba(5,41,55,0.75));
+    }
+    .pv-contact-card-photo-label {
+      position: absolute; bottom: 1.25rem; left: 1.5rem;
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.05rem; color: var(--white);
+    }
+    .pv-contact-card-body { padding: 1.75rem; }
+    .pv-info-row {
+      display: flex; align-items: center; gap: 0.85rem;
+      margin-bottom: 1rem; padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(200,216,226,0.1);
+    }
+    .pv-info-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .pv-info-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: rgba(127,150,40,0.22);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+    }
+    .pv-info-label { font-size: 0.78rem; color: rgba(255,255,255,0.42); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 2px; }
+    .pv-info-value { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--white); }
+    .pv-info-value a { color: var(--prev-green-mid); text-decoration: none; }
+    .pv-info-value a:hover { text-decoration: underline; }
+
+    /* ── BIBELVERS ── */
+    .pv-vers { background: var(--prev-green); padding: var(--section-pad-v) var(--section-pad-h); }
+    .pv-vers-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+    .pv-vers-icon { font-size: 2.5rem; margin-bottom: 1.5rem; opacity: 0.6; }
+    .pv-vers blockquote {
+      font-family: 'Nunito', sans-serif; font-weight: 700;
+      font-size: clamp(1.2rem, 2.5vw, 1.65rem); color: var(--white);
+      line-height: 1.5; margin-bottom: 1.5rem; font-style: italic;
+    }
+    .pv-vers cite { font-size: 0.9rem; color: rgba(255,255,255,0.7); font-style: normal; letter-spacing: 0.05em; }
+
+    /* ── SCHULEN CTA ── */
+    .pv-schulen {
+      padding: var(--section-pad-v) var(--section-pad-h);
+      background: var(--white);
+    }
+    .pv-schulen-inner {
+      max-width: var(--max-width); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .pv-steps { display: flex; flex-direction: column; gap: 0; margin-bottom: 2.5rem; }
+    .pv-step {
+      display: grid; grid-template-columns: 52px 1fr;
+      gap: 1.25rem; position: relative;
+    }
+    .pv-step:not(:last-child)::before {
+      content: ''; position: absolute;
+      left: 25px; top: 52px; width: 2px; bottom: 0;
+      background: rgba(127,150,40,0.15);
+    }
+    .pv-step-num {
+      width: 44px; height: 44px; border-radius: 50%; background: var(--prev-green);
+      color: var(--white); display: flex; align-items: center; justify-content: center;
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.95rem;
+      flex-shrink: 0; position: relative; z-index: 1;
+    }
+    .pv-step-content { padding-bottom: 2rem; }
+    .pv-step-content h4 {
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1rem;
+      color: var(--dark); padding-top: 10px; margin-bottom: 0.3rem;
+    }
+    .pv-step-content p { font-size: 0.91rem; color: var(--text-light); line-height: 1.65; }
+
+    .pv-schulen-contact { background: var(--dark); border-radius: 20px; overflow: hidden; }
+    .pv-schulen-contact-header { background: var(--prev-green); padding: 2rem; }
+    .pv-schulen-contact-header h3 {
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.15rem;
+      color: var(--white); margin-bottom: 0.35rem;
+    }
+    .pv-schulen-contact-header p { font-size: 0.9rem; color: rgba(255,255,255,0.75); }
+    .pv-schulen-contact-body { padding: 1.75rem; }
+    .pv-contact-line {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 0.85rem; font-size: 0.92rem; color: rgba(255,255,255,0.72);
+    }
+    .pv-contact-line .icon {
+      width: 34px; height: 34px; border-radius: 8px;
+      background: rgba(127,150,40,0.22);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; flex-shrink: 0;
+    }
+    .pv-contact-line a { color: var(--prev-green-mid); text-decoration: none; }
+    .pv-contact-line a:hover { text-decoration: underline; }
+    .pv-contact-divider { height: 1px; background: rgba(200,216,226,0.1); margin: 1.1rem 0; }
+    .pv-schulen-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+    .btn-pv-download {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(127,150,40,0.15); border: 1px solid rgba(127,150,40,0.35);
+      color: var(--prev-green-mid); font-family: 'Nunito', sans-serif; font-weight: 700;
+      font-size: 14px; padding: 12px 20px; border-radius: 8px; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-pv-download:hover { background: rgba(127,150,40,0.28); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .pv-hero { grid-template-columns: 1fr; }
+      .pv-hero-content { padding: 3.5rem 2rem; }
+      .pv-hero-content::before { display: none; }
+      .pv-hero-visual { height: 260px; }
+      .pv-stats { padding: 2.5rem 2rem; }
+      .pv-stats-inner { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+      .pv-einleitung { padding: 4rem 2rem; }
+      .pv-einleitung-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pv-photo { display: none; }
+      .pv-konzept { padding: 4rem 2rem; }
+      .pv-konzept-grid { grid-template-columns: 1fr; }
+      .pv-bausteine { padding: 4rem 2rem; }
+      .pv-bausteine-grid { grid-template-columns: 1fr; }
+      .pv-methodik { padding: 4rem 2rem; }
+      .pv-methodik-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pv-vers { padding: 4rem 2rem; }
+      .pv-schulen { padding: 4rem 2rem; }
+      .pv-schulen-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 600px) {
+      .pv-stats-inner { grid-template-columns: 1fr; }
+      .pv-hero-badge { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div data-include="header"></div>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="../">Startseite</a>
+    <span>›</span>
+    Prävention
+  </div>
+
+  <!-- HERO -->
+  <div class="pv-hero">
+    <div class="pv-hero-content reveal">
+      <span class="pv-hero-tag">Seit 2018 · Schulen in der Region</span>
+      <h1>Früh genug da sein – <em>bevor</em> die Wege steinig werden</h1>
+      <p class="pv-hero-sub">Durch authentische Lebensberichte ehemaliger Betroffener begegnen wir Schülerinnen und Schülern dort, wo es zählt: an den Wurzeln. Bevor dysfunktionale Bewältigungsstrategien sich festigen, zeigen wir Alternativen – und geben Hoffnung.</p>
+      <div class="pv-hero-actions">
+        <a href="#bausteine" class="btn-pv-primary">Programmbausteine</a>
+        <a href="#kontakt" class="btn-pv-ghost">Schule anfragen</a>
+      </div>
+    </div>
+    <div class="pv-hero-visual">
+      <img src="../assets/images/praevention/hero.jpg" alt="Jugendliche in Schulklasse beim Zuhören" loading="eager">
+      <div class="pv-hero-badge">🎓 An Schulen vor Ort</div>
+    </div>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="pv-stats">
+    <div class="pv-stats-inner">
+      <div class="pv-stat reveal">
+        <div class="pv-stat-num">2018</div>
+        <div class="pv-stat-label">Beginn der Präventionsarbeit – erste Vorträge an Schulen in der Region</div>
+      </div>
+      <div class="pv-stat reveal reveal-delay-1">
+        <div class="pv-stat-num">3</div>
+        <div class="pv-stat-label">Programmbausteine – abgestimmt, aufbauend und nachhaltig wirksam</div>
+      </div>
+      <div class="pv-stat reveal reveal-delay-2">
+        <div class="pv-stat-num">2</div>
+        <div class="pv-stat-label">Referenten pro Einsatz – ehemalige Betroffene, die offen aus ihrem Leben erzählen</div>
+      </div>
+      <div class="pv-stat reveal reveal-delay-3">
+        <div class="pv-stat-num">Sek.&nbsp;I</div>
+        <div class="pv-stat-label">Zielgruppe – Schülerinnen und Schüler in der Sekundarstufe</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EINLEITUNG / WARUM -->
+  <div class="pv-einleitung" id="konzept">
+    <div class="pv-einleitung-inner">
+      <div class="pv-photo reveal">
+        <img src="../assets/images/praevention/einleitung.jpg" alt="Jugendliche in Gesprächssituation" loading="lazy">
+        <div class="pv-photo-badge">🌱 Prävention statt Reaktion</div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <p class="pv-label">Warum Prävention</p>
+        <h2 class="pv-title">Was Rehabilitation und Straßencafé uns gelehrt haben</h2>
+        <div class="pv-einleitung-text">
+          <p>Durch unsere jahrelange Rehabilitations- und Straßencaféarbeit wurde uns früh bewusst: Es ist ein <strong>langer, intensiver Prozess</strong>, Menschen aus tiefen Verstrickungen wieder in ein stabiles, eigenständiges Leben zu begleiten. Dieses Wissen hat uns angetrieben.</p>
+          <p>Uns lag es deshalb am Herzen, <strong>frühzeitig</strong> vor den Gefahren zu warnen und präventiv ein befreites, erfülltes Leben zu fördern. 2018 öffneten sich die ersten Türen an Schulen – und was wir dort erlebten, hat uns bestärkt: eine große Offenheit der Jugendlichen und zugleich eine weitreichende seelische Not, die vielen nicht anzusehen ist.</p>
+          <p>Seitdem ist die Präventionsarbeit ein <strong>fester Bestandteil des diakonischen Dienstes</strong> von Hands of Hope geworden.</p>
+          <div style="margin-top: 2rem;">
+            <a href="#bausteine" class="btn-pv-green">Zu den Programmbausteinen →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KONZEPT / ANSATZ & ZIELE -->
+  <div class="pv-konzept">
+    <div class="pv-konzept-inner">
+      <p class="pv-label reveal">Unser Ansatz</p>
+      <h2 class="pv-title reveal">Die Wurzeln anpacken – nicht nur die Symptome</h2>
+      <p class="pv-desc reveal">Kinder und Jugendliche kommen in der Sekundarstufe auf ihrer Identitätssuche mit vielerlei Herausforderungen in Berührung. Was von außen als Problemverhalten sichtbar wird, ist in der Regel in viel tiefer liegenden Ursachen verwurzelt.</p>
+
+      <div class="pv-konzept-grid">
+        <div class="pv-block reveal">
+          <div class="pv-block-icon">🔍</div>
+          <h3>Tiefer als das sichtbare Verhalten</h3>
+          <p>Identitätskrisen, Selbstwertprobleme, Annahmestreben und Sicherheitsbedürfnisse können – unter schlechten Bedingungen – zu unbewussten Gewohnheiten mit weitreichenden Folgen werden.</p>
+          <p>Aus unserer Sicht ist es wenig zielführend, allein am kritischen Verhalten anzusetzen oder Jugendliche lediglich mit Informationen zu Gefahren zu versorgen. <strong>Tiefgreifende Veränderung</strong> geschieht erst, wenn die dahinterliegenden Wurzeln aufgedeckt und die Herzen selbst berührt werden.</p>
+        </div>
+        <div class="pv-block reveal reveal-delay-1">
+          <div class="pv-block-icon">✝</div>
+          <h3>Christliches Fundament, ganzheitlicher Blick</h3>
+          <p>Als christlich-diakonisches Werk treten wir offen für das <strong>christliche Wertfundament</strong> und Menschenbild ein: Jeder Mensch ist einzigartig, wertvoll, gewollt und geliebt – mit besonderer Würde.</p>
+          <p>Diese Identität, die sich auf <strong>Gottes bedingungsloser Liebe</strong> gründet, wird ebenso thematisiert wie psychologisch hilfreiche Präventionsbausteine – ergänzend, nie ausschließlich.</p>
+        </div>
+        <div class="pv-block pv-block-full reveal">
+          <div class="pv-block-icon pv-block-icon-dark">🎯</div>
+          <h3>Unsere Präventionsziele</h3>
+          <ul class="pv-ziel-list">
+            <li class="pv-ziel-item">
+              <div class="pv-ziel-dot">1</div>
+              <div class="pv-ziel-text">Jungen Menschen die <strong>tieferliegenden Ursachen</strong> aufzeigen, die zu dysfunktionalen Bewältigungsstrategien und langfristigen Persönlichkeitsproblemen führen können.</div>
+            </li>
+            <li class="pv-ziel-item">
+              <div class="pv-ziel-dot">2</div>
+              <div class="pv-ziel-text">Herausstellen, wie <strong>ähnliche Ursachen zu sehr unterschiedlichen Symptomen</strong> führen – und dabei viele verschiedene Problemmuster ansprechen.</div>
+            </li>
+            <li class="pv-ziel-item">
+              <div class="pv-ziel-dot">3</div>
+              <div class="pv-ziel-text">Diese Inhalte durch <strong>persönliche Lebensberichte ehemaliger Betroffener</strong> und offene Diskussions- und Fragerunden vermitteln.</div>
+            </li>
+            <li class="pv-ziel-item">
+              <div class="pv-ziel-dot">4</div>
+              <div class="pv-ziel-text">Neben medizinisch-psychologischen Faktoren aufzeigen, welchen <strong>Einfluss christlicher Glaube</strong> auf den Problemverlauf haben kann.</div>
+            </li>
+            <li class="pv-ziel-item">
+              <div class="pv-ziel-dot">5</div>
+              <div class="pv-ziel-text">Jungen Menschen die Möglichkeit für <strong>persönliche Gespräche</strong> und – bei Bedarf – eine langfristige beratende Begleitung anbieten.</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROGRAMMBAUSTEINE -->
+  <div class="pv-bausteine" id="bausteine">
+    <div class="pv-bausteine-inner">
+      <p class="pv-label reveal">Das Programm</p>
+      <h2 class="pv-title reveal">Drei Bausteine – abgestimmt und aufbauend</h2>
+      <p class="pv-desc reveal">Unser Programm umfasst drei ineinandergreifende Elemente: von der Erstbegegnung in der Klasse bis zur persönlichen Nachbegleitung über die Schule hinaus.</p>
+
+      <div class="pv-bausteine-grid">
+
+        <div class="pv-baustein-card reveal">
+          <div class="pv-baustein-header">
+            <div class="pv-baustein-num">01</div>
+            <div>
+              <span class="pv-baustein-duration">ca. 2 Stunden</span>
+              <div class="pv-baustein-title">Präventionsvortrag</div>
+            </div>
+          </div>
+          <div class="pv-baustein-body">
+            <p>In Zusammenarbeit mit <strong>Klassenlehrkräften</strong> und zuständigen <strong>Schulsozialarbeitern</strong> wird zunächst die Klassensituation besprochen und bekannte Problematiken thematisiert.</p>
+            <p>Auf dieser Grundlage folgt der <strong>zweistündige Präventionsvortrag</strong> mit einer kurzen filmischen Darstellung der Arbeit von Hands of Hope sowie zwei Referentenvorträgen mit Frage- und Diskussionsrunden. Die Referenten erzählen völlig offen von ihren früheren Problemen und dem Weg, der dorthin geführt hat.</p>
+          </div>
+          <div class="pv-baustein-details">
+            <div class="pv-baustein-detail">Vorgespräch mit Klassenlehrern und Schulsozialarbeitern</div>
+            <div class="pv-baustein-detail">2 authentische Referentenberichte aus eigenem Erleben</div>
+            <div class="pv-baustein-detail">Offene Frage- und Diskussionsrunden</div>
+            <div class="pv-baustein-detail">Filmische Kurzdarstellung der Hands-of-Hope-Arbeit</div>
+          </div>
+        </div>
+
+        <div class="pv-baustein-card reveal reveal-delay-1">
+          <div class="pv-baustein-header">
+            <div class="pv-baustein-num">02</div>
+            <div>
+              <span class="pv-baustein-duration">ca. 1 Stunde</span>
+              <div class="pv-baustein-title">Nachsorgevortrag</div>
+            </div>
+          </div>
+          <div class="pv-baustein-body">
+            <p>In relativ nahem Zeitabstand folgt der <strong>einstündige Nachsorgevortrag</strong> zur Vertiefung zentraler Inhalte. Im Vorfeld füllen die Klassen <strong>anonyme Fragebögen</strong> aus, über die auch schambehaftete Themen geäußert werden können.</p>
+            <p>Die Referenten gehen zielgerichtet auf die formulierten Fragen ein, behandeln relevante Themen tiefergehend und verweisen bei spezifischen Anliegen auf <strong>entsprechende Fachstellen</strong>.</p>
+          </div>
+          <div class="pv-baustein-details">
+            <div class="pv-baustein-detail">Anonyme Fragebögen im Vorfeld</div>
+            <div class="pv-baustein-detail">Zielgerichtete Aufarbeitung der Schülerfragen</div>
+            <div class="pv-baustein-detail">Vertiefung der Kernthemen aus Vortrag 1</div>
+            <div class="pv-baustein-detail">Verweis auf passende Fachstellen bei Bedarf</div>
+          </div>
+        </div>
+
+        <div class="pv-baustein-card reveal reveal-delay-2">
+          <div class="pv-baustein-header">
+            <div class="pv-baustein-num">03</div>
+            <div>
+              <span class="pv-baustein-duration">Individuell &amp; langfristig</span>
+              <div class="pv-baustein-title">Außerschulische Begleitung</div>
+            </div>
+          </div>
+          <div class="pv-baustein-body">
+            <p>Nach jedem Vortrag stehen die Referenten in einem gesonderten Raum für <strong>vertrauliche Gespräche</strong> zur Verfügung – anonym für das eigene Leben oder das von Freunden.</p>
+            <p>Darüber hinaus bieten wir interessierten Schülerinnen und Schülern eine langfristige <strong>persönliche Begleitung</strong> an. Diese erfolgt unter Leitung eines ausgebildeten <strong>klinischen Psychologen</strong> in enger Zusammenarbeit mit Kinder- und Jugendtherapeuten.</p>
+          </div>
+          <div class="pv-baustein-details">
+            <div class="pv-baustein-detail">Persönliche Gespräche direkt im Anschluss</div>
+            <div class="pv-baustein-detail">Rat für sich selbst oder für Freunde – anonym möglich</div>
+            <div class="pv-baustein-detail">Langfristige Begleitung durch Psychologen und Therapeuten</div>
+            <div class="pv-baustein-detail">Fachgerechte und vertrauliche Unterstützung</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- METHODIK / REFERENTEN -->
+  <div class="pv-methodik">
+    <div class="pv-methodik-inner">
+      <div class="reveal">
+        <p class="pv-label">Was uns besonders macht</p>
+        <h2 class="pv-title">Nicht Theorie – sondern gelebte Erfahrung</h2>
+        <p class="pv-desc">Der Kern unserer Methode ist die Authentizität: Menschen, die selbst durch die Tiefe gegangen sind, sprechen zu Jugendlichen auf Augenhöhe. Das erzeugt eine Resonanz, die kein Lehrbuch erreicht.</p>
+
+        <div class="pv-feats">
+          <div class="pv-feat">
+            <div class="pv-feat-icon">🎤</div>
+            <div class="pv-feat-text">
+              <strong>Ehemalige Betroffene als Referenten</strong>
+              <span>Kein pädagogischer Zeigefinger – sondern das eigene Leben, transparent und ungeschönt erzählt. Das öffnet Türen, die Frontalunterricht nicht erreicht.</span>
+            </div>
+          </div>
+          <div class="pv-feat">
+            <div class="pv-feat-icon">💬</div>
+            <div class="pv-feat-text">
+              <strong>Offene Diskussion statt Vortrag von oben</strong>
+              <span>Schülerinnen und Schüler dürfen intime Fragen stellen, eigene Anliegen einbringen und eigene Schlüsse ziehen – in einem sicheren Rahmen.</span>
+            </div>
+          </div>
+          <div class="pv-feat">
+            <div class="pv-feat-icon">🧠</div>
+            <div class="pv-feat-text">
+              <strong>Fachlich begleitet – psychologisch fundiert</strong>
+              <span>Hinter dem Programm steht ein ausgebildeter klinischer Psychologe. Fachkenntnis und persönliche Glaubwürdigkeit ergänzen sich.</span>
+            </div>
+          </div>
+          <div class="pv-feat">
+            <div class="pv-feat-icon">🌱</div>
+            <div class="pv-feat-text">
+              <strong>Keine einmalige Aktion</strong>
+              <span>Unser dreistufiges Programm ist auf Nachhaltigkeit ausgelegt: vom Erstvortrag über die Vertiefung bis zur individuellen Langzeitbegleitung.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pv-contact-card reveal reveal-delay-1">
+        <div class="pv-contact-card-photo">
+          <img src="../assets/images/praevention/referent.jpg" alt="Ciprian Mihai – Leitung Prävention" loading="lazy">
+          <div class="pv-contact-card-photo-overlay"></div>
+          <div class="pv-contact-card-photo-label">Leitung Prävention</div>
+        </div>
+        <div class="pv-contact-card-body">
+          <div class="pv-info-row">
+            <div class="pv-info-icon">👤</div>
+            <div>
+              <div class="pv-info-label">Ansprechpartner</div>
+              <div class="pv-info-value">Ciprian Mihai</div>
+            </div>
+          </div>
+          <div class="pv-info-row">
+            <div class="pv-info-icon">📞</div>
+            <div>
+              <div class="pv-info-label">Telefon</div>
+              <div class="pv-info-value"><a href="tel:+4927356567010">02735 – 65 67 10</a></div>
+            </div>
+          </div>
+          <div class="pv-info-row">
+            <div class="pv-info-icon">✉️</div>
+            <div>
+              <div class="pv-info-label">E-Mail</div>
+              <div class="pv-info-value"><a href="mailto:c.mihai@handsofhope.de">c.mihai@handsofhope.de</a></div>
+            </div>
+          </div>
+          <div class="pv-info-row">
+            <div class="pv-info-icon">📍</div>
+            <div>
+              <div class="pv-info-label">Sitz</div>
+              <div class="pv-info-value">Waldstraße 6, 57290 Neunkirchen</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BIBELVERS -->
+  <div class="pv-vers">
+    <div class="pv-vers-inner reveal">
+      <div class="pv-vers-icon">✦</div>
+      <blockquote>„Erziehe einen Knaben entsprechend seinem Wesen; er wird auch im Alter nicht davon ablassen."</blockquote>
+      <cite>Sprüche 22,6 – Grundgedanke unserer Präventionsarbeit</cite>
+    </div>
+  </div>
+
+  <!-- SCHULEN CTA -->
+  <div class="pv-schulen" id="kontakt">
+    <div class="pv-schulen-inner">
+      <div class="reveal">
+        <p class="pv-label">Für Schulen</p>
+        <h2 class="pv-title">So kommen wir an Ihre Schule</h2>
+        <p class="pv-desc">Der Weg von der Anfrage zum ersten Einsatz ist unkompliziert. Wir stimmen uns individuell auf Ihre Klasse und Situation ab.</p>
+
+        <div class="pv-steps">
+          <div class="pv-step">
+            <div class="pv-step-num">1</div>
+            <div class="pv-step-content">
+              <h4>Kontakt aufnehmen</h4>
+              <p>Sie melden sich per E-Mail oder Telefon – formlos, ohne Verpflichtung. Wir beantworten alle Fragen vorab.</p>
+            </div>
+          </div>
+          <div class="pv-step">
+            <div class="pv-step-num">2</div>
+            <div class="pv-step-content">
+              <h4>Vorgespräch</h4>
+              <p>Gemeinsam mit Klassenlehrern und Schulsozialarbeitern klären wir die Klassensituation und passen das Programm entsprechend an.</p>
+            </div>
+          </div>
+          <div class="pv-step">
+            <div class="pv-step-num">3</div>
+            <div class="pv-step-content">
+              <h4>Präventionsvortrag</h4>
+              <p>Der zweistündige Erstvortrag findet bei Ihnen in der Schule statt – mit zwei Referenten, Filmbeitrag und Diskussionsrunde.</p>
+            </div>
+          </div>
+          <div class="pv-step">
+            <div class="pv-step-num">4</div>
+            <div class="pv-step-content">
+              <h4>Nachsorge &amp; Begleitung</h4>
+              <p>Je nach Bedarf folgen Nachsorgevortrag und – für einzelne Schülerinnen und Schüler – eine langfristige persönliche Begleitung.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pv-schulen-contact reveal reveal-delay-1">
+        <div class="pv-schulen-contact-header">
+          <h3>Prävention anfragen</h3>
+          <p>Ciprian Mihai – Leitung der Präventionsarbeit</p>
+        </div>
+        <div class="pv-schulen-contact-body">
+          <div class="pv-contact-line">
+            <div class="icon">📞</div>
+            <a href="tel:+4927356567010">02735 – 65 67 10</a>
+          </div>
+          <div class="pv-contact-line">
+            <div class="icon">✉️</div>
+            <a href="mailto:c.mihai@handsofhope.de">c.mihai@handsofhope.de</a>
+          </div>
+          <div class="pv-contact-divider"></div>
+          <div class="pv-contact-line">
+            <div class="icon">📍</div>
+            <div>Waldstraße 6, 57290 Neunkirchen</div>
+          </div>
+          <div class="pv-contact-divider"></div>
+          <div class="pv-contact-line" style="align-items: flex-start;">
+            <div class="icon">🎓</div>
+            <div style="font-size:0.9rem; color:rgba(255,255,255,0.65); line-height:1.6;">
+              Einsätze an Schulen in der Region Siegen-Wittgenstein und darüber hinaus. Anfragen auch für Konfirmanden- und Jugendgruppen möglich.
+            </div>
+          </div>
+          <div class="pv-schulen-actions">
+            <a href="mailto:c.mihai@handsofhope.de" class="btn-pv-primary">Jetzt anfragen</a>
+            <a href="https://handsofhope.de/wp-content/uploads/2019/04/Pr%C3%A4ventionskonzept_Hands-of-Hope.pdf" class="btn-pv-download" target="_blank" rel="noopener">⬇ Präventionskonzept (PDF)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div data-include="footer"></div>
+
+</body>
+</html>

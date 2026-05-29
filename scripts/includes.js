@@ -58,10 +58,6 @@
   </a>
 
   <ul class="nav-links" id="nav-links" role="list">
-    <li><a href="${R}rehabilitation/">Rehabilitation</a></li>
-    <li><a href="${R}dienstleistungen/">Dienstleistungen</a></li>
-    <li><a href="${R}strassencafe/">Straßencafé</a></li>
-    <li><a href="${R}praevention/">Prävention</a></li>
     <li class="nav-has-dropdown">
       <a href="${R}ueber-uns/" aria-haspopup="true">Über uns</a>
       <ul class="nav-dropdown" role="list" aria-label="Über uns Untermenü">
@@ -73,7 +69,12 @@
         <li><a href="${R}ueber-uns/#kontakt">Kontakt</a></li>
       </ul>
     </li>
+    <li><a href="${R}rehabilitation/">Rehabilitation</a></li>
+    <li><a href="${R}dienstleistungen/">Dienstleistungen</a></li>
+    <li><a href="${R}strassencafe/">Straßencafé</a></li>
+    <li><a href="${R}praevention/">Prävention</a></li>
     <li><a href="${R}ueber-uns/kontakt/">Kontakt</a></li>
+    <li><a href="${R}blog/">Blog</a></li>
     <li class="nav-cta">
       <a href="${R}ueber-uns/spenden/">❤ Spenden</a>
     </li>

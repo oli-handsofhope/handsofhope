@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gemeinnützige Dienstleistungen von Hands of Hope: Garten- und Landschaftsbau, Gehölzschnitt, Haushaltsauflösungen – professionell, günstig und sinnstiftend im Siegerland.">
+  <title>Dienstleistungen – Hands of Hope</title>
+
+  <!-- <link rel="icon" href="../assets/favicons/favicon.ico"> -->
+
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/navigation.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/sections.css">
+  <link rel="stylesheet" href="../styles/forms.css">
+  <link rel="stylesheet" href="../styles/gallery.css">
+  <link rel="stylesheet" href="../styles/responsive.css">
+
+  <script src="../scripts/includes.js" defer></script>
+  <script src="../scripts/navigation.js" defer></script>
+  <script src="../scripts/animations.js" defer></script>
+  <script src="../scripts/lazyload.js" defer></script>
+
+  <style>
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.revealed { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── GREEN ACCENT TOKENS ── */
+    :root {
+      --green:       #7f9628;
+      --green-light: #eef2e0;
+      --green-mid:   #b8c87a;
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      background: var(--light-bg);
+      padding: 0.85rem var(--section-pad-h);
+      font-size: 13px;
+      color: var(--text-light);
+    }
+    .breadcrumb a { color: var(--blue); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.5rem; opacity: 0.5; }
+
+    /* ── HERO TAG – grün ── */
+    .hero-tag-green {
+      display: inline-block;
+      background: rgba(127,150,40,0.2);
+      border: 1px solid rgba(127,150,40,0.4);
+      color: var(--green-mid);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+      width: fit-content;
+    }
+
+    /* ── VORTEILE STRIP ── */
+    .vorteile-strip {
+      background: var(--green);
+      padding: 2.5rem var(--section-pad-h);
+    }
+    .vorteile-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .vorteil { display: flex; align-items: flex-start; gap: 0.85rem; }
+    .vorteil-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .vorteil-text h4 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 0.92rem;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+    .vorteil-text p { font-size: 0.83rem; color: rgba(255,255,255,0.78); line-height: 1.5; }
+
+    /* ── LEISTUNGSBLÖCKE ── */
+    .leistung-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 5rem 0;
+      border-bottom: 1px solid rgba(5,41,55,0.07);
+    }
+    .leistung-block:first-of-type { padding-top: 0; }
+    .leistung-block:last-of-type { border-bottom: none; }
+    .leistung-block.reverse { direction: rtl; }
+    .leistung-block.reverse > * { direction: ltr; }
+
+    .leistung-photo {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      box-shadow: var(--shadow-deep);
+    }
+    .leistung-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .leistung-photo:hover img { transform: scale(1.03); }
+
+    .leistung-num {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 4rem;
+      color: rgba(127,150,40,0.12);
+      line-height: 1;
+      margin-bottom: -0.5rem;
+    }
+    .leistung-content h3 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+    .leistung-content p {
+      font-size: 0.97rem;
+      color: var(--text-light);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    .leistung-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+    }
+    .leistung-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+    .leistung-list li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 1px;
+      font-size: 13px;
+    }
+    .btn-anfrage {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--green-light);
+      color: var(--green);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 11px 20px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      border: 1px solid rgba(127,150,40,0.25);
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-anfrage:hover { background: #e2e9c8; transform: translateY(-1px); }
+
+    /* ── ZUSATZ-LEISTUNGEN ── */
+    .zusatz-leistungen {
+      max-width: var(--max-width);
+      margin: 4rem auto 0;
+      background: var(--light-bg);
+      border-radius: var(--radius-md);
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .zusatz-icon { font-size: 2.5rem; flex-shrink: 0; }
+    .zusatz-leistungen h4 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--dark);
+      margin-bottom: 0.35rem;
+    }
+    .zusatz-leistungen p { font-size: 0.92rem; color: var(--text-light); line-height: 1.6; }
+
+    /* ── KUNDENSTIMMEN ── */
+    .kundenstimmen { background: var(--light-bg); }
+    .stimmen-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .stimme {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 2rem 2.25rem;
+      position: relative;
+      box-shadow: var(--shadow-card);
+    }
+    .stimme::before {
+      content: '„';
+      position: absolute;
+      top: 1rem;
+      left: 1.5rem;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 5rem;
+      color: var(--green);
+      opacity: 0.15;
+      line-height: 1;
+    }
+    .stimme p {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      padding-top: 1.5rem;
+      font-style: italic;
+    }
+    .stimme-author { display: flex; align-items: center; gap: 0.75rem; }
+    .stimme-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--green);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .stimme-name {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--dark);
+    }
+    .stimme-ort { font-size: 0.82rem; color: var(--text-light); }
+
+    /* ── MISSION NOTE ── */
+    .mission-note {
+      background: var(--dark);
+      padding: var(--section-pad-v) var(--section-pad-h);
+    }
+    .mission-note-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4rem;
+      align-items: center;
+    }
+    .mission-note .section-label { color: var(--green-mid); }
+    .mission-note .section-title { color: var(--white); }
+    .mission-note p { font-size: 1rem; color: rgba(255,255,255,0.7); line-height: 1.75; max-width: 560px; }
+    .mwst-badge {
+      background: rgba(127,150,40,0.2);
+      border: 1px solid rgba(127,150,40,0.4);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      text-align: center;
+      min-width: 180px;
+      flex-shrink: 0;
+    }
+    .mwst-badge .num {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 3rem;
+      color: var(--green-mid);
+      line-height: 1;
+    }
+    .mwst-badge .label {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.65);
+      margin-top: 0.4rem;
+      line-height: 1.4;
+    }
+
+    /* ── KONTAKT CTA ── */
+    .kontakt-cta {
+      background: var(--green);
+      padding: var(--section-pad-v) var(--section-pad-h);
+    }
+    .kontakt-cta-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .kontakt-cta .section-label { color: rgba(255,255,255,0.7); }
+    .kontakt-cta .section-title { color: var(--white); }
+    .kontakt-cta .section-desc { color: rgba(255,255,255,0.8); margin-bottom: 0; }
+    .kontakt-card-group { display: flex; flex-direction: column; gap: 1rem; }
+    .kontakt-card {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+    }
+    .kontakt-card .klabel {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 0.4rem;
+    }
+    .kontakt-card .kval { font-size: 0.92rem; color: var(--white); line-height: 1.5; }
+    .kontakt-card a { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
+    .btn-white {
+      display: inline-block;
+      background: var(--white);
+      color: var(--green);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: background var(--transition), transform var(--transition);
+      margin-top: 1.5rem;
+    }
+    .btn-white:hover { background: #f0f5e8; transform: translateY(-1px); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .breadcrumb { padding: 0.75rem 2rem; }
+      .vorteile-inner { grid-template-columns: 1fr 1fr; }
+      .leistung-block {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 3rem 0;
+      }
+      .leistung-block.reverse { direction: ltr; }
+      .leistung-photo { aspect-ratio: 16/9; }
+      .stimmen-grid { grid-template-columns: 1fr; }
+      .mission-note-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .kontakt-cta-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .zusatz-leistungen { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    }
+    @media (max-width: 600px) {
+      .vorteile-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER (injected by includes.js) -->
+  <div data-include="header"></div>
+  <div class="nav-spacer"></div>
+
+  <main id="main-content">
+
+    <!-- ══════════════════════════════════════════
+         BREADCRUMB
+    ══════════════════════════════════════════ -->
+    <div class="breadcrumb">
+      <a href="../">Startseite</a>
+      <span>›</span>
+      Dienstleistungen
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════ -->
+    <section class="hero" aria-label="Dienstleistungen">
+      <div class="hero-content">
+        <span class="hero-tag-green">Gemeinnützig · Professionell · Siegerland</span>
+        <h1>Der richtige Partner für <em style="color: var(--green-mid);">Ihr Projekt</em></h1>
+        <p class="hero-sub">
+          Unsere gemeinnützigen Arbeitsbetriebe bieten fachmännische Handwerks- und Gartenleistungen –
+          ausgeführt von erfahrenen Fachkräften, die Rehabilitanden auf dem Weg in den Berufsalltag anleiten.
+        </p>
+        <div class="hero-actions">
+          <a href="#kontakt" class="btn btn-primary" style="background: var(--green);">Anfrage stellen</a>
+          <a href="#leistungen" class="btn btn-ghost">Leistungsübersicht</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-photo-wrap">
+          <!-- Foto: Arbeit im Freien / Garten / Team bei der Arbeit → hero.jpg -->
+          <img
+            src="hero.jpg"
+            alt="Gemeinnützige Arbeit bei Hands of Hope"
+            loading="eager"
+          >
+          <div class="hero-photo-overlay"></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         VORTEILE STRIP
+    ══════════════════════════════════════════ -->
+    <div class="vorteile-strip" aria-label="Unsere Vorteile">
+      <div class="vorteile-inner">
+        <div class="vorteil reveal">
+          <div class="vorteil-icon">🏆</div>
+          <div class="vorteil-text">
+            <h4>Fachkundige Handwerker</h4>
+            <p>Ausgebildete Mitarbeiter mit langjähriger Berufserfahrung</p>
+          </div>
+        </div>
+        <div class="vorteil reveal reveal-delay-1">
+          <div class="vorteil-icon">💶</div>
+          <div class="vorteil-text">
+            <h4>Nur 7 % Mehrwertsteuer</h4>
+            <p>Günstige Konditionen dank gemeinnütziger Trägerschaft</p>
+          </div>
+        </div>
+        <div class="vorteil reveal reveal-delay-2">
+          <div class="vorteil-icon">🤝</div>
+          <div class="vorteil-text">
+            <h4>Privat &amp; gewerblich</h4>
+            <p>Kunden von Privatpersonen bis Kommunen und Kirchen</p>
+          </div>
+        </div>
+        <div class="vorteil reveal reveal-delay-3">
+          <div class="vorteil-icon">💚</div>
+          <div class="vorteil-text">
+            <h4>Gutes tun beim Beauftragen</h4>
+            <p>Alle Einnahmen fließen zurück in unsere diakonische Arbeit</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         LEISTUNGEN
+    ══════════════════════════════════════════ -->
+    <section id="leistungen" aria-labelledby="leistungen-title" style="padding: var(--section-pad-v) var(--section-pad-h);">
+
+      <div style="max-width: var(--max-width); margin: 0 auto 1rem;">
+        <span class="section-label reveal">Unsere Arbeitsbereiche</span>
+        <h2 class="section-title reveal reveal-delay-1" id="leistungen-title">Was wir für Sie tun</h2>
+        <p class="section-desc reveal reveal-delay-2">
+          Unser Angebot ist breit gefächert – damit Rehabilitanden ihre Stärken einbringen können
+          und Sie als Auftraggeber einen zuverlässigen Partner finden.
+        </p>
+      </div>
+
+      <!-- 1 · Garten & Landschaftsbau -->
+      <div class="leistung-block reveal">
+        <div class="leistung-photo">
+          <!-- Foto: gepflegter Garten / Terrassenbau / Pflasterarbeiten → garten.jpg -->
+          <img src="garten.jpg" alt="Garten- und Landschaftsbau" loading="lazy">
+        </div>
+        <div class="leistung-content">
+          <div class="leistung-num">01</div>
+          <h3>Garten- &amp; Landschaftsbau</h3>
+          <p>
+            Umgestaltungspläne für Ihren Garten, regelmäßige Pflege von Grünanlagen oder die Neuanlage einer
+            Terrasse – unser kompetentes Fachpersonal steht Ihnen mit professioneller Beratung und fachgerechter
+            Umsetzung zur Seite.
+          </p>
+          <ul class="leistung-list">
+            <li>Planung und Gestaltung von Gartenanlagen</li>
+            <li>Gartenbepflanzung und -pflege</li>
+            <li>Rasen-, Gehölz- und Heckenschnitt sowie Rasensanierung</li>
+            <li>Teichbau, Terrassen- und Pflasterflächen</li>
+            <li>Natursteinmauern und Hangbefestigungen</li>
+          </ul>
+          <a href="#kontakt" class="btn-anfrage">Anfrage senden →</a>
+        </div>
+      </div>
+
+      <!-- 2 · Gehölzschnitt & Forst -->
+      <div class="leistung-block reverse reveal">
+        <div class="leistung-photo">
+          <!-- Foto: Baumschnitt / Forstarbeit / Obstgarten → gehoelz.jpg -->
+          <img src="gehoelz.jpg" alt="Obstgehölzschnitt und Forstarbeiten" loading="lazy">
+        </div>
+        <div class="leistung-content">
+          <div class="leistung-num">02</div>
+          <h3>Obst-, Ziergehölzschnitt &amp; Forstarbeiten</h3>
+          <p>
+            Beim Obstgehölzschnitt müssen individuelle Bedürfnisse und die Form des jeweiligen Gehölzes
+            berücksichtigt werden. Unser spezifisch ausgebildeter Fachwart berät Sie kompetent – vom Obstbaum
+            über Ziergehölze bis hin zur Baumfällung.
+          </p>
+          <ul class="leistung-list">
+            <li>Fachgerechter Schnitt von Obst-, Zier- und Beerenobstgehölzen</li>
+            <li>Forstarbeiten im Hauberg und privaten Garten</li>
+            <li>Entastungen und Baumfällungen</li>
+            <li>Beratung durch ausgebildeten Fachwart</li>
+          </ul>
+          <a href="#kontakt" class="btn-anfrage">Anfrage senden →</a>
+        </div>
+      </div>
+
+      <!-- 3 · Haushaltsauflösungen -->
+      <div class="leistung-block reveal">
+        <div class="leistung-photo">
+          <!-- Foto: aufgeräumter Raum / Umzugskartons / saubere Wohnung → haushalte.jpg -->
+          <img src="haushalte.jpg" alt="Haushaltsauflösungen und Entrümpelungen" loading="lazy">
+        </div>
+        <div class="leistung-content">
+          <div class="leistung-num">03</div>
+          <h3>Haushaltsauflösungen &amp; Entrümpelungen</h3>
+          <p>
+            Seit über 10 Jahren sind wir ein zuverlässiger Partner für Haushaltsauflösungen und Entrümpelungen
+            im gesamten Siegerland. Ob einzelne Räume, Wohnungen oder komplette Häuser – wir garantieren
+            fachgerechte, getrennte Entsorgung und transparente Abrechnung.
+          </p>
+          <ul class="leistung-list">
+            <li>Privat und gewerblich, einzelne Räume bis ganze Häuser</li>
+            <li>Getrennte und fachgerechte Entsorgung</li>
+            <li>Verwertung brauchbarer Gegenstände über angegliederten Second-Hand-Laden</li>
+            <li>Schnelle Abwicklung und unverbindliches Angebot</li>
+          </ul>
+          <a href="#kontakt" class="btn-anfrage">Anfrage senden →</a>
+        </div>
+      </div>
+
+      <!-- Zusatzleistungen -->
+      <div class="zusatz-leistungen reveal">
+        <div class="zusatz-icon">❄️</div>
+        <div>
+          <h4>Weitere Leistungen: Arbeiten rund ums Haus &amp; Winterdienst</h4>
+          <p>
+            Neben unseren Hauptleistungsbereichen übernehmen wir auch kleinere Aufgaben rund ums Haus
+            sowie Winterdienst. Sprechen Sie uns gerne an – wir prüfen, ob wir Ihrem Wunsch nachkommen können.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         KUNDENSTIMMEN
+    ══════════════════════════════════════════ -->
+    <section class="kundenstimmen" aria-labelledby="stimmen-title">
+      <div class="section-inner">
+        <span class="section-label reveal">Kundenstimmen</span>
+        <h2 class="section-title reveal reveal-delay-1" id="stimmen-title">Was unsere Auftraggeber sagen</h2>
+        <p class="section-desc reveal reveal-delay-2">
+          Unser zufriedener Kundenstamm reicht von Privatpersonen bis zu Kirchen und Kommunen.
+        </p>
+        <div class="stimmen-grid">
+
+          <blockquote class="stimme reveal">
+            <p>
+              Ich muss gestehen, dass ich vor Ihrem Einsatz hier in meiner Nachbarschaft noch nichts von Ihrer
+              Initiative gehört hatte. Durch Gespräche über den Zaun habe ich einige Informationen erhalten und
+              bin sehr beeindruckt. Ihre Mitarbeiter waren sehr freundlich, sehr fleißig, motiviert – und es war
+              zu spüren, dass hier kein nur auf wirtschaftlichen Erfolg bedachtes Unternehmen am Werk war,
+              sondern dass da ein etwas anderer Geist wehte.
+            </p>
+            <footer class="stimme-author">
+              <div class="stimme-avatar" aria-hidden="true">L</div>
+              <div>
+                <div class="stimme-name">L.K.</div>
+                <div class="stimme-ort">aus Siegen · Entrümpelung</div>
+              </div>
+            </footer>
+          </blockquote>
+
+          <blockquote class="stimme reveal reveal-delay-1">
+            <p>
+              Die Wohnungsübergabe an den Vermieter hat gestern einwandfrei geklappt. Das war für uns noch eine
+              wesentliche – nun mit Erfolg genommene – Hürde. Ganz herzlichen Dank an Sie und an Ihre
+              Mitarbeiter für die Auflösung der Wohnung. Es war sehr schön, mit Ihnen zusammen zu arbeiten!
+              Wir würden gerne Ihre Arbeit noch mit einer kleinen Spende unterstützen.
+            </p>
+            <footer class="stimme-author">
+              <div class="stimme-avatar" aria-hidden="true">K</div>
+              <div>
+                <div class="stimme-name">Zufriedene Kundin</div>
+                <div class="stimme-ort">Siegerland · Haushaltsauflösung</div>
+              </div>
+            </footer>
+          </blockquote>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         MISSION NOTE
+    ══════════════════════════════════════════ -->
+    <div class="mission-note" role="complementary" aria-label="Gemeinnütziger Mehrwert">
+      <div class="mission-note-inner reveal">
+        <div>
+          <p class="section-label">Gemeinnützig wirtschaften</p>
+          <h2 class="section-title">Ihr Auftrag hilft gleich doppelt</h2>
+          <p>
+            Die Einnahmen aus unseren Arbeitsbetrieben fließen vollständig zurück in die diakonischen Tätigkeiten
+            von Hands of Hope. Wer uns beauftragt, unterstützt damit direkt Menschen, die einen Neuanfang wagen.
+          </p>
+          <p style="margin-top: 1rem; color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.75;">
+            Unsere Gemeinnützigkeit ermöglicht zudem einen steuerlichen Vorteil, von dem Sie als Auftraggeber
+            direkt profitieren.
+          </p>
+        </div>
+        <div class="mwst-badge" aria-label="7 Prozent Mehrwertsteuer">
+          <div class="num">7 %</div>
+          <div class="label">Mehrwertsteuer statt<br>19 % – dank Gemeinnützigkeit</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         KONTAKT CTA
+    ══════════════════════════════════════════ -->
+    <section class="kontakt-cta" id="kontakt" aria-labelledby="kontakt-title">
+      <div class="kontakt-cta-inner">
+        <div class="reveal">
+          <p class="section-label">Anfrage &amp; Kontakt</p>
+          <h2 class="section-title" id="kontakt-title">Ihr Projekt in guten Händen</h2>
+          <p class="section-desc">
+            Melden Sie sich telefonisch oder per E-Mail – wir prüfen Ihren Auftragswunsch und unterbreiten Ihnen
+            gerne ein unverbindliches Angebot.
+          </p>
+          <a href="mailto:dienstleistungen@handsofhope.de" class="btn-white">Jetzt anfragen</a>
+        </div>
+
+        <div class="kontakt-card-group reveal reveal-delay-1">
+          <div class="kontakt-card">
+            <div class="klabel">Ihr Ansprechpartner</div>
+            <div class="kval" style="font-weight: 600; font-size: 1rem;">Hendrik Moos</div>
+            <div class="kval" style="margin-top: 0.1rem; opacity: 0.8; font-size: 0.85rem;">Leitung der Dienstleistungen</div>
+          </div>
+          <div class="kontakt-card">
+            <div class="klabel">Telefon</div>
+            <div class="kval">
+              <a href="tel:+4927356567011">02735 – 65 67 11</a><br>
+              <a href="tel:+491718418757">0171 – 841 87 57</a>
+            </div>
+          </div>
+          <div class="kontakt-card">
+            <div class="klabel">E-Mail</div>
+            <div class="kval"><a href="mailto:dienstleistungen@handsofhope.de">dienstleistungen@handsofhope.de</a></div>
+          </div>
+          <div class="kontakt-card">
+            <div class="klabel">Adresse</div>
+            <div class="kval">Waldstraße 6 · 57290 Neunkirchen</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER (injected by includes.js) -->
+  <div data-include="footer"></div>
+
+</body>
+</html>

@@ -2,6 +2,8 @@
 
 Statische Website für [Hands of Hope gGmbH](https://handsofhope.de), gehostet auf GitHub Pages.
 
+Notiz: Statt Medien künftig vielleicht besser Blog. Predigten/Audio wurden nicht mehr gepflegt und Aktivitäten kann man schöner per Blog darstellen. Image-Film könnte auf Startseite eingebunden werden. Downloads bei den einschlägigen Sektions.
+
 ## Projektstruktur
 
 ```

@@ -51,6 +51,13 @@
       width: 4px; background: var(--rehab); border-radius: 0 4px 4px 0;
     }
 
+    /* ── HERO PHOTO BLEND ── */
+    .hero-visual { background: #1a1a2e; }
+    .hero-visual::after {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to right, rgba(5,41,55,0.55) 0%, rgba(5,41,55,0.08) 100%);
+    }
+
     /* ── STATS ── */
     .reha-stats {
       background: var(--rehab);

@@ -93,8 +93,7 @@
       transition: background 0.2s; display: inline-block;
     }
     .btn-pv-ghost:hover { background: rgba(255,255,255,0.08); }
-    .pv-hero-visual { position: relative; overflow: hidden; background: #1a1a2e; }
-    .pv-hero-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .pv-hero-visual { background: #1a1a2e; }
     .pv-hero-visual::after {
       content: ''; position: absolute; inset: 0;
       background: linear-gradient(to right, rgba(5,41,55,0.55) 0%, rgba(5,41,55,0.08) 100%);
@@ -427,7 +426,7 @@
       .pv-hero { grid-template-columns: 1fr; }
       .pv-hero-content { padding: 3.5rem 2rem; }
       .pv-hero-content::before { display: none; }
-      .pv-hero-visual { height: 260px; }
+      .hero-visual { height: 260px; }
       .pv-stats { padding: 2.5rem 2rem; }
       .pv-stats-inner { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
       .pv-einleitung { padding: 4rem 2rem; }
@@ -465,8 +464,11 @@
         <a href="#kontakt" class="btn-pv-ghost">Schule anfragen</a>
       </div>
     </div>
-    <div class="pv-hero-visual">
-      <img src="../assets/images/praevention/hero.jpg" alt="Jugendliche in Schulklasse beim Zuhören" loading="eager">
+    <div class="hero-visual pv-hero-visual" aria-hidden="true">
+      <div class="hero-photo-wrap">
+        <img src="../assets/images/praevention/hero.jpg" alt="Jugendliche in Schulklasse beim Zuhören" loading="eager">
+        <div class="hero-photo-overlay"></div>
+      </div>
       <div class="pv-hero-badge">🎓 An Schulen vor Ort</div>
     </div>
   </section>

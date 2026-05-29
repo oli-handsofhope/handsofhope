@@ -34,11 +34,20 @@
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
 
-    /* ── GREEN ACCENT TOKENS ── */
+    /* ── DIENSTLEISTUNGEN ACCENT TOKENS ── */
     :root {
-      --green:       #7f9628;
-      --green-light: #eef2e0;
-      --green-mid:   #b8c87a;
+      --green:       #3a8c6e;
+      --green-light: #d8f0e8;
+      --green-mid:   #82c5a8;
+      --green-dark:  #2a6b53;
+      --green-dim:   rgba(58,140,110,0.12);
+    }
+
+    /* ── HERO ACCENT BAR ── */
+    .hero-content { position: relative; }
+    .hero-content::before {
+      content: ''; position: absolute; left: 0; top: 20%; bottom: 20%;
+      width: 4px; background: var(--green); border-radius: 0 4px 4px 0;
     }
 
     /* ── BREADCRUMB ── */
@@ -406,7 +415,7 @@
         <div class="hero-photo-wrap">
           <!-- Foto: Arbeit im Freien / Garten / Team bei der Arbeit → hero.jpg -->
           <img
-            src="hero.jpg"
+            src="../assets/images/dienstleistungen/hero.jpg"
             alt="Gemeinnützige Arbeit bei Hands of Hope"
             loading="eager"
           >

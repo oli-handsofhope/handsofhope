@@ -340,12 +340,15 @@
     /* ── SCHULEN CTA ── */
     .pv-schulen {
       padding: var(--section-pad-v) var(--section-pad-h);
-      background: var(--white);
+      background: var(--dark);
     }
     .pv-schulen-inner {
       max-width: var(--max-width); margin: 0 auto;
       display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
     }
+    .pv-schulen .pv-label { color: var(--prev-green-mid); }
+    .pv-schulen .pv-title { color: var(--white); }
+    .pv-schulen .pv-desc { color: rgba(255,255,255,0.72); }
     .pv-steps { display: flex; flex-direction: column; gap: 0; margin-bottom: 2.5rem; }
     .pv-step {
       display: grid; grid-template-columns: 52px 1fr;
@@ -354,7 +357,7 @@
     .pv-step:not(:last-child)::before {
       content: ''; position: absolute;
       left: 25px; top: 52px; width: 2px; bottom: 0;
-      background: rgba(123,91,196,0.15);
+      background: rgba(123,91,196,0.25);
     }
     .pv-step-num {
       width: 44px; height: 44px; border-radius: 50%; background: var(--prev-green);
@@ -365,9 +368,9 @@
     .pv-step-content { padding-bottom: 2rem; }
     .pv-step-content h4 {
       font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1rem;
-      color: var(--dark); padding-top: 10px; margin-bottom: 0.3rem;
+      color: var(--white); padding-top: 10px; margin-bottom: 0.3rem;
     }
-    .pv-step-content p { font-size: 0.91rem; color: var(--text-light); line-height: 1.65; }
+    .pv-step-content p { font-size: 0.91rem; color: rgba(255,255,255,0.62); line-height: 1.65; }
 
     .pv-schulen-contact { background: var(--dark); border-radius: 20px; overflow: hidden; }
     .pv-schulen-contact-header { background: var(--prev-green); padding: 2rem; }

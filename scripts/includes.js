@@ -59,19 +59,8 @@
     <li><a href="${R}rehabilitation/">Rehabilitation</a></li>
     <li><a href="${R}dienstleistungen/">Dienstleistungen</a></li>
     <li><a href="${R}strassencafe/">Straßencafé</a></li>
+    <li><a href="${R}ueber-uns/">Über uns</a></li>
     <li><a href="${R}praevention/">Prävention</a></li>
-    <li class="nav-has-dropdown">
-      <a href="${R}ueber-uns/" aria-haspopup="true">Über uns</a>
-      <ul class="nav-dropdown" role="list" aria-label="Über uns Untermenü">
-        <li><a href="${R}ueber-uns/#geschichte">Geschichte</a></li>
-        <li><a href="${R}ueber-uns/#team">Team</a></li>
-        <li><a href="${R}ueber-uns/#mitarbeit">Mitarbeit</a></li>
-        <li><a href="${R}ueber-uns/#fsj">FSJ &amp; BFD</a></li>
-        <li><a href="${R}ueber-uns/#spenden">Spenden</a></li>
-        <li><a href="${R}ueber-uns/#kontakt">Kontakt</a></li>
-      </ul>
-    </li>
-    <li><a href="${R}ueber-uns/kontakt/">Kontakt</a></li>
     <li class="nav-cta">
       <a href="${R}ueber-uns/spenden/">❤ Spenden</a>
     </li>

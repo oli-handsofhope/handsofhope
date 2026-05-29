@@ -61,6 +61,7 @@
     <li><a href="${R}dienstleistungen/">Dienstleistungen</a></li>
     <li><a href="${R}strassencafe/">Straßencafé</a></li>
     <li><a href="${R}praevention/">Prävention</a></li>
+    <li><a href="${R}jugendhilfe/">Jugendhilfe</a></li>
     <li><a href="${R}blog/">Blog</a></li>
     <li class="nav-cta">
       <a href="${R}ueber-uns/spenden/">❤ Spenden</a>
@@ -114,6 +115,7 @@
         <li><a href="${R}dienstleistungen/">Dienstleistungen</a></li>
         <li><a href="${R}strassencafe/">Straßencafé</a></li>
         <li><a href="${R}praevention/">Prävention</a></li>
+        <li><a href="${R}jugendhilfe/">Jugendhilfe</a></li>
       </ul>
     </div>
 

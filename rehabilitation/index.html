@@ -412,12 +412,59 @@
       margin: 1.25rem 0;
     }
 
+    /* ── NACHSORGEHAUS ── */
+    .nachsorge-section { background: var(--light-bg); }
+    .nachsorge-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+      margin-top: 3rem;
+    }
+    .nachsorge-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      border-top: 4px solid var(--rehab);
+      box-shadow: var(--shadow-card);
+    }
+    .nachsorge-card-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .nachsorge-card h3 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+    }
+    .nachsorge-card p { font-size: 0.92rem; color: var(--text-light); line-height: 1.7; }
+    .nachsorge-status { margin-top: 3rem; max-width: 600px; }
+    .status-bar-label {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+    .status-bar-track {
+      height: 10px;
+      background: rgba(194,116,64,0.15);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .status-bar-fill {
+      height: 100%;
+      background: var(--rehab);
+      border-radius: 20px;
+      transition: width 1s ease;
+    }
+    .status-bar-caption { font-size: 12px; color: var(--text-light); margin-top: 0.5rem; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .reha-stats-inner,
       .target-grid,
       .process-grid,
       .apply-grid { grid-template-columns: 1fr; }
+      .nachsorge-grid { grid-template-columns: 1fr; }
 
       .target-grid,
       .process-grid,
@@ -680,6 +727,59 @@
             alt="Ein Weg durch die Natur als Symbol für den Weg zur Freiheit"
             loading="lazy"
           >
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         NACHSORGEHAUS
+    ══════════════════════════════════════════ -->
+    <section class="nachsorge-section" id="nachsorgehaus" aria-labelledby="nachsorge-title">
+      <div class="section-inner">
+        <span class="section-label reveal">Neu ab Sommer 2026</span>
+        <h2 class="section-title reveal reveal-delay-1" id="nachsorge-title">Das Nachsorgehaus</h2>
+        <p class="section-desc reveal reveal-delay-2">
+          Nach dem erfolgreichen Abschluss des Hauptprogramms brauchen viele Absolventen noch einen geschützten Übergangsraum, um die neu gewonnene Stabilität im Alltag zu verankern. Das Nachsorgehaus gibt genau diesen Raum.
+        </p>
+
+        <div class="nachsorge-grid">
+
+          <div class="nachsorge-card reveal">
+            <div class="nachsorge-card-icon">🏡</div>
+            <h3>Wohnen nach dem Programm</h3>
+            <p>
+              Das ehemalige Zweifamilienhaus wird zu einer Wohngemeinschaft für vier Personen umgebaut. Auf zwei Etagen entstehen je zwei vollständig abgeschlossene Einheiten – jede mit eigenem Schlafzimmer, Küche, Bad und Wohnbereich. Die Bewohner leben selbstständig, bleiben aber im Netzwerk von Hands of Hope eingebunden.
+            </p>
+          </div>
+
+          <div class="nachsorge-card reveal reveal-delay-1">
+            <div class="nachsorge-card-icon">🔨</div>
+            <h3>Umbau auf der Zielgeraden</h3>
+            <p>
+              Das Haus wurde 2025 erworben. Seitdem sind Matthias und ein Team engagierter Helfer täglich im Einsatz. Die Umbauarbeiten sind weit fortgeschritten – der Einzug der ersten Bewohner ist für <strong>Juli 2026</strong> geplant.
+            </p>
+            <span class="timeline-badge" style="margin-top:.75rem;">Bezug geplant: Juli 2026</span>
+          </div>
+
+          <div class="nachsorge-card reveal reveal-delay-2">
+            <div class="nachsorge-card-icon">🤝</div>
+            <h3>Du kannst mithelfen</h3>
+            <p>
+              Ob handwerkliche Unterstützung, Gebet oder eine finanzielle Gabe – jede Form der Hilfe bringt das Projekt voran. Sprich uns gerne an oder schau auf unsere aktuellen Berichte im Blog.
+            </p>
+            <a href="../blog/" class="btn btn-primary" style="margin-top:1.25rem;display:inline-block;">Zum Blog →</a>
+          </div>
+
+        </div>
+
+        <div class="nachsorge-status reveal">
+          <div class="status-bar-label">Baufortschritt</div>
+          <div class="status-bar-track" aria-label="Baufortschritt ca. 80%">
+            <div class="status-bar-fill" style="width: 80%;"></div>
+          </div>
+          <div class="status-bar-caption">Umbauarbeiten laufen – Bezug Sommer 2026</div>
         </div>
 
       </div>

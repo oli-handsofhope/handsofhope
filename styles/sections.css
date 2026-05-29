@@ -153,6 +153,7 @@ section {
 .bereich-card.dienst  { border-top-color: var(--green); }
 .bereich-card.cafe    { border-top-color: var(--house); }
 .bereich-card.prev    { border-top-color: var(--red); }
+.bereich-card.jugend  { border-top-color: #d4644a; }
 
 .bereich-img {
   margin: -2rem -2rem 1.5rem -2rem;
@@ -188,6 +189,7 @@ section {
 .bereich-card.dienst .bereich-icon { background: rgba(127,150,40,0.1);  color: var(--green); }
 .bereich-card.cafe   .bereich-icon { background: rgba(71,142,154,0.1);  color: var(--house); }
 .bereich-card.prev   .bereich-icon { background: rgba(218,79,56,0.1);   color: var(--red); }
+.bereich-card.jugend .bereich-icon { background: rgba(212,100,74,0.1);  color: #d4644a; }
 
 .bereich-card h3 {
   font-size: 1.15rem;

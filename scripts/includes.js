@@ -52,23 +52,11 @@
 
 <nav aria-label="Hauptnavigation">
   <a class="nav-logo" href="${R}" aria-label="Hands of Hope – Startseite">
-    <!-- Sobald das Logo vorhanden ist, Zeile unten einkommentieren: -->
-    <!-- <img src="${R}assets/logos/handsofhope-logo.svg" alt="Hands of Hope" width="140" height="40"> -->
-    <span class="nav-logo-text">Hands <span>of Hope</span></span>
+    <img src="${R}assets/logos/handsofhope-logo.png" alt="Hands of Hope" width="140" height="40">
   </a>
 
   <ul class="nav-links" id="nav-links" role="list">
-    <li class="nav-has-dropdown">
-      <a href="${R}ueber-uns/" aria-haspopup="true">Über uns</a>
-      <ul class="nav-dropdown" role="list" aria-label="Über uns Untermenü">
-        <li><a href="${R}ueber-uns/#geschichte">Geschichte</a></li>
-        <li><a href="${R}ueber-uns/#team">Team</a></li>
-        <li><a href="${R}ueber-uns/#mitarbeit">Mitarbeit</a></li>
-        <li><a href="${R}ueber-uns/#fsj">FSJ &amp; BFD</a></li>
-        <li><a href="${R}ueber-uns/#spenden">Spenden</a></li>
-        <li><a href="${R}ueber-uns/#kontakt">Kontakt</a></li>
-      </ul>
-    </li>
+    <li><a href="${R}ueber-uns/">Über uns</a></li>
     <li><a href="${R}rehabilitation/">Rehabilitation</a></li>
     <li><a href="${R}dienstleistungen/">Dienstleistungen</a></li>
     <li><a href="${R}strassencafe/">Straßencafé</a></li>

@@ -53,23 +53,14 @@
     .breadcrumb a:hover { text-decoration: underline; }
     .breadcrumb span { margin: 0 0.5rem; opacity: 0.5; }
 
-    /* ── HERO ── */
-    .pv-hero {
-      background: var(--dark);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 540px;
-      overflow: hidden;
-    }
-    .pv-hero-content {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: var(--section-pad-v) var(--section-pad-h);
-      color: var(--white); position: relative;
-    }
-    .pv-hero-content::before {
+    /* ── HERO OVERRIDES ── */
+    .hero { min-height: 540px; }
+    .hero-content { position: relative; }
+    .hero-content::before {
       content: ''; position: absolute; left: 0; top: 20%; bottom: 20%;
       width: 4px; background: var(--prev-green); border-radius: 0 4px 4px 0;
     }
+    .hero h1 em { color: var(--prev-green-mid); }
     .pv-hero-tag {
       display: inline-flex; align-items: center; gap: 0.5rem;
       background: rgba(123,91,196,0.2); border: 1px solid rgba(123,91,196,0.45);
@@ -442,8 +433,8 @@
 
 
   <!-- HERO -->
-  <div class="pv-hero">
-    <div class="pv-hero-content">
+  <section class="hero" aria-label="Prävention">
+    <div class="hero-content">
       <span class="pv-hero-tag">Seit 2018 · Schulen in der Region</span>
       <h1>Früh genug da sein – <em>bevor</em> die Wege steinig werden</h1>
       <p class="pv-hero-sub">Durch authentische Lebensberichte ehemaliger Betroffener begegnen wir Schülerinnen und Schülern dort, wo es zählt: an den Wurzeln. Bevor dysfunktionale Bewältigungsstrategien sich festigen, zeigen wir Alternativen – und geben Hoffnung.</p>
@@ -456,7 +447,7 @@
       <img src="../assets/images/praevention/hero.jpg" alt="Jugendliche in Schulklasse beim Zuhören" loading="eager">
       <div class="pv-hero-badge">🎓 An Schulen vor Ort</div>
     </div>
-  </div>
+  </section>
 
   <!-- STATS BAR -->
   <div class="pv-stats">

@@ -34,6 +34,19 @@
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
 
+    /* ── HERO OVERRIDES ── */
+    .hero { min-height: 100vh; }
+    .hero-content { position: relative; }
+    .hero-content::before {
+      content: ''; position: absolute; left: 0; top: 20%; bottom: 20%;
+      width: 4px; background: var(--blue); border-radius: 0 4px 4px 0;
+    }
+    .hero-visual { background: #0a1e2a; }
+    .hero-visual::after {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to right, rgba(5,41,55,0.55) 0%, rgba(5,41,55,0.08) 100%);
+    }
+
     /* ── BREADCRUMB ── */
     .breadcrumb {
       background: var(--light-bg);

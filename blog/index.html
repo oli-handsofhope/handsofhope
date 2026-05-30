@@ -292,48 +292,6 @@
     }
     .post-card:hover .post-read-more { gap: 0.6rem; }
 
-    /* ── NEWSLETTER CTA ── */
-    .newsletter-section {
-      background: var(--dark);
-      padding: var(--section-pad-v) var(--section-pad-h);
-    }
-    .newsletter-inner {
-      max-width: 680px; margin: 0 auto; text-align: center;
-    }
-    .newsletter-inner .blog-label { justify-content: center; display: flex; }
-    .newsletter-inner h2 {
-      font-family: 'Nunito', sans-serif; font-weight: 800;
-      font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--white);
-      line-height: 1.2; margin-bottom: 1rem;
-    }
-    .newsletter-inner p {
-      font-size: 1.05rem; color: rgba(255,255,255,0.68);
-      line-height: 1.75; margin-bottom: 2.5rem;
-    }
-    .newsletter-form {
-      display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;
-    }
-    .newsletter-input {
-      flex: 1; min-width: 240px; max-width: 340px;
-      padding: 14px 18px;
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 8px; color: var(--white); font-size: 15px;
-      font-family: 'Nunito Sans', sans-serif;
-      outline: none; transition: border-color 0.2s;
-    }
-    .newsletter-input::placeholder { color: rgba(255,255,255,0.4); }
-    .newsletter-input:focus { border-color: var(--blog); }
-    .newsletter-btn {
-      background: var(--blog); color: var(--white);
-      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 15px;
-      padding: 14px 28px; border-radius: 8px; border: none; cursor: pointer;
-      transition: background 0.2s, transform 0.15s; white-space: nowrap;
-    }
-    .newsletter-btn:hover { background: var(--blog-dark); transform: translateY(-1px); }
-    .newsletter-note {
-      margin-top: 1.25rem; font-size: 12px; color: rgba(255,255,255,0.35);
-    }
-
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .featured-card { grid-template-columns: 1fr; }
@@ -344,8 +302,6 @@
     }
     @media (max-width: 600px) {
       .blog-hero-badge { display: none; }
-      .newsletter-form { flex-direction: column; align-items: stretch; }
-      .newsletter-input { max-width: 100%; }
     }
   </style>
 </head>
@@ -363,7 +319,6 @@
         <p class="blog-hero-sub">Echte Geschichten von echten Menschen. Hier berichten wir von Begegnungen, Veränderungen und dem, was uns täglich antreibt.</p>
         <div class="blog-hero-actions">
           <a href="#beitraege" class="btn-blog-primary">Alle Beiträge</a>
-          <a href="#newsletter" class="btn-blog-ghost">Updates erhalten</a>
         </div>
       </div>
       <div class="hero-visual" aria-hidden="true">
@@ -496,25 +451,6 @@
     </section>
 
 
-    <!-- NEWSLETTER CTA -->
-    <section class="newsletter-section" id="newsletter" aria-label="Newsletter">
-      <div class="newsletter-inner">
-        <div class="blog-label reveal">Auf dem Laufenden bleiben</div>
-        <h2 class="reveal">Neue Beiträge direkt ins Postfach</h2>
-        <p class="reveal">Keine Werbung, kein Spam – nur echte Geschichten und Neuigkeiten aus unserer Arbeit. Circa einmal im Monat.</p>
-        <form class="newsletter-form reveal" onsubmit="return false;">
-          <input
-            class="newsletter-input"
-            type="email"
-            placeholder="deine@email.de"
-            aria-label="E-Mail-Adresse"
-            required
-          >
-          <button class="newsletter-btn" type="submit">Anmelden</button>
-        </form>
-        <p class="newsletter-note">Mit der Anmeldung stimmst du unserer Datenschutzerklärung zu. Abmeldung jederzeit möglich.</p>
-      </div>
-    </section>
 
   </main>
 

@@ -178,7 +178,7 @@
     margin-bottom: 0.5rem;
   }
   .footer-logo-img img {
-    height: 36px;
+    height: 48px;
     width: auto;
     display: block;
   }

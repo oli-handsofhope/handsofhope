@@ -69,7 +69,7 @@
     </li>
     <li><a href="${R}blog/">Blog</a></li>
     <li class="nav-cta">
-      <a href="${R}ueber-uns/spenden/">❤ Spenden</a>
+      <a href="${R}ueber-uns/#spenden">❤ Spenden</a>
     </li>
   </ul>
 
@@ -143,7 +143,7 @@
       </address>
       <ul>
         <li><a href="${R}ueber-uns/kontakt/">Kontaktformular</a></li>
-        <li><a href="${R}ueber-uns/spenden/">Spenden</a></li>
+        <li><a href="${R}ueber-uns/#spenden">Spenden</a></li>
       </ul>
     </div>
   </div>
@@ -154,7 +154,7 @@
       <nav class="footer-links" aria-label="Rechtliches">
         <a href="${R}impressum.html">Impressum</a>
         <a href="${R}datenschutz.html">Datenschutz</a>
-        <a href="${R}ueber-uns/spenden/">Spenden</a>
+        <a href="${R}ueber-uns/#spenden">Spenden</a>
       </nav>
     </div>
   </div>

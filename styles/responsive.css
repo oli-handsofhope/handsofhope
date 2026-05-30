@@ -40,7 +40,6 @@
 
   /* Über uns */
   .ueber-inner { grid-template-columns: 1fr; }
-  .ueber-photo-wrap { display: none; }
 
   /* Kontakt Banner */
   .kontakt-banner-inner {

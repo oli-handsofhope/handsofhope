@@ -221,57 +221,37 @@
     .zusatz-leistungen p { font-size: 0.92rem; color: var(--text-light); line-height: 1.6; }
 
     /* ── KUNDENSTIMMEN ── */
-    .kundenstimmen { background: var(--light-bg); }
+    .kundenstimmen { background: var(--white); }
     .stimmen-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      gap: 1.5rem;
+      margin-top: 3rem;
     }
     .stimme {
-      background: var(--white);
+      background: var(--light-bg);
       border-radius: var(--radius-md);
-      padding: 2rem 2.25rem;
+      padding: 2rem;
       position: relative;
-      box-shadow: var(--shadow-card);
     }
-    .stimme::before {
-      content: '„';
-      position: absolute;
-      top: 1rem;
-      left: 1.5rem;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 900;
-      font-size: 5rem;
+    .stimme-quote {
+      font-size: 3rem;
       color: var(--green);
-      opacity: 0.15;
+      font-family: 'Nunito', sans-serif;
       line-height: 1;
+      margin-bottom: 0.75rem;
+      opacity: 0.6;
     }
     .stimme p {
       font-size: 0.95rem;
       color: var(--text);
       line-height: 1.75;
-      margin-bottom: 1.5rem;
-      padding-top: 1.5rem;
+      margin-bottom: 1.25rem;
       font-style: italic;
-    }
-    .stimme-author { display: flex; align-items: center; gap: 0.75rem; }
-    .stimme-avatar {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: var(--green);
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 800;
-      font-size: 14px;
-      flex-shrink: 0;
     }
     .stimme-name {
       font-family: 'Nunito', sans-serif;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 0.9rem;
       color: var(--dark);
     }
@@ -587,6 +567,7 @@
         <div class="stimmen-grid">
 
           <blockquote class="stimme reveal">
+            <div class="stimme-quote">"</div>
             <p>
               Ich muss gestehen, dass ich vor Ihrem Einsatz hier in meiner Nachbarschaft noch nichts von Ihrer
               Initiative gehört hatte. Durch Gespräche über den Zaun habe ich einige Informationen erhalten und
@@ -594,29 +575,20 @@
               zu spüren, dass hier kein nur auf wirtschaftlichen Erfolg bedachtes Unternehmen am Werk war,
               sondern dass da ein etwas anderer Geist wehte.
             </p>
-            <footer class="stimme-author">
-              <div class="stimme-avatar" aria-hidden="true">L</div>
-              <div>
-                <div class="stimme-name">L.K.</div>
-                <div class="stimme-ort">aus Siegen · Entrümpelung</div>
-              </div>
-            </footer>
+            <div class="stimme-name">L.K.</div>
+            <div class="stimme-ort">aus Siegen · Entrümpelung</div>
           </blockquote>
 
           <blockquote class="stimme reveal reveal-delay-1">
+            <div class="stimme-quote">"</div>
             <p>
               Die Wohnungsübergabe an den Vermieter hat gestern einwandfrei geklappt. Das war für uns noch eine
               wesentliche – nun mit Erfolg genommene – Hürde. Ganz herzlichen Dank an Sie und an Ihre
               Mitarbeiter für die Auflösung der Wohnung. Es war sehr schön, mit Ihnen zusammen zu arbeiten!
               Wir würden gerne Ihre Arbeit noch mit einer kleinen Spende unterstützen.
             </p>
-            <footer class="stimme-author">
-              <div class="stimme-avatar" aria-hidden="true">K</div>
-              <div>
-                <div class="stimme-name">Zufriedene Kundin</div>
-                <div class="stimme-ort">Siegerland · Haushaltsauflösung</div>
-              </div>
-            </footer>
+            <div class="stimme-name">Zufriedene Kundin</div>
+            <div class="stimme-ort">Siegerland · Haushaltsauflösung</div>
           </blockquote>
 
         </div>

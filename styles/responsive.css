@@ -34,12 +34,11 @@
 
   /* Bereiche */
   .bereiche-grid { grid-template-columns: 1fr; }
-
-  /* Mission */
-  .mission-grid { grid-template-columns: 1fr 1fr; }
+  .bereich-card.jugend { max-width: 100% !important; grid-column: auto !important; }
 
   /* Über uns */
   .ueber-inner { grid-template-columns: 1fr; }
+  .ueber-photo-wrap { display: block !important; max-height: 320px; aspect-ratio: 16/9; }
 
   /* Kontakt Banner */
   .kontakt-banner-inner {

@@ -44,6 +44,7 @@
     }
 
     /* ── HERO ACCENT BAR ── */
+    .hero { min-height: 100vh; }
     .hero-content { position: relative; }
     .hero-content::before {
       content: ''; position: absolute; left: 0; top: 20%; bottom: 20%;
@@ -352,6 +353,7 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
+      .hero-visual { height: 260px; }
       .breadcrumb { padding: 0.75rem 2rem; }
       .vorteile-inner { grid-template-columns: 1fr 1fr; }
       .leistung-block {

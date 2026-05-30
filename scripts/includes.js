@@ -96,8 +96,8 @@
 <footer>
   <div class="footer-main">
     <div class="footer-brand">
-      <a class="footer-logo-text" href="${R}" aria-label="Hands of Hope – Startseite">
-        Hands <span>of Hope</span>
+      <a class="footer-logo-img" href="${R}" aria-label="Hands of Hope – Startseite">
+        <img src="${R}assets/logos/handsofhope_logo_schriftzug_weiss.png" alt="Hands of Hope" width="180" loading="lazy">
       </a>
       <p class="footer-tagline">Hoffnung · Hilfe · Leben</p>
       <div class="footer-social">
@@ -173,17 +173,15 @@
     grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: 3rem;
   }
-  .footer-logo-text {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: 1.15rem;
-    color: rgba(255,255,255,0.85);
-    letter-spacing: -0.02em;
-    text-decoration: none;
+  .footer-logo-img {
     display: block;
     margin-bottom: 0.5rem;
   }
-  .footer-logo-text span { color: var(--mid-blue); }
+  .footer-logo-img img {
+    height: 36px;
+    width: auto;
+    display: block;
+  }
   .footer-tagline {
     font-size: 13px;
     color: rgba(255,255,255,0.4);

@@ -361,10 +361,10 @@
       .intro-grid,
       .konzept-grid,
       .bau-grid,
-      .hilfe-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .intro-photo,
-      .bau-photo { display: none; }
-      .hero-visual { height: 260px; }
+      .hilfe-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .intro-photo { aspect-ratio: 16/9; }
+      .bau-photo { position: static; aspect-ratio: 16/9; }
+
     }
     @media (max-width: 600px) {
       .jugend-stats-inner { grid-template-columns: 1fr; }

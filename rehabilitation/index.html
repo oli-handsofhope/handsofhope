@@ -461,7 +461,7 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      .hero-visual { height: 260px; }
+
       .reha-stats-inner,
       .target-grid,
       .process-grid,
@@ -472,8 +472,8 @@
       .process-grid,
       .apply-grid { gap: 2.5rem; }
 
-      .target-photo,
-      .process-photo { display: none; }
+      .target-photo { aspect-ratio: 16/9; }
+      .process-photo { position: static; aspect-ratio: 16/9; }
     }
     @media (max-width: 600px) {
       .reha-stats { padding: 2.5rem var(--section-pad-h); }

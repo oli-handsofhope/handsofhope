@@ -22,15 +22,28 @@
   .grid-3 { grid-template-columns: 1fr 1fr; }
   .grid-4 { grid-template-columns: 1fr 1fr; }
 
-  /* Hero */
+  /* Hero – full-bleed background image on mobile */
   .hero {
     grid-template-columns: 1fr;
-    min-height: auto;
+    position: relative;
+    min-height: 100svh;
+  }
+  .hero-visual {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    height: auto !important;
+    z-index: 0;
+  }
+  .hero-visual .hero-photo-overlay {
+    background: linear-gradient(170deg, rgba(5,20,35,0.45) 0%, rgba(5,20,35,0.82) 60%);
   }
   .hero-content {
-    padding: 3.5rem 2rem 3rem;
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem 4rem;
+    min-height: 100svh;
   }
-  .hero-visual { display: none; }
 
   /* Bereiche */
   .bereiche-grid { grid-template-columns: 1fr; }

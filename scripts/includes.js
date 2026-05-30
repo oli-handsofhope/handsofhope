@@ -330,15 +330,6 @@
         }
       });
 
-      // Mobile dropdown toggle
-      document.querySelectorAll('.nav-has-dropdown > a').forEach(function (a) {
-        a.addEventListener('click', function (e) {
-          if (window.innerWidth <= 900) {
-            e.preventDefault();
-            a.closest('li').classList.toggle('open');
-          }
-        });
-      });
     }
 
     // ── Scroll shadow ──

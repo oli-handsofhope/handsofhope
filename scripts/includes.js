@@ -142,7 +142,7 @@
         <p>Hands of Hope gGmbH<br>Siegen / Neunkirchen</p>
       </address>
       <ul>
-        <li><a href="${R}ueber-uns/kontakt/">Kontaktformular</a></li>
+        <li><a href="${R}ueber-uns/#kontaktformular">Kontakt</a></li>
         <li><a href="${R}ueber-uns/#spenden">Spenden</a></li>
       </ul>
     </div>

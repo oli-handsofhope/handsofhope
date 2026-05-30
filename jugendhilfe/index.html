@@ -67,7 +67,8 @@
     }
 
     /* ── HERO PHOTO BLEND ── */
-    .hero-visual { background: #1a2030; }
+    .hero { min-height: 100vh; }
+    .hero-visual { background: #1a1a2e; }
     .hero-visual::after {
       content: ''; position: absolute; inset: 0; z-index: 1;
       background: linear-gradient(to right, rgba(5,41,55,0.55) 0%, rgba(5,41,55,0.08) 100%);
@@ -363,6 +364,7 @@
       .hilfe-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .intro-photo,
       .bau-photo { display: none; }
+      .hero-visual { height: 260px; }
     }
     @media (max-width: 600px) {
       .jugend-stats-inner { grid-template-columns: 1fr; }

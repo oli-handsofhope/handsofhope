@@ -240,8 +240,8 @@
       box-shadow: var(--shadow-hover);
     }
     .team-avatar {
-      width: 64px;
-      height: 64px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       background: rgba(12,70,132,0.08);
       color: var(--blue);
@@ -252,7 +252,16 @@
       font-weight: 800;
       font-size: 1.3rem;
       margin: 0 auto 0.85rem;
+      overflow: hidden;
+      flex-shrink: 0;
     }
+    .team-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .team-avatar img.hidden { display: none; }
     .team-card .name {
       font-family: 'Nunito', sans-serif;
       font-weight: 800;
@@ -791,61 +800,91 @@
       <div class="section-inner">
         <div class="team-grid">
           <div class="team-card reveal">
-            <div class="team-avatar">CM</div>
+            <div class="team-avatar">
+              <img src="team/ciprian-mihai.jpg" alt="Ciprian Mihai" loading="lazy" onerror="this.classList.add('hidden');this.nextSibling.style.display='flex'">
+              <span style="display:none;width:100%;height:100%;align-items:center;justify-content:center;">CM</span>
+            </div>
             <div class="name">Ciprian Mihai</div>
             <div class="role">Psychologische Betreuung / Verwaltung</div>
             <span class="badge">Geschäftsführer</span>
           </div>
           <div class="team-card reveal reveal-delay-1">
-            <div class="team-avatar">NE</div>
+            <div class="team-avatar">
+              <img src="team/nils-erner.jpg" alt="Nils Erner" loading="lazy" onerror="this.classList.add('hidden');this.nextSibling.style.display='flex'">
+              <span style="display:none;width:100%;height:100%;align-items:center;justify-content:center;">NE</span>
+            </div>
             <div class="name">Nils Erner</div>
             <div class="role">Leitung House of Hope / Prävention / Mentor</div>
             <span class="badge">Vollzeit</span>
           </div>
           <div class="team-card reveal reveal-delay-2">
-            <div class="team-avatar">MM</div>
+            <div class="team-avatar">
+              <img src="team/mario-mackel.jpg" alt="Mario Mackel" loading="lazy" onerror="this.classList.add('hidden');this.nextSibling.style.display='flex'">
+              <span style="display:none;width:100%;height:100%;align-items:center;justify-content:center;">MM</span>
+            </div>
             <div class="name">Mario Mackel</div>
             <div class="role">Hausvater / Leitung Hausverwaltung</div>
             <span class="badge">Vollzeit</span>
           </div>
           <div class="team-card reveal">
-            <div class="team-avatar">VM</div>
+            <div class="team-avatar">
+              <img src="team/verena-mackel.jpg" alt="Verena Mackel" loading="lazy" onerror="this.classList.add('hidden');this.nextSibling.style.display='flex'">
+              <span style="display:none;width:100%;height:100%;align-items:center;justify-content:center;">VM</span>
+            </div>
             <div class="name">Verena Mackel</div>
             <div class="role">Hausmutter / Küchenverwaltung / Hauswirtschaft</div>
             <span class="badge">Vollzeit</span>
           </div>
           <div class="team-card reveal reveal-delay-1">
-            <div class="team-avatar">CB</div>
+            <div class="team-avatar">
+              <img src="team/christian-brueck.jpg" alt="Christian Brück" loading="lazy" onerror="this.classList.add('hidden');this.nextSibling.style.display='flex'">
+              <span style="display:none;width:100%;height:100%;align-items:center;justify-content:center;">CB</span>
+            </div>
             <div class="name">Christian Brück</div>
             <div class="role">Leitung Wohngruppe / Pädagogik / Mentor</div>
             <span class="badge">Vollzeit</span>
           </div>
           <div class="team-card reveal reveal-delay-2">
-            <div class="team-avatar">HM</div>
+            <div class="team-avatar">
+              <img src="team/hendrik-moos.jpg" alt="Hendrik Moos" loading="lazy" onerror="this.classList.add('hidden');this.nextSibling.style.display='flex'">
+              <span style="display:none;width:100%;height:100%;align-items:center;justify-content:center;">HM</span>
+            </div>
             <div class="name">Hendrik Moos</div>
             <div class="role">Leitung Dienstleistungen / Arbeitstherapie / Mentor</div>
             <span class="badge">Vollzeit</span>
           </div>
           <div class="team-card reveal">
-            <div class="team-avatar">JL</div>
+            <div class="team-avatar">
+              <img src="team/joerg-laske.jpg" alt="Jörg Laske" loading="lazy" onerror="this.classList.add('hidden');this.nextSibling.style.display='flex'">
+              <span style="display:none;width:100%;height:100%;align-items:center;justify-content:center;">JL</span>
+            </div>
             <div class="name">Jörg Laske</div>
             <div class="role">Arbeit / Arbeitstherapie / Hausverwaltung / Mentor</div>
             <span class="badge">Vollzeit</span>
           </div>
           <div class="team-card reveal reveal-delay-1">
-            <div class="team-avatar">AU</div>
+            <div class="team-avatar">
+              <img src="team/astrid-uhr.jpg" alt="Astrid Uhr" loading="lazy" onerror="this.classList.add('hidden');this.nextSibling.style.display='flex'">
+              <span style="display:none;width:100%;height:100%;align-items:center;justify-content:center;">AU</span>
+            </div>
             <div class="name">Astrid Uhr</div>
             <div class="role">Buchhaltung / Verwaltung</div>
             <span class="badge">Halbzeit</span>
           </div>
           <div class="team-card reveal reveal-delay-2">
-            <div class="team-avatar">EN</div>
+            <div class="team-avatar">
+              <img src="team/eva-maria-nitsch.jpg" alt="Eva-Maria Nitsch" loading="lazy" onerror="this.classList.add('hidden');this.nextSibling.style.display='flex'">
+              <span style="display:none;width:100%;height:100%;align-items:center;justify-content:center;">EN</span>
+            </div>
             <div class="name">Eva-Maria Nitsch</div>
             <div class="role">Frauenseelsorge / Mentorin</div>
             <span class="badge">Halbzeit</span>
           </div>
           <div class="team-card reveal">
-            <div class="team-avatar">JG</div>
+            <div class="team-avatar">
+              <img src="team/jason-grossenbacher.jpg" alt="Jason Grossenbacher" loading="lazy" onerror="this.classList.add('hidden');this.nextSibling.style.display='flex'">
+              <span style="display:none;width:100%;height:100%;align-items:center;justify-content:center;">JG</span>
+            </div>
             <div class="name">Jason Grossenbacher</div>
             <div class="role">Arbeit / Arbeitstherapie / Mentor</div>
             <span class="badge">Halbzeit</span>

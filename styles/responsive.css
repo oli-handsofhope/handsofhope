@@ -22,15 +22,13 @@
   .grid-3 { grid-template-columns: 1fr 1fr; }
   .grid-4 { grid-template-columns: 1fr 1fr; }
 
-  /* Hero – adjust overlay direction and padding for mobile */
-  .hero { min-height: 100svh; }
+  /* Hero – mobile padding and overlay direction */
   .hero-content {
-    padding: 7rem 2rem 4rem;
-    min-height: 100svh;
+    padding: clamp(4rem, 10svh, 6rem) 1.5rem clamp(3rem, 8svh, 5rem) 1.5rem;
     max-width: 100%;
   }
   .hero-photo-overlay {
-    background: linear-gradient(to bottom, rgba(5,20,35,0.55) 0%, rgba(5,20,35,0.85) 70%);
+    background: linear-gradient(to bottom, rgba(5,20,35,0.45) 0%, rgba(5,20,35,0.85) 70%);
   }
 
   /* Bereiche */

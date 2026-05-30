@@ -12,10 +12,10 @@ section {
 .hero {
   background: var(--dark);
   position: relative;
-  min-height: 100vh;
+  min-height: 100svh;
   overflow: hidden;
   display: flex;
-  align-items: stretch;
+  align-items: center;
 }
 
 .hero-content {
@@ -23,11 +23,11 @@ section {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 5rem 4rem 5rem 5rem;
+  justify-content: flex-start;
+  padding: clamp(4rem, 10svh, 7rem) 4rem clamp(4rem, 10svh, 7rem) 5rem;
   color: var(--white);
-  min-height: 100vh;
   max-width: 700px;
+  width: 100%;
 }
 
 .hero-tag {

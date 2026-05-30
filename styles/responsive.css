@@ -22,27 +22,15 @@
   .grid-3 { grid-template-columns: 1fr 1fr; }
   .grid-4 { grid-template-columns: 1fr 1fr; }
 
-  /* Hero – full-bleed background image on mobile */
-  .hero {
-    grid-template-columns: 1fr;
-    position: relative;
-    min-height: 100svh;
-  }
-  .hero-visual {
-    position: absolute !important;
-    inset: 0 !important;
-    display: block !important;
-    height: auto !important;
-    z-index: 0;
-  }
-  .hero-visual .hero-photo-overlay {
-    background: linear-gradient(170deg, rgba(5,20,35,0.45) 0%, rgba(5,20,35,0.82) 60%);
-  }
+  /* Hero – adjust overlay direction and padding for mobile */
+  .hero { min-height: 100svh; }
   .hero-content {
-    position: relative;
-    z-index: 1;
-    padding: 6rem 2rem 4rem;
+    padding: 7rem 2rem 4rem;
     min-height: 100svh;
+    max-width: 100%;
+  }
+  .hero-photo-overlay {
+    background: linear-gradient(to bottom, rgba(5,20,35,0.55) 0%, rgba(5,20,35,0.85) 70%);
   }
 
   /* Bereiche */

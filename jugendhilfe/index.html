@@ -25,10 +25,10 @@
   <style>
     /* ── JUGEND ACCENT TOKENS ── */
     :root {
-      --jugend:      #c2407a;
-      --jugend-mid:  #e08ab0;
-      --jugend-dim:  rgba(194,64,122,0.12);
-      --jugend-dark: #9e3363;
+      --jugend:      #ce9923;
+      --jugend-mid:  #f0c96a;
+      --jugend-dim:  rgba(206,153,35,0.12);
+      --jugend-dark: #a87a18;
     }
 
     .reveal {
@@ -215,7 +215,7 @@
       position: absolute;
       left: 27px; top: 52px; bottom: 0;
       width: 2px;
-      background: rgba(194,64,122,0.18);
+      background: rgba(206,153,35,0.18);
     }
     .timeline-num {
       width: 48px; height: 48px;
@@ -228,7 +228,7 @@
       position: relative; z-index: 1;
     }
     .timeline-item.muted .timeline-num {
-      background: rgba(194,64,122,0.22);
+      background: rgba(206,153,35,0.22);
       color: var(--jugend);
     }
     .timeline-item.active .timeline-num {
@@ -275,7 +275,7 @@
     }
     .status-bar-track {
       height: 10px;
-      background: rgba(194,64,122,0.15);
+      background: rgba(206,153,35,0.15);
       border-radius: 20px;
       overflow: hidden;
     }
@@ -334,8 +334,8 @@
     .contact-line a { color: var(--jugend-mid); }
     .contact-line a:hover { color: var(--white); }
     .contact-divider { height: 1px; background: rgba(200,216,226,0.15); margin: 1.25rem 0; }
-    .btn-primary { background: var(--jugend) !important; color: var(--white) !important; }
-    .btn-primary:hover { background: var(--jugend-dark) !important; }
+    .btn-primary { background: var(--jugend) !important; color: var(--dark) !important; }
+    .btn-primary:hover { background: var(--jugend-dark) !important; color: var(--white) !important; }
 
     /* ── BIBELVERS ── */
     .verse-band {
@@ -732,7 +732,7 @@
           </div>
           <div class="contact-divider"></div>
           <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.5rem;">
-            <a href="../ueber-uns/spenden/" class="btn btn-primary" style="text-align: center;">❤ Jetzt spenden</a>
+            <a href="../ueber-uns/#spenden" class="btn btn-primary" style="text-align: center;">❤ Jetzt spenden</a>
             <a href="../ueber-uns/kontakt/" style="display:block; text-align:center; font-family:'Nunito',sans-serif; font-weight:700; font-size:14px; color:rgba(255,255,255,0.65); text-decoration:none; padding: 10px;">Kontaktformular →</a>
           </div>
           <div style="margin-top: 1.5rem; padding: 1.25rem; background: rgba(255,255,255,0.04); border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.08);">

@@ -36,10 +36,10 @@
 
     /* ── BLOG ACCENT TOKENS ── */
     :root {
-      --blog:      #ce9923;
-      --blog-dark: #a87a18;
-      --blog-mid:  #f0c96a;
-      --blog-dim:  rgba(206,153,35,0.12);
+      --blog:      #0c4684;
+      --blog-dark: #083672;
+      --blog-mid:  #c8d8e2;
+      --blog-dim:  rgba(12,70,132,0.1);
     }
 
     /* ── HERO ── */
@@ -64,7 +64,7 @@
     }
     .blog-hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn-blog-primary {
-      background: var(--blog); color: var(--dark);
+      background: var(--blog); color: var(--white);
       font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 15px;
       padding: 14px 28px; border-radius: 8px; text-decoration: none;
       transition: background 0.2s, transform 0.15s; display: inline-block;
@@ -156,7 +156,7 @@
       margin-bottom: 1.5rem;
     }
     .featured-category {
-      background: var(--blog-dim); color: var(--blog);
+      background: rgba(12,70,132,0.15); color: var(--blog);
       font-family: 'Nunito', sans-serif; font-weight: 800;
       font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
       padding: 5px 12px; border-radius: 20px;
@@ -324,7 +324,7 @@
     .newsletter-input::placeholder { color: rgba(255,255,255,0.4); }
     .newsletter-input:focus { border-color: var(--blog); }
     .newsletter-btn {
-      background: var(--blog); color: var(--dark);
+      background: var(--blog); color: var(--white);
       font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 15px;
       padding: 14px 28px; border-radius: 8px; border: none; cursor: pointer;
       transition: background 0.2s, transform 0.15s; white-space: nowrap;

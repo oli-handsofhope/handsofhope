@@ -560,6 +560,8 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
+      #kontaktformular > div { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+      #kontaktformular > div > div:first-child > div { display: none; }
       .breadcrumb { padding: 0.75rem 2rem; }
       .stats-inner { grid-template-columns: 1fr 1fr; }
       .geschichte-inner { grid-template-columns: 1fr; gap: 2rem; }
@@ -996,14 +998,22 @@
           <span class="section-label">Unterstützen</span>
           <h2 class="section-title" id="spenden-title">Mit einer Spende Gutes tun</h2>
           <p class="section-desc">
-            Mit deiner Spende ermöglichst du Menschen eine neue Chance. Ob Rehabilitation, Straßencafé oder
-            Prävention – jede Gabe macht einen Unterschied. Hands of Hope ist als gemeinnützige gGmbH anerkannt.
+            Die gesamte Arbeit von Hands of Hope wird zum größten Teil durch Spenden getragen und ermöglicht.
+            Wenn Sie unsere Arbeit überzeugt und Sie uns gerne finanziell unterstützen möchten, freuen wir uns sehr
+            über Ihre Gabe – per Überweisung oder direkt über PayPal.
           </p>
-          <a href="spenden/" class="btn-white-dark">Mehr zu Spendenmöglichkeiten →</a>
+          <p style="font-size: 0.92rem; color: rgba(255,255,255,0.65); line-height: 1.75; margin-bottom: 1rem;">
+            Auf Wunsch stellen wir Ihnen gerne eine <strong style="color:rgba(255,255,255,0.85);">Spendenquittung</strong> aus.
+            Materielle Spenden sind ebenfalls willkommen – nehmen Sie dazu einfach per E-Mail oder telefonisch Kontakt
+            zu unserem Büro auf.
+          </p>
+          <a href="https://www.paypal.com/donate/?hosted_button_id=PLACEHOLDER" target="_blank" rel="noopener" class="btn-white-dark" style="margin-bottom:0.85rem; display:inline-block;">
+            💳 Jetzt via PayPal spenden
+          </a>
         </div>
 
         <div class="konto-card reveal reveal-delay-1">
-          <h4>Unsere Bankverbindung</h4>
+          <h4>Bankverbindung</h4>
           <div class="konto-row">
             <span class="konto-label">Kontoinhaber</span>
             <span class="konto-val" style="font-family: inherit;">Hands of Hope gGmbH</span>
@@ -1024,9 +1034,83 @@
             <span class="konto-label">Kto / BLZ</span>
             <span class="konto-val">2312085701 / 4476 1534</span>
           </div>
+          <p style="font-size:12px; color:rgba(255,255,255,0.4); margin-top:1.25rem; line-height:1.6;">
+            Hands of Hope gGmbH ist als gemeinnützig anerkannt.<br>Spendenquittung auf Anfrage.
+          </p>
         </div>
       </div>
     </section>
+
+
+    <!-- ══════════════════════════════════════════
+         KONTAKTFORMULAR
+    ══════════════════════════════════════════ -->
+    <section id="kontaktformular" aria-labelledby="kontaktform-title" style="padding: var(--section-pad-v) var(--section-pad-h); background: var(--light-bg);">
+      <div style="max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;">
+
+        <div class="reveal">
+          <span class="section-label">Schreib uns</span>
+          <h2 class="section-title" id="kontaktform-title">Kontakt aufnehmen</h2>
+          <p class="section-desc">
+            Ob Fragen zu unserer Arbeit, Interesse an einer Kooperation oder einfach ein erstes Gespräch –
+            wir freuen uns von dir zu hören. Wir melden uns so schnell wie möglich zurück.
+          </p>
+          <div style="display:flex; flex-direction:column; gap:1rem; margin-top:2rem;">
+            <div class="contact-line">
+              <div class="icon">📞</div>
+              <span>02735 – 65 67 10</span>
+            </div>
+            <div class="contact-line">
+              <div class="icon">✉</div>
+              <a href="mailto:info@handsofhope.de">info@handsofhope.de</a>
+            </div>
+            <div class="contact-line">
+              <div class="icon">📍</div>
+              <span>Waldstraße 6, 57290 Neunkirchen</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <form id="kontakt-form" style="display:flex; flex-direction:column; gap:1rem;" onsubmit="submitKontakt(event)">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+              <div>
+                <label for="kf-name" style="font-family:'Nunito',sans-serif; font-weight:700; font-size:13px; color:var(--dark); display:block; margin-bottom:0.4rem;">Name</label>
+                <input type="text" id="kf-name" name="name" placeholder="Dein Name" class="form-control" required>
+              </div>
+              <div>
+                <label for="kf-email" style="font-family:'Nunito',sans-serif; font-weight:700; font-size:13px; color:var(--dark); display:block; margin-bottom:0.4rem;">E-Mail</label>
+                <input type="email" id="kf-email" name="email" placeholder="deine@email.de" class="form-control" required>
+              </div>
+            </div>
+            <div>
+              <label for="kf-betreff" style="font-family:'Nunito',sans-serif; font-weight:700; font-size:13px; color:var(--dark); display:block; margin-bottom:0.4rem;">Betreff</label>
+              <input type="text" id="kf-betreff" name="betreff" placeholder="Worum geht es?" class="form-control">
+            </div>
+            <div>
+              <label for="kf-nachricht" style="font-family:'Nunito',sans-serif; font-weight:700; font-size:13px; color:var(--dark); display:block; margin-bottom:0.4rem;">Nachricht</label>
+              <textarea id="kf-nachricht" name="nachricht" placeholder="Deine Nachricht an uns …" rows="5" class="form-control" required style="resize:vertical;"></textarea>
+            </div>
+            <p style="font-size:12px; color:var(--text-light); line-height:1.6; margin:0;">
+              Mit dem Absenden stimmst du unserer <a href="../datenschutz.html" style="color:var(--blue);">Datenschutzerklärung</a> zu.
+            </p>
+            <button type="submit" class="btn btn-blue" style="align-self:flex-start;">Nachricht senden →</button>
+          </form>
+          <div id="kontakt-success" class="form-success" role="alert" style="display:none;">
+            ✉️ &nbsp;Danke! Wir melden uns so schnell wie möglich bei dir.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <script>
+      function submitKontakt(e) {
+        e.preventDefault();
+        document.getElementById('kontakt-form').style.display = 'none';
+        document.getElementById('kontakt-success').style.display = 'block';
+      }
+    </script>
 
 
     <!-- ══════════════════════════════════════════

@@ -57,11 +57,16 @@
 
   <ul class="nav-links" id="nav-links" role="list">
     <li><a href="${R}ueber-uns/">Über uns</a></li>
-    <li><a href="${R}rehabilitation/">Rehabilitation</a></li>
-    <li><a href="${R}dienstleistungen/">Dienstleistungen</a></li>
-    <li><a href="${R}strassencafe/">Straßencafé</a></li>
-    <li><a href="${R}praevention/">Prävention</a></li>
-    <li><a href="${R}jugendhilfe/">Jugendhilfe</a></li>
+    <li class="nav-has-dropdown">
+      <a href="${R}#bereiche">Arbeitsbereiche</a>
+      <ul class="nav-dropdown" role="list">
+        <li><a href="${R}rehabilitation/">🏠 Rehabilitation</a></li>
+        <li><a href="${R}dienstleistungen/">🌳 Dienstleistungen</a></li>
+        <li><a href="${R}strassencafe/">☕ Straßencafé</a></li>
+        <li><a href="${R}praevention/">🛡 Prävention</a></li>
+        <li><a href="${R}jugendhilfe/">🏫 Jugendhilfe</a></li>
+      </ul>
+    </li>
     <li><a href="${R}blog/">Blog</a></li>
     <li class="nav-cta">
       <a href="${R}ueber-uns/spenden/">❤ Spenden</a>
@@ -276,7 +281,6 @@
     const currentPath = window.location.pathname;
     document.querySelectorAll('.nav-links a').forEach(function (a) {
       const href = a.getAttribute('href') || '';
-      // Resolve href relative to current page to compare with pathname
       try {
         const abs = new URL(href, window.location.href).pathname;
         if (abs !== '/' && currentPath.startsWith(abs) && abs.length > 1) {
@@ -286,6 +290,14 @@
         }
       } catch (e) { /* ignore */ }
     });
+
+    // Mark parent "Arbeitsbereiche" active when on any sub-area page
+    var areaPaths = ['rehabilitation', 'dienstleistungen', 'strassencafe', 'praevention', 'jugendhilfe'];
+    var isAreaPage = areaPaths.some(function (seg) { return currentPath.indexOf('/' + seg + '/') !== -1; });
+    if (isAreaPage) {
+      var parentLink = document.querySelector('.nav-has-dropdown > a');
+      if (parentLink) parentLink.classList.add('active');
+    }
 
     // ── Burger ──
     const burger = document.getElementById('burger');

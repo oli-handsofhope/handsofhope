@@ -52,7 +52,7 @@
 
 <nav aria-label="Hauptnavigation">
   <a class="nav-logo" href="${R}" aria-label="Hands of Hope – Startseite">
-    <img src="${R}assets/logos/handsofhope-logo.png" alt="Hands of Hope" width="140" height="40">
+    <img src="${R}assets/logos/handsofhope-logo.webp" alt="Hands of Hope" width="140" height="40">
   </a>
 
   <ul class="nav-links" id="nav-links" role="list">
@@ -97,7 +97,7 @@
   <div class="footer-main">
     <div class="footer-brand">
       <a class="footer-logo-img" href="${R}" aria-label="Hands of Hope – Startseite">
-        <img src="${R}assets/logos/handsofhope_logo_schriftzug_weiss.png" alt="Hands of Hope" width="180" loading="lazy">
+        <img src="${R}assets/logos/handsofhope_logo_schriftzug_weiss.webp" alt="Hands of Hope" width="180" loading="lazy">
       </a>
       <p class="footer-tagline">living hope.</p>
       <div class="footer-social">

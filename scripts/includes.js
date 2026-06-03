@@ -50,7 +50,7 @@
     return `
 <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
 
-<nav aria-label="Hauptnavigation">
+<nav id="main-nav" aria-label="Hauptnavigation">
   <a class="nav-logo" href="${R}" aria-label="Hands of Hope – Startseite">
     <img src="${R}assets/logos/handsofhope-logo.webp" alt="Hands of Hope" width="140" height="40">
   </a>
@@ -290,7 +290,7 @@
 
     // Mark parent "Arbeitsbereiche" active when on any sub-area page
     var areaPaths = ['rehabilitation', 'dienstleistungen', 'strassencafe', 'praevention', 'jugendhilfe'];
-    var isAreaPage = areaPaths.some(function (seg) { return currentPath.indexOf('/' + seg + '/') !== -1; });
+    var isAreaPage = areaPaths.some(function (seg) { return currentPath.indexOf('/' + seg) !== -1; });
     if (isAreaPage) {
       var parentLink = document.querySelector('.nav-has-dropdown > a');
       if (parentLink) parentLink.classList.add('active');

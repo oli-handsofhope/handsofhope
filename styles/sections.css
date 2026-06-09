@@ -651,24 +651,58 @@ section {
   box-shadow: var(--shadow-deep);
   outline: none;
   margin: 2.5rem 0;
+  /* default height – overrideable with inline style or modifier class */
+  height: 480px;
+  background: #111;
 }
+@media (max-width: 600px) {
+  .photo-slider { height: 300px; }
+}
+/* portrait-first variant: taller box, good for a mostly-portrait gallery */
+.photo-slider--portrait { height: 600px; }
+@media (max-width: 600px) {
+  .photo-slider--portrait { height: 420px; }
+}
+
 .slider-track {
   display: flex;
+  width: 100%;           /* ← fixes the translateX bug */
+  height: 100%;
   transition: transform 0.45s cubic-bezier(.4,0,.2,1);
   will-change: transform;
 }
+
+/* Each slide fills the slider box exactly */
 .slide {
+  position: relative;
   min-width: 100%;
-  aspect-ratio: 16/9;
-  overflow: hidden;
   flex-shrink: 0;
+  overflow: hidden;
+  background: #111;
 }
+
+/* Blurred backdrop layer (JS sets --slide-src) */
+.slide::before {
+  content: '';
+  position: absolute;
+  inset: -12%;          /* slightly larger to hide blur edges */
+  background-image: var(--slide-src);
+  background-size: cover;
+  background-position: center;
+  filter: blur(22px) brightness(0.55) saturate(0.7);
+  z-index: 0;
+}
+
+/* Actual image – contained so nothing is cropped */
 .slide img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
+
 .slide figcaption {
   position: absolute;
   bottom: 0; left: 0; right: 0;
@@ -677,8 +711,8 @@ section {
   font-size: .82rem;
   padding: 1.5rem 1rem .75rem;
   font-style: italic;
+  z-index: 2;
 }
-.slide { position: relative; }
 
 /* Arrows */
 .slider-btn {

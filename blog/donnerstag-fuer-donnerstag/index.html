@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Seit 2009 öffnen wir jeden Donnerstag unsere Türen im Straßencafé Siegen. Was uns nach 16 Jahren noch immer trägt – und warum wir nicht aufhören können.">
+  <title>Donnerstag für Donnerstag – 16 Jahre Straßencafé – Hands of Hope Blog</title>
+
+  <link rel="stylesheet" href="../../styles/main.css">
+  <link rel="stylesheet" href="../../styles/navigation.css">
+  <link rel="stylesheet" href="../../styles/layout.css">
+  <link rel="stylesheet" href="../../styles/typography.css">
+  <link rel="stylesheet" href="../../styles/sections.css">
+  <link rel="stylesheet" href="../../styles/forms.css">
+  <link rel="stylesheet" href="../../styles/gallery.css">
+  <link rel="stylesheet" href="../../styles/responsive.css">
+
+  <script src="../../scripts/includes.js" defer></script>
+  <script src="../../scripts/navigation.js" defer></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/lazyload.js" defer></script>
+  <script src="../../scripts/slider.js" defer></script>
+
+  <style>
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.revealed { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+
+    /* ── ARTICLE HERO ── */
+    .article-hero {
+      background: var(--dark); position: relative;
+      min-height: 60svh; display: flex; align-items: flex-end; overflow: hidden;
+    }
+    .article-hero-visual { position: absolute; inset: 0; z-index: 0; }
+    .article-hero-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .article-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(5,41,55,.92) 0%, rgba(5,41,55,.5) 55%, rgba(5,41,55,.15) 100%);
+    }
+    .article-hero-content {
+      position: relative; z-index: 1;
+      max-width: var(--max-width); margin: 0 auto; width: 100%;
+      padding: 4rem var(--section-pad-h) 3.5rem;
+    }
+    .article-category {
+      display: inline-block; background: rgba(71,142,154,0.85); color: #fff;
+      font-family: 'Nunito', sans-serif; font-weight: 800;
+      font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 20px; margin-bottom: 1.25rem;
+    }
+    .article-hero-content h1 {
+      font-family: 'Nunito', sans-serif; font-weight: 900;
+      font-size: clamp(1.7rem, 4vw, 2.8rem);
+      color: var(--white); line-height: 1.2; max-width: 780px; margin-bottom: 1.5rem;
+    }
+    .article-hero-meta { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+    .article-author { display: flex; align-items: center; gap: .65rem; }
+    .article-author-avatar { width: 38px; height: 38px; border-radius: 50%; overflow: hidden; background: rgba(255,255,255,.15); flex-shrink: 0; }
+    .article-author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .article-author-name { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .88rem; color: var(--white); }
+    .article-author-role { font-size: .78rem; color: rgba(255,255,255,.55); }
+    .article-meta-sep { color: rgba(255,255,255,.25); }
+    .article-date, .article-readtime { font-size: .85rem; color: rgba(255,255,255,.6); }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb { background: var(--light-bg); padding: .85rem var(--section-pad-h); font-size: 13px; color: var(--text-light); }
+    .breadcrumb a { color: var(--blue); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 .5rem; opacity: .4; }
+
+    /* ── ARTICLE LAYOUT ── */
+    .article-layout {
+      max-width: var(--max-width); margin: 0 auto;
+      padding: 4rem var(--section-pad-h);
+      display: grid; grid-template-columns: 1fr 320px;
+      gap: 5rem; align-items: start;
+    }
+    .article-prose { min-width: 0; }
+    .article-prose p { font-size: 1.05rem; line-height: 1.85; color: var(--text); margin-bottom: 1.6rem; }
+    .article-prose h2 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--dark); margin: 2.5rem 0 1rem; }
+
+    /* Teal pull-quote for Straßencafé */
+    .pull-quote {
+      border-left: 4px solid var(--blue);
+      margin: 2.5rem 0; padding: 1.25rem 1.75rem;
+      background: rgba(71,142,154,.06);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+    .pull-quote p { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 1.2rem !important; color: var(--dark) !important; font-style: italic; line-height: 1.55 !important; margin: 0 !important; }
+    .pull-quote cite { display: block; margin-top: .65rem; font-size: .85rem; color: var(--text-light); font-style: normal; }
+
+    /* Slider caption */
+    .slider-caption { font-size: .82rem; color: var(--text-light); padding: .55rem 0; font-style: italic; text-align: center; }
+
+    .article-footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(5,41,55,.1); }
+    .article-footer-author { display: flex; align-items: center; gap: .85rem; }
+    .article-footer-avatar { width: 52px; height: 52px; border-radius: 50%; overflow: hidden; background: rgba(71,142,154,.15); flex-shrink: 0; }
+    .article-footer-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .article-footer-name { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .95rem; color: var(--dark); }
+    .article-footer-role { font-size: .82rem; color: var(--text-light); }
+
+    /* ── SIDEBAR ── */
+    .article-sidebar { position: sticky; top: calc(var(--nav-height) + 2rem); }
+    .sidebar-card { background: var(--light-bg); border-radius: var(--radius-md); padding: 1.75rem; margin-bottom: 1.5rem; }
+    .sidebar-card h4 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; color: var(--text-light); margin-bottom: 1.25rem; }
+    .sidebar-post { display: flex; gap: .85rem; align-items: flex-start; padding: .85rem 0; border-bottom: 1px solid rgba(5,41,55,.07); text-decoration: none; color: inherit; transition: opacity var(--transition); }
+    .sidebar-post:last-child { border-bottom: none; }
+    .sidebar-post:hover { opacity: .75; }
+    .sidebar-post-thumb { width: 54px; height: 54px; border-radius: var(--radius-sm); overflow: hidden; flex-shrink: 0; }
+    .sidebar-post-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .sidebar-post-title { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .88rem; color: var(--dark); line-height: 1.4; }
+    .sidebar-post-date { font-size: .78rem; color: var(--text-light); margin-top: .3rem; }
+    .sidebar-cta { background: #3a8a9a; border-radius: var(--radius-md); padding: 1.75rem; text-align: center; }
+    .sidebar-cta p { font-size: .9rem; color: rgba(255,255,255,.85); line-height: 1.6; margin-bottom: 1.25rem; }
+    .sidebar-cta a { display: block; background: var(--white); color: var(--dark); font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 14px; padding: 11px 20px; border-radius: var(--radius-sm); text-decoration: none; transition: background var(--transition); }
+    .sidebar-cta a:hover { background: #d0eeef; }
+
+    @media (max-width: 900px) {
+      .article-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .article-sidebar { position: static; }
+      .article-hero { min-height: 50svh; }
+    }
+    @media (max-width: 600px) {
+      .article-hero-content h1 { font-size: 1.6rem; }
+      .article-prose p { font-size: .97rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div data-include="header"></div>
+  <div class="nav-spacer"></div>
+
+  <main id="main-content">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../../">Startseite</a><span>›</span>
+      <a href="../">Blog</a><span>›</span>
+      Donnerstag für Donnerstag
+    </nav>
+
+    <header class="article-hero">
+      <div class="article-hero-visual" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=1400&q=80" alt="Menschen beim gemeinsamen Essen im Café" loading="eager">
+        <div class="article-hero-overlay"></div>
+      </div>
+      <div class="article-hero-content">
+        <span class="article-category">Straßencafé</span>
+        <h1>Donnerstag für Donnerstag – was uns nach 16 Jahren noch immer trägt</h1>
+        <div class="article-hero-meta">
+          <div class="article-author">
+            <div class="article-author-avatar">
+              <img src="../../ueber-uns/team/nils-erner.jpg" alt="Nils Erner" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80'">
+            </div>
+            <div>
+              <div class="article-author-name">Nils Erner</div>
+              <div class="article-author-role">Leitung Straßencafé</div>
+            </div>
+          </div>
+          <span class="article-meta-sep">·</span>
+          <span class="article-date">3. April 2025</span>
+          <span class="article-meta-sep">·</span>
+          <span class="article-readtime">4 Min. Lesezeit</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="article-layout">
+
+      <article class="article-prose reveal">
+
+        <p>
+          Es ist Donnerstagabend, kurz vor halb sechs. Die Hagener Straße in Siegen ist ruhig, der Gehsteig
+          feucht vom Nieselregen. Drinnen riecht es nach Kaffee und nach Suppe vom Mittag. Die Tische sind
+          gedeckt. Wir stehen bereit.
+        </p>
+
+        <p>
+          Gleich öffnen wir die Tür – und wie jede Woche werden sie kommen. Manche pünktlich, manche
+          später. Manche allein, manche mit demselben Begleiter wie seit Jahren. Menschen, die in der Stadt
+          keinen Ort haben. Menschen, die einfach einen warmen Abend brauchen. Menschen, die wir beim Namen kennen.
+        </p>
+
+        <h2>Wie alles begann</h2>
+
+        <p>
+          Das Straßencafé öffnete 2009 zum ersten Mal seine Türen – damals noch unter dem Namen „House of Hope".
+          Eine Handvoll Ehrenamtliche, ein gemieteter Raum, ein Topf Suppe. Keine große Vision, kein
+          ausgearbeitetes Konzept. Nur die Überzeugung, dass Menschen, die am Rand stehen, einen Tisch
+          verdienen, an dem sie sitzen dürfen.
+        </p>
+
+        <div class="pull-quote">
+          <p>„Wir wollten keinen Sozialdienst aufbauen. Wir wollten einfach da sein."</p>
+          <cite>– Nils Erner über die Anfänge</cite>
+        </div>
+
+        <p>
+          Sechzehn Jahre später ist das Straßencafé Teil des Lebens vieler Menschen in Siegen. Die Räume
+          sind gewachsen, das Team ist gewachsen, die Geschichten auch. Was gleich geblieben ist: der
+          Donnerstag. Immer der Donnerstag.
+        </p>
+
+        <h2>Ein Abend in Bildern</h2>
+
+        <p>
+          Was ein Donnerstagabend bei uns bedeutet, lässt sich in Worten nur schwer einfangen.
+          Hier sind ein paar Eindrücke:
+        </p>
+
+        <!-- ── PHOTO SLIDER ── -->
+        <div class="photo-slider" role="region" aria-label="Impressionen aus dem Straßencafé">
+          <div class="slider-track">
+            <figure class="slide">
+              <img src="https://images.unsplash.com/photo-1536147116438-62679a5e01f2?w=1200&q=80" alt="Menschen sitzen zusammen am Tisch" loading="lazy">
+              <figcaption>Gemeinschaft am Tisch – jeden Donnerstagabend ab 17:30 Uhr</figcaption>
+            </figure>
+            <figure class="slide">
+              <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=1200&q=80" alt="Kaffee und warme Mahlzeit" loading="lazy">
+              <figcaption>Kaffee, Suppe, ein Gespräch – das Wesentliche ist einfach</figcaption>
+            </figure>
+            <figure class="slide">
+              <img src="https://images.unsplash.com/photo-1593113630400-ea4288922559?w=1200&q=80" alt="Ehrenamtliche beim Servieren" loading="lazy">
+              <figcaption>Rund 30 Ehrenamtliche tragen den Abend jede Woche</figcaption>
+            </figure>
+            <figure class="slide">
+              <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=1200&q=80" alt="Lachen und Gespräche im Café" loading="lazy">
+              <figcaption>Manchmal ist Lachen das Beste, was ein Abend bieten kann</figcaption>
+            </figure>
+            <figure class="slide">
+              <img src="https://images.unsplash.com/photo-1498462440456-0dba182e775b?w=1200&q=80" alt="Kerzenlicht und Stille" loading="lazy">
+              <figcaption>Seit 2009 – immer donnerstags, immer die Hagener Straße 78</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <h2>Die Menschen, die wiederkommen</h2>
+
+        <p>
+          Es gibt einen Mann – ich nenne ihn hier Walter –, der seit neun Jahren jeden Donnerstag kommt.
+          Nicht immer. Manchmal fehlt er wochenlang, und wir fragen uns, wie es ihm geht. Aber dann steht
+          er wieder in der Tür, Mütze auf dem Kopf, und sagt: „Bin wieder da." Mehr braucht es nicht.
+        </p>
+
+        <p>
+          Es gibt eine Frau, die seit einem Jahr kommt. Sie spricht kaum. Sitzt am Rand, isst, trinkt
+          Kaffee, schaut den anderen zu. Letzte Woche hat sie zum ersten Mal eine Ehrenamtliche gefragt,
+          ob sie helfen kann, die Tische zu decken. Kleiner Schritt. Großer Moment.
+        </p>
+
+        <div class="pull-quote">
+          <p>„Für manche ist der Donnerstag der einzige Abend in der Woche, an dem jemand ihren Namen kennt."</p>
+          <cite>– Nils Erner</cite>
+        </div>
+
+        <h2>Was uns trägt</h2>
+
+        <p>
+          Manchmal fragt man uns, ob es nicht zermürbend ist – jede Woche dieselben Gesichter, dieselben
+          Geschichten, dieselbe Not, ohne dass sich grundlegend etwas ändert. Ich verstehe die Frage. Aber
+          ich erlebe es anders.
+        </p>
+
+        <p>
+          Was uns trägt, ist nicht die Hoffnung auf große Transformation. Es ist die Überzeugung, dass
+          jeder Mensch einen Tisch verdient. Dass Würde nicht verdient werden muss. Dass Gott in diesen
+          kleinen, unspektakulären Donnerstagabenden genauso präsent ist wie in großen Momenten.
+        </p>
+
+        <p>
+          Wir machen weiter. Nächsten Donnerstag. Und den Donnerstag danach.
+        </p>
+
+        <p style="font-size: .9rem; color: var(--text-light); margin-top: 2rem;">
+          Du möchtest das Straßencafé unterstützen – als Ehrenamtlicher oder mit einer Spende?
+          <a href="../../strassencafe/" style="color: var(--blue);">Mehr erfahren →</a>
+        </p>
+
+        <div class="article-footer">
+          <div class="article-footer-author">
+            <div class="article-footer-avatar">
+              <img src="../../ueber-uns/team/nils-erner.jpg" alt="Nils Erner" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80'">
+            </div>
+            <div>
+              <div class="article-footer-name">Nils Erner</div>
+              <div class="article-footer-role">Leitung Straßencafé · Hands of Hope</div>
+            </div>
+          </div>
+          <div style="margin-top: 1.5rem;">
+            <a href="../" class="btn btn-blue">← Zurück zum Blog</a>
+          </div>
+        </div>
+
+      </article>
+
+      <aside class="article-sidebar">
+        <div class="sidebar-card reveal">
+          <h4>Weitere Beiträge</h4>
+          <a href="../mikes-geschichte/" class="sidebar-post">
+            <div class="sidebar-post-thumb">
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&q=80" alt="Mikes Geschichte" loading="lazy">
+            </div>
+            <div>
+              <div class="sidebar-post-title">„Ich dachte, es gibt kein Zurück mehr"</div>
+              <div class="sidebar-post-date">14. Mai 2025 · Rehabilitation</div>
+            </div>
+          </a>
+          <a href="../schulprojekt-neunkirchen/" class="sidebar-post">
+            <div class="sidebar-post-thumb">
+              <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=120&q=80" alt="Schulprojekt" loading="lazy">
+            </div>
+            <div>
+              <div class="sidebar-post-title">Wenn ein Vortrag ein Leben verändert</div>
+              <div class="sidebar-post-date">28. April 2025 · Prävention</div>
+            </div>
+          </a>
+        </div>
+        <div class="sidebar-cta reveal reveal-delay-1">
+          <p>Jeden Donnerstag ab 17:30 Uhr – das Straßencafé lebt von Ehrenamtlichen wie dir.</p>
+          <a href="../../strassencafe/">Zum Straßencafé →</a>
+        </div>
+      </aside>
+
+    </div>
+
+  </main>
+
+  <div data-include="footer"></div>
+  <script src="../../scripts/cookie-banner.js"></script>
+</body>
+</html>

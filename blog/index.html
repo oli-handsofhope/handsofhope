@@ -334,37 +334,7 @@
     <!-- FEATURED POST -->
     <section class="featured-section" aria-label="Aktueller Beitrag">
       <div class="featured-inner">
-
-        <div class="blog-label reveal">Aktueller Beitrag</div>
-        <a href="mikes-geschichte/" class="featured-card reveal">
-          <div class="featured-photo">
-            <img
-              src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1200&q=80"
-              alt="Männer sitzen zusammen am Tisch"
-              loading="lazy"
-            >
-            <div class="featured-photo-overlay"></div>
-          </div>
-          <div class="featured-content">
-            <div class="featured-meta">
-              <span class="featured-category">Rehabilitation</span>
-              <span class="featured-date">14. Mai 2025</span>
-            </div>
-            <h2>„Ich dachte, es gibt kein Zurück mehr" – Mikes Geschichte</h2>
-            <p>
-              Zwölf Jahre Sucht, drei gescheiterte Therapieversuche, eine zerbrochene Familie. Als Mike zu uns kam, glaubte er selbst nicht mehr an eine Veränderung. Heute lebt er seit anderthalb Jahren clean – und engagiert sich bei uns als Mentor.
-            </p>
-            <span class="read-more">Ganzen Bericht lesen →</span>
-            <div class="featured-author">
-              <div class="featured-author-avatar">✍️</div>
-              <div>
-                <div class="featured-author-name">Christian Brück</div>
-                <div class="featured-author-role">Leitung Rehabilitation</div>
-              </div>
-            </div>
-          </div>
-        </a>
-
+        <div data-blog-featured></div>
       </div>
     </section>
 
@@ -380,69 +350,8 @@
           </div>
         </div>
 
-        <div class="posts-grid">
+        <div class="posts-grid" data-blog-grid></div>
 
-          <!-- Post 2 -->
-          <a href="schulprojekt-neunkirchen/" class="post-card reveal">
-            <div class="post-photo">
-              <img
-                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80"
-                alt="Jugendliche beim gemeinsamen Gespräch in der Schule"
-                loading="lazy"
-              >
-              <span class="post-category-badge badge-prev">Prävention</span>
-            </div>
-            <div class="post-body">
-              <div class="post-meta">
-                <span>28. April 2025</span>
-                <span class="post-meta-dot">·</span>
-                <span>5 Min. Lesezeit</span>
-              </div>
-              <h3>Wenn ein Vortrag ein Leben verändert – ein Schulprojekt in Neunkirchen</h3>
-              <p>
-                Eigentlich wollten die Schülerinnen und Schüler nur ihre Mittagspause verbringen. Dann betrat Ciprian den Raum – und 45 Minuten später war es still. Kein Handy, kein Raunen. Nur echte Stille.
-              </p>
-              <div class="post-footer">
-                <div class="post-author">
-                  <div class="post-author-avatar">✍️</div>
-                  <span class="post-author-name">Ciprian Mihai</span>
-                </div>
-                <span class="post-read-more">Lesen →</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Post 3 -->
-          <a href="donnerstag-fuer-donnerstag/" class="post-card reveal reveal-delay-1">
-            <div class="post-photo">
-              <img
-                src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=800&q=80"
-                alt="Menschen beim gemeinsamen Kochen und Helfen"
-                loading="lazy"
-              >
-              <span class="post-category-badge badge-cafe">Straßencafé</span>
-            </div>
-            <div class="post-body">
-              <div class="post-meta">
-                <span>3. April 2025</span>
-                <span class="post-meta-dot">·</span>
-                <span>4 Min. Lesezeit</span>
-              </div>
-              <h3>Donnerstag für Donnerstag – was uns nach 16 Jahren noch immer trägt</h3>
-              <p>
-                Seit 2009 öffnen wir jeden Donnerstag unsere Türen. Was das bedeutet, lässt sich in Zahlen nur schwer fassen: etwa 100 Gäste, Hunderte ehrenamtliche Stunden – und unzählige Momente, die niemand vergisst.
-              </p>
-              <div class="post-footer">
-                <div class="post-author">
-                  <div class="post-author-avatar">✍️</div>
-                  <span class="post-author-name">Nils Erner</span>
-                </div>
-                <span class="post-read-more">Lesen →</span>
-              </div>
-            </div>
-          </a>
-
-        </div>
       </div>
     </section>
 
@@ -452,6 +361,7 @@
 
   <div data-include="footer"></div>
 
+<script src="posts.js" defer></script>
 <script src="../scripts/cookie-banner.js"></script>
 </body>
 </html>

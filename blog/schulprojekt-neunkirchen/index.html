@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ciprian Mihai betritt einen Klassenraum in Neunkirchen – und plötzlich legen 28 Schülerinnen und Schüler ihre Handys weg. Was in dieser Stunde geschah.">
+  <title>Wenn ein Vortrag ein Leben verändert – Hands of Hope Blog</title>
+
+  <link rel="stylesheet" href="../../styles/main.css">
+  <link rel="stylesheet" href="../../styles/navigation.css">
+  <link rel="stylesheet" href="../../styles/layout.css">
+  <link rel="stylesheet" href="../../styles/typography.css">
+  <link rel="stylesheet" href="../../styles/sections.css">
+  <link rel="stylesheet" href="../../styles/forms.css">
+  <link rel="stylesheet" href="../../styles/gallery.css">
+  <link rel="stylesheet" href="../../styles/responsive.css">
+
+  <script src="../../scripts/includes.js" defer></script>
+  <script src="../../scripts/navigation.js" defer></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/lazyload.js" defer></script>
+
+  <style>
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.revealed { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+
+    /* ── ARTICLE HERO ── */
+    .article-hero {
+      background: var(--dark);
+      position: relative;
+      min-height: 60svh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .article-hero-visual { position: absolute; inset: 0; z-index: 0; }
+    .article-hero-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .article-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(5,41,55,.92) 0%, rgba(5,41,55,.5) 55%, rgba(5,41,55,.15) 100%);
+    }
+    .article-hero-content {
+      position: relative; z-index: 1;
+      max-width: var(--max-width); margin: 0 auto; width: 100%;
+      padding: 4rem var(--section-pad-h) 3.5rem;
+    }
+    .article-category {
+      display: inline-block;
+      background: rgba(123,91,196,0.85);
+      color: #fff;
+      font-family: 'Nunito', sans-serif; font-weight: 800;
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 20px; margin-bottom: 1.25rem;
+    }
+    .article-hero-content h1 {
+      font-family: 'Nunito', sans-serif; font-weight: 900;
+      font-size: clamp(1.7rem, 4vw, 2.8rem);
+      color: var(--white); line-height: 1.2;
+      max-width: 780px; margin-bottom: 1.5rem;
+    }
+    .article-hero-meta { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+    .article-author { display: flex; align-items: center; gap: 0.65rem; }
+    .article-author-avatar { width: 38px; height: 38px; border-radius: 50%; overflow: hidden; background: rgba(255,255,255,.15); flex-shrink: 0; }
+    .article-author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .article-author-name { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .88rem; color: var(--white); }
+    .article-author-role { font-size: .78rem; color: rgba(255,255,255,.55); }
+    .article-meta-sep { color: rgba(255,255,255,.25); }
+    .article-date, .article-readtime { font-size: .85rem; color: rgba(255,255,255,.6); }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb { background: var(--light-bg); padding: .85rem var(--section-pad-h); font-size: 13px; color: var(--text-light); }
+    .breadcrumb a { color: var(--blue); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 .5rem; opacity: .4; }
+
+    /* ── ARTICLE LAYOUT ── */
+    .article-layout {
+      max-width: var(--max-width); margin: 0 auto;
+      padding: 4rem var(--section-pad-h);
+      display: grid; grid-template-columns: 1fr 320px;
+      gap: 5rem; align-items: start;
+    }
+    .article-prose { min-width: 0; }
+    .article-prose p { font-size: 1.05rem; line-height: 1.85; color: var(--text); margin-bottom: 1.6rem; }
+    .article-prose h2 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--dark); margin: 2.5rem 0 1rem; }
+
+    .pull-quote {
+      border-left: 4px solid #7b5bc4;
+      margin: 2.5rem 0; padding: 1.25rem 1.75rem;
+      background: rgba(123,91,196,.05);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+    .pull-quote p { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 1.2rem !important; color: var(--dark) !important; font-style: italic; line-height: 1.55 !important; margin: 0 !important; }
+    .pull-quote cite { display: block; margin-top: .65rem; font-size: .85rem; color: var(--text-light); font-style: normal; }
+
+    .article-img { border-radius: var(--radius-lg); overflow: hidden; margin: 2.5rem 0; box-shadow: var(--shadow-deep); }
+    .article-img img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+    .article-img figcaption { font-size: .82rem; color: var(--text-light); padding: .65rem 1rem; background: var(--light-bg); font-style: italic; }
+
+    .article-footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(5,41,55,.1); }
+    .article-footer-author { display: flex; align-items: center; gap: .85rem; }
+    .article-footer-avatar { width: 52px; height: 52px; border-radius: 50%; overflow: hidden; background: rgba(127,150,40,.1); flex-shrink: 0; }
+    .article-footer-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .article-footer-name { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .95rem; color: var(--dark); }
+    .article-footer-role { font-size: .82rem; color: var(--text-light); }
+
+    /* ── SIDEBAR ── */
+    .article-sidebar { position: sticky; top: calc(var(--nav-height) + 2rem); }
+    .sidebar-card { background: var(--light-bg); border-radius: var(--radius-md); padding: 1.75rem; margin-bottom: 1.5rem; }
+    .sidebar-card h4 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; color: var(--text-light); margin-bottom: 1.25rem; }
+    .sidebar-post { display: flex; gap: .85rem; align-items: flex-start; padding: .85rem 0; border-bottom: 1px solid rgba(5,41,55,.07); text-decoration: none; color: inherit; transition: opacity var(--transition); }
+    .sidebar-post:last-child { border-bottom: none; }
+    .sidebar-post:hover { opacity: .75; }
+    .sidebar-post-thumb { width: 54px; height: 54px; border-radius: var(--radius-sm); overflow: hidden; flex-shrink: 0; }
+    .sidebar-post-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .sidebar-post-title { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .88rem; color: var(--dark); line-height: 1.4; }
+    .sidebar-post-date { font-size: .78rem; color: var(--text-light); margin-top: .3rem; }
+    .sidebar-cta { background: #7b5bc4; border-radius: var(--radius-md); padding: 1.75rem; text-align: center; }
+    .sidebar-cta p { font-size: .9rem; color: rgba(255,255,255,.85); line-height: 1.6; margin-bottom: 1.25rem; }
+    .sidebar-cta a { display: block; background: var(--white); color: var(--dark); font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 14px; padding: 11px 20px; border-radius: var(--radius-sm); text-decoration: none; transition: background var(--transition); }
+    .sidebar-cta a:hover { background: #e8e0f5; }
+
+    @media (max-width: 900px) {
+      .article-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .article-sidebar { position: static; }
+      .article-hero { min-height: 50svh; }
+    }
+    @media (max-width: 600px) {
+      .article-hero-content h1 { font-size: 1.6rem; }
+      .article-prose p { font-size: .97rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div data-include="header"></div>
+  <div class="nav-spacer"></div>
+
+  <main id="main-content">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../../">Startseite</a><span>›</span>
+      <a href="../">Blog</a><span>›</span>
+      Schulprojekt Neunkirchen
+    </nav>
+
+    <header class="article-hero">
+      <div class="article-hero-visual" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1400&q=80" alt="Jugendliche im Unterricht" loading="eager">
+        <div class="article-hero-overlay"></div>
+      </div>
+      <div class="article-hero-content">
+        <span class="article-category">Prävention</span>
+        <h1>Wenn ein Vortrag ein Leben verändert – ein Schulprojekt in Neunkirchen</h1>
+        <div class="article-hero-meta">
+          <div class="article-author">
+            <div class="article-author-avatar">
+              <img src="../../ueber-uns/team/ciprian-mihai.jpg" alt="Ciprian Mihai" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80'">
+            </div>
+            <div>
+              <div class="article-author-name">Ciprian Mihai</div>
+              <div class="article-author-role">Leitung Prävention</div>
+            </div>
+          </div>
+          <span class="article-meta-sep">·</span>
+          <span class="article-date">28. April 2025</span>
+          <span class="article-meta-sep">·</span>
+          <span class="article-readtime">5 Min. Lesezeit</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="article-layout">
+
+      <article class="article-prose reveal">
+
+        <p>
+          Ich betrete den Klassenraum um 9:15 Uhr. 28 Schülerinnen und Schüler, Jahrgang 9, eine weiterführende
+          Schule in Neunkirchen. Die meisten sitzen halb auf ihren Stühlen, Kapuzen über den Köpfen, Handys
+          unter den Tischen. Die Lehrerin wirft mir einen entschuldigenden Blick zu. Ich kenne diesen Blick.
+          Ich habe ihn in den letzten Jahren oft gesehen.
+        </p>
+
+        <p>
+          Ich stelle keine Regeln auf. Ich fange einfach an zu erzählen.
+        </p>
+
+        <h2>Keine Präsentation. Keine Folien.</h2>
+
+        <p>
+          Unsere Präventionsarbeit an Schulen lebt von einem Prinzip: Wir zeigen keine Schockbilder,
+          verteilen keine Flyer über Drogengefahren und halten keine Vorlesungen über Statistiken. Wir
+          erzählen Geschichten – echte, persönliche, manchmal unbequeme Geschichten. Dinge, die man so
+          nicht in Lehrbüchern liest.
+        </p>
+
+        <p>
+          An diesem Morgen erzähle ich von einem Mann, den ich kenne. Er ist heute 41, hat zwei Kinder
+          und einen Job, auf den er stolz ist. Mit 16 sah sein Leben ganz anders aus – Eltern, die nicht
+          da waren, eine Clique, die Halt gab, und irgendwann Substanzen, die den Alltag erträglicher
+          machten. Zumindest eine Zeit lang.
+        </p>
+
+        <div class="pull-quote">
+          <p>„Ich hab nicht gemerkt, wann aus ‚manchmal' ein ‚immer' wurde. Das passiert einfach."</p>
+          <cite>– Ciprian, mit den Worten eines Betroffenen</cite>
+        </div>
+
+        <p>
+          Irgendwann in der Geschichte lege ich eine Pause ein. Ich schaue in die Runde. Ein Mädchen in
+          der zweiten Reihe hat ihr Handy weggesteckt. Drei, vier andere auch. Vorne links sitzt ein Junge,
+          der mich ansieht, als würde er etwas wiedererkennen.
+        </p>
+
+        <figure class="article-img">
+          <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1200&q=80" alt="Schüler beim Zuhören im Unterricht" loading="lazy">
+          <figcaption>In unseren Schulbesuchen schaffen wir Raum für echte Gespräche – ohne erhobenen Zeigefinger.</figcaption>
+        </figure>
+
+        <h2>45 Minuten – und dann Stille</h2>
+
+        <p>
+          Als ich fertig bin, ist es kurz still im Raum. Nicht die unbehagliche Stille von Desinteresse –
+          sondern die andere Art. Die Lehrerin wartet ab. Ich auch.
+        </p>
+
+        <p>
+          Dann streckt jemand die Hand hoch. Ein Junge, Mitte der Klasse. Er fragt, ob man wirklich wieder
+          rauskommt. Aus allem. Ob das wirklich möglich ist.
+        </p>
+
+        <p>
+          Ich sage: Ja. Nicht immer leicht. Nicht immer sofort. Aber ja.
+        </p>
+
+        <div class="pull-quote">
+          <p>„Mein Bruder ist gerade in so einer Situation. Ich weiß nicht, was ich tun soll."</p>
+          <cite>– Ein Schüler, nach dem Unterricht</cite>
+        </div>
+
+        <p>
+          Nach der Stunde spricht mich dieser Junge auf dem Flur an. Er erzählt mir von seinem Bruder.
+          Wir reden noch zwanzig Minuten, weit nach der Pause. Ich gebe ihm unsere Nummer.
+        </p>
+
+        <p>
+          Ich weiß nicht, ob er anruft. Ich weiß nicht, was aus seinem Bruder wird. Aber ich weiß: dieser
+          Junge hat an diesem Morgen das Gefühl gehabt, dass er nicht allein ist. Und manchmal ist das
+          der erste Schritt.
+        </p>
+
+        <h2>Was Prävention wirklich bedeutet</h2>
+
+        <p>
+          Prävention ist kein Schutzschild, das man Jugendlichen überstreifen kann. Es ist die Arbeit an
+          einer inneren Haltung – die Überzeugung, dass das eigene Leben schützenswert ist. Dass es Menschen
+          gibt, die zuhören. Dass Hilfe keine Schwäche ist.
+        </p>
+
+        <p>
+          Wir kommen in diesem Schuljahr in über 20 Klassen in der Region. Nicht um Angst zu machen,
+          sondern um Türen zu öffnen. Eine Stunde. Manchmal reicht das.
+        </p>
+
+        <div class="article-footer">
+          <div class="article-footer-author">
+            <div class="article-footer-avatar">
+              <img src="../../ueber-uns/team/ciprian-mihai.jpg" alt="Ciprian Mihai" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80'">
+            </div>
+            <div>
+              <div class="article-footer-name">Ciprian Mihai</div>
+              <div class="article-footer-role">Leitung Prävention · Hands of Hope</div>
+            </div>
+          </div>
+          <div style="margin-top: 1.5rem;">
+            <a href="../" class="btn btn-blue">← Zurück zum Blog</a>
+          </div>
+        </div>
+
+      </article>
+
+      <aside class="article-sidebar">
+        <div class="sidebar-card reveal">
+          <h4>Weitere Beiträge</h4>
+          <a href="../mikes-geschichte/" class="sidebar-post">
+            <div class="sidebar-post-thumb">
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&q=80" alt="Mikes Geschichte" loading="lazy">
+            </div>
+            <div>
+              <div class="sidebar-post-title">„Ich dachte, es gibt kein Zurück mehr"</div>
+              <div class="sidebar-post-date">14. Mai 2025 · Rehabilitation</div>
+            </div>
+          </a>
+          <a href="../donnerstag-fuer-donnerstag/" class="sidebar-post">
+            <div class="sidebar-post-thumb">
+              <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=120&q=80" alt="Straßencafé" loading="lazy">
+            </div>
+            <div>
+              <div class="sidebar-post-title">Donnerstag für Donnerstag – 16 Jahre Straßencafé</div>
+              <div class="sidebar-post-date">3. April 2025 · Straßencafé</div>
+            </div>
+          </a>
+        </div>
+        <div class="sidebar-cta reveal reveal-delay-1">
+          <p>Unsere Präventionsarbeit erreicht hunderte Jugendliche jedes Jahr – ermöglicht durch Spenden.</p>
+          <a href="../../praevention/">Mehr zur Prävention</a>
+        </div>
+      </aside>
+
+    </div>
+
+  </main>
+
+  <div data-include="footer"></div>
+  <script src="../../scripts/cookie-banner.js"></script>
+</body>
+</html>

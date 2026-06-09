@@ -1,19 +1,37 @@
 /**
- * slider.js – Lightweight touch/keyboard photo slider
+ * slider.js – Touch/keyboard photo slider supporting portrait and landscape images.
+ *
  * Usage: add class "photo-slider" to a wrapper containing
- *   .slider-track > .slide* elements.
- * Automatically initialises all .photo-slider instances on the page.
+ *   .slider-track > .slide* elements (each slide should hold an <img>).
+ *
+ * Each slide gets a CSS custom property --slide-src set to its image URL so the
+ * ::before pseudo-element can render a blurred backdrop fill behind the image,
+ * making portrait images look great in a landscape container (and vice-versa).
+ *
+ * Modifier class "photo-slider--portrait" increases the container height for
+ * galleries that are mostly portrait shots.
  */
 (function () {
   'use strict';
 
   function initSlider(wrapper) {
-    var track   = wrapper.querySelector('.slider-track');
-    var slides  = wrapper.querySelectorAll('.slide');
-    var total   = slides.length;
+    var track  = wrapper.querySelector('.slider-track');
+    var slides = Array.prototype.slice.call(wrapper.querySelectorAll('.slide'));
+    var total  = slides.length;
     if (total < 2) return;
 
     var current = 0;
+
+    // Inject --slide-src on each slide so CSS ::before can create blurred backdrop
+    slides.forEach(function (slide) {
+      var img = slide.querySelector('img');
+      if (!img) return;
+      function apply() {
+        slide.style.setProperty('--slide-src', 'url("' + img.src + '")');
+      }
+      if (img.complete && img.naturalWidth) apply();
+      else img.addEventListener('load', apply);
+    });
 
     // ── Build controls ──
     var prev = document.createElement('button');
@@ -43,8 +61,8 @@
     function goTo(index) {
       current = (index + total) % total;
       track.style.transform = 'translateX(-' + (current * 100) + '%)';
-      wrapper.querySelectorAll('.slider-dot').forEach(function (d, i) {
-        d.classList.toggle('active', i === current);
+      wrapper.querySelectorAll('.slider-dot').forEach(function (d, j) {
+        d.classList.toggle('active', j === current);
       });
     }
 
@@ -54,7 +72,7 @@
     next.addEventListener('click', function () { goTo(current + 1); });
     dots.addEventListener('click', function (e) {
       var d = e.target.closest('.slider-dot');
-      if (d) goTo(parseInt(d.dataset.index));
+      if (d) goTo(parseInt(d.dataset.index, 10));
     });
 
     // Keyboard

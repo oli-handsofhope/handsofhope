@@ -2,7 +2,11 @@
 
 Statische Website für [Hands of Hope gGmbH](https://handsofhope.de), gehostet auf GitHub Pages.
 
-Notiz: Statt Medien künftig vielleicht besser Blog. Predigten/Audio wurden nicht mehr gepflegt und Aktivitäten kann man schöner per Blog darstellen. Image-Film könnte auf Startseite eingebunden werden. Downloads bei den einschlägigen Sektions.
+## Für das Team – Blog-Posts hinzufügen
+
+→ **[BLOG_POST_ERSTELLEN.md](BLOG_POST_ERSTELLEN.md)**
+
+Dort steht der Prompt für Claude (Entwurf erstellen + veröffentlichen) sowie eine Übersicht aller verfügbaren Blog-Komponenten.
 
 ## Projektstruktur
 
@@ -59,11 +63,12 @@ handsofhope/
 │       └── index.html
 │
 ├── blog/
-│   ├── index.html
-│   ├── sommerfest-2026/
-│   │   └── index.html
-│   └── testimonies-2026/
-│       └── index.html
+│   ├── index.html              # Übersicht (auto-generiert aus posts.js)
+│   ├── posts.js                # Zentrale Post-Registry – hier neuen Post eintragen
+│   ├── demo-alle-komponenten/  # Internes Referenz-Beispiel (noindex)
+│   ├── mikes-geschichte/
+│   ├── schulprojekt-neunkirchen/
+│   └── donnerstag-fuer-donnerstag/
 │
 ├── downloads/
 ├── impressum.html

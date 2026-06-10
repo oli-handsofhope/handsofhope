@@ -14,7 +14,7 @@ Lies BLOG_POST_ERSTELLEN.md und erstelle danach einen neuen Blog-Post-Entwurf.
 Autor: [Vorname Nachname]
 
 Text:
-[Artikeltext hier einfügen.
+[Fertiger Artikeltext – oder Stichpunkte mit dem Hinweis "Bitte ausformulieren".
 Absätze durch Leerzeile trennen.
 Überschriften mit # (H2) oder ## (H3) markieren.
 Zitate / Pullquotes mit > einleiten.

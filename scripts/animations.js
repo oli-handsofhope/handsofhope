@@ -21,8 +21,11 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
   function observeAll() {
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal:not(.revealed)').forEach(el => observer.observe(el));
   }
+
+  // Exposed so other scripts (e.g. posts.js) can re-observe after dynamic injection
+  window.observeReveal = observeAll;
 
   // Run after DOM and includes are loaded
   if (document.readyState === 'loading') {

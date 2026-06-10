@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- ENTWURF: nicht indexieren, nicht verlinken -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Interne Übersicht aller verfügbaren Blog-Komponenten für Hands of Hope.">
+  <title>[DEMO] Alle Komponenten – Hands of Hope Blog</title>
+
+  <link rel="stylesheet" href="../../styles/main.css">
+  <link rel="stylesheet" href="../../styles/navigation.css">
+  <link rel="stylesheet" href="../../styles/layout.css">
+  <link rel="stylesheet" href="../../styles/typography.css">
+  <link rel="stylesheet" href="../../styles/sections.css">
+  <link rel="stylesheet" href="../../styles/forms.css">
+  <link rel="stylesheet" href="../../styles/gallery.css">
+  <link rel="stylesheet" href="../../styles/responsive.css">
+
+  <script src="../../scripts/includes.js" defer></script>
+  <script src="../../scripts/navigation.js" defer></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/lazyload.js" defer></script>
+  <script src="../../scripts/slider.js" defer></script>
+
+  <style>
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.revealed { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+
+    /* ── ARTICLE HERO ── */
+    .article-hero {
+      background: var(--dark);
+      position: relative;
+      min-height: 60svh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .article-hero-visual { position: absolute; inset: 0; z-index: 0; }
+    .article-hero-visual img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    .article-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(5,41,55,.92) 0%, rgba(5,41,55,.55) 55%, rgba(5,41,55,.18) 100%);
+      z-index: 1;
+    }
+    .article-hero-content {
+      position: relative; z-index: 2;
+      padding: 3rem var(--section-pad-h) 3.5rem;
+      max-width: calc(var(--max-width) + 2 * var(--section-pad-h));
+      width: 100%;
+    }
+    .article-category {
+      display: inline-block;
+      font-family: 'Nunito', sans-serif; font-weight: 800;
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 5px 13px; border-radius: 20px; margin-bottom: 1.1rem;
+      background: rgba(5,41,55,0.85); color: rgba(255,255,255,0.85);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .article-hero-content h1 {
+      font-family: 'Nunito', sans-serif; font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--white); line-height: 1.15;
+      max-width: 780px; margin-bottom: 1.5rem;
+    }
+    .article-hero-meta { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+    .article-author { display: flex; align-items: center; gap: 0.65rem; }
+    .article-author-avatar { width: 38px; height: 38px; border-radius: 50%; overflow: hidden; background: rgba(255,255,255,0.15); flex-shrink: 0; }
+    .article-author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .article-author-name { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--white); }
+    .article-author-role { font-size: 0.78rem; color: rgba(255,255,255,0.55); }
+    .article-meta-sep { color: rgba(255,255,255,0.25); }
+    .article-date { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+    .article-readtime { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+
+    /* Draft-Banner */
+    .draft-banner {
+      background: #f59e0b; color: #1a1a1a;
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px;
+      text-align: center; padding: 10px 1rem; letter-spacing: 0.04em;
+      position: relative; z-index: 100;
+    }
+
+    /* ── ARTICLE LAYOUT ── */
+    .article-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 4rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 4rem var(--section-pad-h);
+    }
+    .article-prose { font-size: 1.05rem; line-height: 1.85; color: var(--text); max-width: 68ch; }
+    .article-prose h2 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--dark); margin: 2.5rem 0 1rem; line-height: 1.25; }
+    .article-prose h3 { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--dark); margin: 2rem 0 0.75rem; }
+    .article-prose p { margin-bottom: 1.5rem; }
+    .article-prose ul, .article-prose ol { margin: 0 0 1.5rem 1.5rem; }
+    .article-prose li { margin-bottom: 0.5rem; }
+    .article-prose strong { font-weight: 700; color: var(--dark); }
+    .article-prose a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+    .article-prose a:hover { color: var(--blue-dark, #083672); }
+
+    /* Pull Quote */
+    .pull-quote {
+      border-left: 4px solid var(--blue);
+      margin: 2.5rem 0; padding: 1.25rem 1.75rem;
+      background: rgba(12,70,132,0.05);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+    .pull-quote p { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 1.2rem !important; color: var(--dark) !important; font-style: italic; line-height: 1.55 !important; margin: 0 !important; }
+    .pull-quote cite { display: block; margin-top: .65rem; font-size: .85rem; color: var(--text-light); font-style: normal; }
+
+    /* Inline Image */
+    .article-img { border-radius: var(--radius-lg); overflow: hidden; margin: 2.5rem 0; box-shadow: var(--shadow-deep); }
+    .article-img img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+    .article-img figcaption { font-size: .82rem; color: var(--text-light); padding: .65rem 1rem; background: var(--light-bg); font-style: italic; }
+
+    /* Hinweis-Box */
+    .info-box {
+      background: rgba(12,70,132,.06);
+      border: 1px solid rgba(12,70,132,.18);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      font-size: .95rem;
+    }
+    .info-box strong { color: var(--blue); }
+
+    /* Video Embed */
+    .video-embed {
+      margin: 2.5rem 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-deep);
+      aspect-ratio: 16/9;
+      background: #000;
+    }
+    .video-embed iframe {
+      width: 100%; height: 100%;
+      border: none; display: block;
+    }
+    .video-caption {
+      font-size: .82rem; color: var(--text-light);
+      padding: .55rem 0; font-style: italic;
+    }
+
+    /* Audio Player */
+    .audio-embed {
+      margin: 2.5rem 0;
+      background: var(--light-bg);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      display: flex; align-items: center; gap: 1.25rem;
+    }
+    .audio-icon {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--blue); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .audio-info { flex: 1; }
+    .audio-title { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .95rem; color: var(--dark); margin-bottom: .35rem; }
+    .audio-duration { font-size: .8rem; color: var(--text-light); margin-bottom: .6rem; }
+    .audio-embed audio { width: 100%; height: 36px; }
+
+    /* Externe Link-Karte */
+    .link-card {
+      display: flex; align-items: center; gap: 1rem;
+      border: 1px solid rgba(5,41,55,.12);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.25rem;
+      margin: 2rem 0;
+      text-decoration: none; color: inherit;
+      transition: box-shadow var(--transition), border-color var(--transition);
+      background: var(--white);
+    }
+    .link-card:hover { box-shadow: var(--shadow-card); border-color: var(--blue); }
+    .link-card-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .link-card-title { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .95rem; color: var(--dark); }
+    .link-card-url { font-size: .78rem; color: var(--text-light); margin-top: .2rem; }
+    .link-card-arrow { margin-left: auto; color: var(--blue); font-size: 1.1rem; flex-shrink: 0; }
+
+    /* Komponenten-Label (nur Demo) */
+    .demo-label {
+      font-family: 'Nunito', sans-serif; font-weight: 800;
+      font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+      color: #f59e0b; background: rgba(245,158,11,.1);
+      border: 1px dashed rgba(245,158,11,.4);
+      padding: 3px 8px; border-radius: 4px;
+      display: inline-block; margin-bottom: .75rem;
+    }
+
+    /* ── SIDEBAR ── */
+    .article-sidebar { position: sticky; top: calc(var(--nav-height) + 2rem); }
+    .sidebar-card { background: var(--light-bg); border-radius: var(--radius-md); padding: 1.75rem; margin-bottom: 1.5rem; }
+    .sidebar-card h4 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; color: var(--text-light); margin-bottom: 1.25rem; }
+    .sidebar-post { display: flex; gap: .85rem; align-items: flex-start; padding: .85rem 0; border-bottom: 1px solid rgba(5,41,55,.07); text-decoration: none; color: inherit; transition: opacity var(--transition); }
+    .sidebar-post:last-child { border-bottom: none; }
+    .sidebar-post:hover { opacity: .75; }
+    .sidebar-post-thumb { width: 54px; height: 54px; border-radius: var(--radius-sm); overflow: hidden; flex-shrink: 0; }
+    .sidebar-post-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .sidebar-post-title { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .88rem; color: var(--dark); line-height: 1.4; }
+    .sidebar-post-date { font-size: .78rem; color: var(--text-light); margin-top: .3rem; }
+    .sidebar-cta { background: var(--blue); border-radius: var(--radius-md); padding: 1.75rem; text-align: center; }
+    .sidebar-cta p { font-size: .9rem; color: rgba(255,255,255,.8); line-height: 1.6; margin-bottom: 1.25rem; }
+    .sidebar-cta a { display: block; background: var(--white); color: var(--dark); font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .9rem; padding: .75rem 1rem; border-radius: var(--radius-sm); text-decoration: none; transition: background var(--transition); }
+    .sidebar-cta a:hover { background: var(--mid-blue); }
+
+    /* Article footer */
+    .article-footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(5,41,55,.1); }
+
+    @media (max-width: 900px) {
+      .article-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .article-sidebar { position: static; }
+      .article-hero { min-height: 50svh; }
+    }
+    @media (max-width: 600px) {
+      .article-layout { padding: 2.5rem var(--section-pad-h); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Entwurfs-Banner -->
+  <div class="draft-banner">
+    ⚠️ ENTWURF – Diese Seite ist nicht verlinkt und für Suchmaschinen gesperrt (noindex)
+  </div>
+
+  <div data-include="header"></div>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <header class="article-hero" aria-label="Artikelheader">
+      <div class="article-hero-visual" aria-hidden="true">
+        <img
+          src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1400&q=80"
+          alt="Team bei der Arbeit"
+          loading="eager"
+        >
+        <div class="article-hero-overlay"></div>
+      </div>
+      <div class="article-hero-content">
+        <span class="article-category">Allgemein</span>
+        <h1>Alle Blog-Komponenten auf einen Blick</h1>
+        <div class="article-hero-meta">
+          <div class="article-author">
+            <div class="article-author-avatar">
+              <img src="../../ueber-uns/team/christian-brueck.jpg" alt="Christian Brück"
+                onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&q=80'">
+            </div>
+            <div>
+              <div class="article-author-name">Christian Brück</div>
+              <div class="article-author-role">Leitung Rehabilitation</div>
+            </div>
+          </div>
+          <span class="article-meta-sep">·</span>
+          <span class="article-date">10. Juni 2025</span>
+          <span class="article-meta-sep">·</span>
+          <span class="article-readtime">Demo</span>
+        </div>
+      </div>
+    </header>
+
+
+    <!-- ARTICLE BODY -->
+    <div class="article-layout">
+
+      <!-- PROSE -->
+      <article class="article-prose reveal">
+
+        <!-- ─────────────────────────────────────────────
+             KOMPONENTE 1: Fließtext mit Absätzen
+             ───────────────────────────────────────────── -->
+        <span class="demo-label">① Fließtext</span>
+
+        <p>
+          Dies ist ein normaler Absatz. Er zeigt, wie der Grundtext eines Blog-Posts aussieht –
+          in der Schrift <strong>Lato</strong>, 1,05 rem groß, mit einem Zeilenabstand von 1,85.
+          <strong>Fett markierte Stellen</strong> heben sich klar ab, ohne aufdringlich zu wirken.
+          <a href="#">Links im Text</a> erscheinen in Blau mit Unterstrich.
+        </p>
+
+        <p>
+          Ein zweiter Absatz. Zwischen Absätzen gibt es ausreichend Luft (1,5 rem Abstand).
+          Texte können beliebig lang sein – der Layout-Container begrenzt die Zeilenbreite
+          auf angenehme 68 Zeichen pro Zeile.
+        </p>
+
+
+        <!-- ─────────────────────────────────────────────
+             KOMPONENTE 2: Überschriften H2 + H3
+             ───────────────────────────────────────────── -->
+        <span class="demo-label">② Überschriften</span>
+
+        <h2>Das ist eine H2-Überschrift</h2>
+
+        <p>Text nach einer H2. Sie gliedert den Artikel in größere Abschnitte.</p>
+
+        <h3>Das ist eine H3-Überschrift</h3>
+
+        <p>Text nach einer H3. Sie eignet sich für Unterabschnitte innerhalb eines Kapitels.</p>
+
+
+        <!-- ─────────────────────────────────────────────
+             KOMPONENTE 3: Aufzählungen
+             ───────────────────────────────────────────── -->
+        <span class="demo-label">③ Listen</span>
+
+        <h2>Listen und Aufzählungen</h2>
+
+        <p>Ungeordnete Liste:</p>
+        <ul>
+          <li>Rehabilitation – strukturierter Alltag und therapeutische Begleitung</li>
+          <li>Straßencafé – offene Tür jeden Donnerstag ab 17:30 Uhr</li>
+          <li>Prävention – Schulprojekte und Aufklärungsarbeit in der Region</li>
+        </ul>
+
+        <p>Geordnete Liste:</p>
+        <ol>
+          <li>Erst Kontakt aufnehmen – telefonisch, per Mail oder persönlich</li>
+          <li>Dann ein offenes Erstgespräch ohne Verpflichtung</li>
+          <li>Anschließend gemeinsam den nächsten Schritt planen</li>
+        </ol>
+
+
+        <!-- ─────────────────────────────────────────────
+             KOMPONENTE 4: Pull Quote
+             ───────────────────────────────────────────── -->
+        <span class="demo-label">④ Pull Quote / Zitat</span>
+
+        <div class="pull-quote">
+          <p>„Ein Satz, der hervorgehoben werden soll – ein Zitat aus einem Interview,
+          eine prägnante Aussage oder ein Kernsatz des Artikels."</p>
+          <cite>– Vorname Nachname, Funktion oder Kontext</cite>
+        </div>
+
+
+        <!-- ─────────────────────────────────────────────
+             KOMPONENTE 5: Hinweis-Box
+             ───────────────────────────────────────────── -->
+        <span class="demo-label">⑤ Hinweis-Box</span>
+
+        <div class="info-box">
+          <strong>Hinweis:</strong> Diese Box eignet sich für Zusatzinfos, Hintergründe,
+          Datenschutzhinweise oder den Satz „Der Name wurde auf Wunsch geändert."
+          Sie ist dezent und unterbricht den Lesefluss nicht stark.
+        </div>
+
+
+        <!-- ─────────────────────────────────────────────
+             KOMPONENTE 6: Bild im Text mit Bildunterschrift
+             ───────────────────────────────────────────── -->
+        <span class="demo-label">⑥ Bild mit Bildunterschrift</span>
+
+        <figure class="article-img">
+          <img
+            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=80"
+            alt="Menschen beim gemeinsamen Gespräch am Tisch"
+            loading="lazy"
+          >
+          <figcaption>
+            Bildunterschrift: Kurze Erklärung, was auf dem Bild zu sehen ist, Kontext oder Ort.
+            Format immer 16:9, object-fit cover.
+          </figcaption>
+        </figure>
+
+
+        <!-- ─────────────────────────────────────────────
+             KOMPONENTE 7: Foto-Slider (Querformat + Hochkant gemischt)
+             ───────────────────────────────────────────── -->
+        <span class="demo-label">⑦ Foto-Slider (Quer- &amp; Hochkantformat)</span>
+
+        <div class="photo-slider" role="region" aria-label="Fotogalerie">
+          <div class="slider-track">
+
+            <figure class="slide">
+              <img src="https://images.unsplash.com/photo-1536147116438-62679a5e01f2?w=1200&q=80"
+                alt="Menschen am Tisch – Querformat" loading="lazy">
+              <figcaption>Querformat-Bild: füllt die Sliderfläche fast vollständig</figcaption>
+            </figure>
+
+            <figure class="slide">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80"
+                alt="Portrait einer Person – Hochkant" loading="lazy">
+              <figcaption>Hochkant-Bild: Blurred-Backdrop füllt die Randbereiche</figcaption>
+            </figure>
+
+            <figure class="slide">
+              <img src="https://images.unsplash.com/photo-1593113630400-ea4288922559?w=1200&q=80"
+                alt="Ehrenamtliche beim Servieren – Querformat" loading="lazy">
+              <figcaption>Wieder Querformat – der Slider wechselt sanft zwischen den Formaten</figcaption>
+            </figure>
+
+            <figure class="slide">
+              <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80"
+                alt="Person im Gespräch – Hochkant" loading="lazy">
+              <figcaption>Hochkant mit warmem Hintergrund durch Blur-Effekt</figcaption>
+            </figure>
+
+          </div>
+        </div>
+
+        <p>
+          Der Slider unterstützt Touch-Swipe (mobil), Pfeil-Tasten (Tastatur) und Klick auf
+          die Punkte unten. Modifier-Klasse <code>photo-slider--portrait</code> erhöht die
+          Höhe auf 600 px für überwiegend Hochkant-Galerien.
+        </p>
+
+
+        <!-- ─────────────────────────────────────────────
+             KOMPONENTE 8: Video-Einbettung (YouTube)
+             ───────────────────────────────────────────── -->
+        <span class="demo-label">⑧ Video (YouTube-Einbettung)</span>
+
+        <h2>Video einbetten</h2>
+
+        <p>
+          Videos werden als responsiver 16:9-Container eingebettet. Der YouTube-Link wird in
+          eine Embed-URL umgewandelt: <code>youtube.com/watch?v=ID</code> →
+          <code>youtube.com/embed/ID</code>.
+        </p>
+
+        <div class="video-embed">
+          <!-- YouTube-Platzhalter: ersetze VIDEO_ID mit der echten ID aus der URL -->
+          <iframe
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="Beispiel-Video: Hands of Hope – Einblick in unsere Arbeit"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+        <p class="video-caption">
+          Videobeschreibung: Worum geht es im Video? Optional: Länge und Datum.
+        </p>
+
+
+        <!-- ─────────────────────────────────────────────
+             KOMPONENTE 9: Audio-Player
+             ───────────────────────────────────────────── -->
+        <span class="demo-label">⑨ Audio-Player</span>
+
+        <h2>Audio einbetten</h2>
+
+        <p>
+          Für Podcasts, Interviews oder Hörberichte. Der native HTML5-Player wird in eine
+          dezente Karte eingebettet. Die Audiodatei kann auf einem eigenen Server, Anchor,
+          Buzzsprout, Spotify for Podcasters o. Ä. liegen – solange eine direkte MP3-URL
+          oder ein Embed-Link verfügbar ist.
+        </p>
+
+        <div class="audio-embed">
+          <div class="audio-icon">🎙</div>
+          <div class="audio-info">
+            <div class="audio-title">Titel des Beitrags oder Podcast-Folge</div>
+            <div class="audio-duration">Länge: 12:34 · Erschienen: 10. Juni 2025</div>
+            <!-- src durch direkten MP3-Link oder Podcast-CDN-URL ersetzen -->
+            <audio controls preload="none">
+              <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+              Dein Browser unterstützt kein HTML5-Audio.
+            </audio>
+          </div>
+        </div>
+
+        <p>
+          Alternativ kann auch ein Spotify- oder SoundCloud-Embed als <code>&lt;iframe&gt;</code>
+          eingebettet werden – analog zum YouTube-Block oben.
+        </p>
+
+
+        <!-- ─────────────────────────────────────────────
+             KOMPONENTE 10: Externe Link-Karte
+             ───────────────────────────────────────────── -->
+        <span class="demo-label">⑩ Externe Link-Karte</span>
+
+        <h2>Weiterführende Links</h2>
+
+        <a href="https://www.diakonie-saar.de" target="_blank" rel="noopener" class="link-card">
+          <span class="link-card-icon">🔗</span>
+          <div>
+            <div class="link-card-title">Diakonie Saar – Träger und Partner</div>
+            <div class="link-card-url">diakonie-saar.de</div>
+          </div>
+          <span class="link-card-arrow">→</span>
+        </a>
+
+        <a href="https://www.bundesregierung.de/breg-de/themen/sucht-und-drogen" target="_blank" rel="noopener" class="link-card">
+          <span class="link-card-icon">📄</span>
+          <div>
+            <div class="link-card-title">Sucht und Drogen – Informationen der Bundesregierung</div>
+            <div class="link-card-url">bundesregierung.de</div>
+          </div>
+          <span class="link-card-arrow">→</span>
+        </a>
+
+
+        <!-- ─────────────────────────────────────────────
+             SCHLUSS: Artikel-Footer mit Zurück-Button
+             ───────────────────────────────────────────── -->
+        <div class="article-footer">
+          <a href="../" class="btn btn-blue">← Zurück zum Blog</a>
+        </div>
+
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="article-sidebar">
+
+        <div class="sidebar-card reveal" data-blog-sidebar></div>
+
+        <div class="sidebar-cta reveal reveal-delay-1">
+          <p>Du möchtest die Arbeit von Hands of Hope unterstützen?</p>
+          <a href="../../ueber-uns/#spenden">❤ Jetzt unterstützen</a>
+        </div>
+
+      </aside>
+
+    </div>
+
+  </main>
+
+  <div data-include="footer"></div>
+
+  <script src="../../blog/posts.js" defer></script>
+  <script src="../../scripts/cookie-banner.js"></script>
+</body>
+</html>

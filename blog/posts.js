@@ -92,6 +92,7 @@
     });
 
     el.innerHTML = html;
+    if (window.observeReveal) window.observeReveal();
   }
 
   /* ── blog overview ──
@@ -154,6 +155,8 @@
       });
       gridEl.innerHTML = gridHtml;
     }
+
+    if (window.observeReveal) window.observeReveal();
   }
 
   document.addEventListener('DOMContentLoaded', function () {

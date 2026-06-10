@@ -1,40 +1,29 @@
-# Blog-Post erstellen – Prompts für Claude
+# Blog-Post erstellen – Anleitung für das Team
 
-Zwei Schritte: **① Entwurf** (direkt aufrufbar, noch unsichtbar) → **② Veröffentlichen**
+Zwei Schritte: **① Entwurf** → **② Veröffentlichen**
 
 ---
 
 ## Schritt 1 – Entwurf erstellen
 
-Nur Autor, Text und Medien angeben – den Rest erschließt Claude selbst.
-Bilder einfach als Datei-Anhänge mitschicken.
+**Diesen Prompt an Claude schicken** (Bilder als Datei-Anhänge mitschicken):
 
 ```
-Erstelle einen neuen Blog-Post-Entwurf für hands-of-hope.de.
+Lies BLOG_POST_ERSTELLEN.md und erstelle danach einen neuen Blog-Post-Entwurf.
 
 Autor: [Vorname Nachname]
 
 Text:
-[Artikel-Text hier einfügen.
+[Artikeltext hier einfügen.
 Absätze durch Leerzeile trennen.
 Überschriften mit # (H2) oder ## (H3) markieren.
 Zitate / Pullquotes mit > einleiten.
 Bildunterschriften direkt nach dem Bild in [Klammern] angeben.]
 
 Medien: [Dateien hochladen und/oder Links einfügen]
-
----
-Technischer Kontext (nicht ändern):
-Repo oli-handsofhope/handsofhope, aktueller Branch.
-Vorlage: blog/mikes-geschichte/index.html
-Teamdaten (Rollen + Fotos): in ueber-uns/index.html nachschlagen,
-Fotos unter ueber-uns/team/[vorname-nachname].jpg
-Kategorie aus Textinhalt erschließen.
-Entwurf: noindex gesetzt, kein Eintrag in blog/posts.js, kein Link von der Übersicht.
-Alle verfügbaren Komponenten: blog/demo-alle-komponenten/index.html
 ```
 
-**Claude erschließt selbst:**
+**Claude erschließt daraus selbst:**
 - Kategorie (aus dem Textinhalt)
 - Rolle + Foto des Autors (aus `ueber-uns/index.html`)
 - Slug (aus dem Titel)
@@ -42,33 +31,49 @@ Alle verfügbaren Komponenten: blog/demo-alle-komponenten/index.html
 - Bild-Platzierung (nach Kontext)
 - Lesezeit (aus Wortanzahl)
 
+**Was Claude liefert:** Den Post als Entwurf — direkt per Link aufrufbar,
+aber noch nicht in der Blog-Übersicht und für Suchmaschinen unsichtbar (noindex).
+
 ---
 
 ## Schritt 2 – Entwurf veröffentlichen
 
-Wenn der Post geprüft und freigegeben ist:
+Wenn der Post geprüft und freigegeben ist, diesen Prompt schicken:
 
 ```
-Veröffentliche den Blog-Post-Entwurf unter blog/[slug]/index.html:
-Noindex und Entwurfs-Banner entfernen, Eintrag oben in blog/posts.js
-hinzufügen, commiten und pushen.
+Lies BLOG_POST_ERSTELLEN.md und veröffentliche den Entwurf blog/[slug]/index.html.
 ```
+
+---
+
+## Technischer Kontext (für Claude, nicht für das Team)
+
+- Repo: `oli-handsofhope/handsofhope`, aktueller Branch
+- Blog-Posts: `blog/[slug]/index.html`
+- Vorlage: `blog/mikes-geschichte/index.html`
+- Teamdaten (Rollen): in `ueber-uns/index.html` nachschlagen
+- Autor-Fotos: `ueber-uns/team/[vorname-nachname].jpg`
+- Zentrale Registry: `blog/posts.js` — neuer Eintrag ganz oben (neueste zuerst)
+- Slider-Komponente: `scripts/slider.js`, Modifier `photo-slider--portrait` für Hochkant-Galerien
+- Alle Komponenten als Demo: `blog/demo-alle-komponenten/index.html`
+- **Entwurf:** `<meta name="robots" content="noindex, nofollow">` + Entwurfs-Banner, KEIN Eintrag in `blog/posts.js`
+- **Veröffentlichen:** noindex + Banner entfernen, Eintrag oben in `blog/posts.js` hinzufügen, commiten und pushen
 
 ---
 
 ## Verfügbare Komponenten
 
-Demo mit allen Bausteinen: `blog/demo-alle-komponenten/` (Branch aufrufen)
+Demo mit allen Bausteinen live sehen: `blog/demo-alle-komponenten/` (Branch aufrufen)
 
-| Komponente          | Wie angeben                                        |
-|---------------------|----------------------------------------------------|
-| Fließtext           | Einfach schreiben                                  |
-| Überschrift H2 / H3 | `#` bzw. `##` am Zeilenanfang                      |
-| Liste               | `-` (Aufzählung) oder `1.` (nummeriert)            |
-| Pull Quote / Zitat  | `> "Zitat" – Quelle`                              |
-| Hinweis-Box         | `[HINWEIS: Text der Box]`                          |
+| Komponente          | Wie angeben                                          |
+|---------------------|------------------------------------------------------|
+| Fließtext           | Einfach schreiben                                    |
+| Überschrift H2 / H3 | `#` bzw. `##` am Zeilenanfang                        |
+| Liste               | `-` (Aufzählung) oder `1.` (nummeriert)              |
+| Pull Quote / Zitat  | `> "Zitat" – Quelle`                                |
+| Hinweis-Box         | `[HINWEIS: Text der Box]`                            |
 | Bild + Unterschrift | Datei hochladen, Unterschrift in `[Klammern]` danach |
-| Foto-Slider         | Mehrere Bilder hochladen + `[SLIDER]` im Text      |
-| YouTube-Video       | Watch-URL einfach in den Text einfügen             |
-| Audio               | MP3-URL oder Podcast-Link einfügen                 |
-| Externer Link       | `[LINK: Bezeichnung → https://...]`                |
+| Foto-Slider         | Mehrere Bilder hochladen + `[SLIDER]` im Text        |
+| YouTube-Video       | Watch-URL einfach in den Text einfügen               |
+| Audio               | MP3-URL oder Podcast-Link einfügen                   |
+| Externer Link       | `[LINK: Bezeichnung → https://...]`                  |

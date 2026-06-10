@@ -43,7 +43,7 @@ Lies BLOG_POST_ERSTELLEN.md und veröffentliche den Entwurf blog/[slug]/index.ht
 
 - Repo: `oli-handsofhope/handsofhope`, aktueller Branch
 - Blog-Posts: `blog/[slug]/index.html`
-- Vorlage: `blog/mikes-geschichte/index.html`
+- Vorlage: `blog/demo-alle-komponenten/index.html`
 - Teamdaten (Rollen): in `ueber-uns/index.html` nachschlagen
 - Autor-Fotos: `ueber-uns/team/[vorname-nachname].jpg`
 - Zentrale Registry: `blog/posts.js` — neuer Eintrag ganz oben (neueste zuerst)

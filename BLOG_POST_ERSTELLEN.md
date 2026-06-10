@@ -41,16 +41,52 @@ Lies BLOG_POST_ERSTELLEN.md und veröffentliche den Entwurf blog/[slug]/index.ht
 
 ## Technischer Kontext (für Claude, nicht für das Team)
 
-- Repo: `oli-handsofhope/handsofhope`, aktueller Branch
-- Blog-Posts: `blog/[slug]/index.html`
-- Vorlage: `blog/demo-alle-komponenten/index.html`
-- Teamdaten (Rollen): in `ueber-uns/index.html` nachschlagen
-- Autor-Fotos: `ueber-uns/team/[vorname-nachname].jpg`
-- Zentrale Registry: `blog/posts.js` — neuer Eintrag ganz oben (neueste zuerst)
-- Slider-Komponente: `scripts/slider.js`, Modifier `photo-slider--portrait` für Hochkant-Galerien
-- Alle Komponenten als Demo: `blog/demo-alle-komponenten/index.html`
-- **Entwurf:** `<meta name="robots" content="noindex, nofollow">` + Entwurfs-Banner, KEIN Eintrag in `blog/posts.js`
-- **Veröffentlichen:** noindex + Banner entfernen, Eintrag oben in `blog/posts.js` hinzufügen, commiten und pushen
+### Dateistruktur
+- Repo: `oli-handsofhope/handsofhope`, aktueller Branch (per `git branch` ermitteln)
+- Neuer Post: `blog/[slug]/index.html`
+- Vorlage mit allen Komponenten: `blog/demo-alle-komponenten/index.html`
+- Pfade aus Post-Unterordner: `../../styles/`, `../../scripts/`, `../../blog/posts.js`
+- Alle `<script>`-Tags brauchen `defer`
+
+### Autor
+- Rolle nachschlagen: `ueber-uns/index.html` → `.role` neben dem Namen
+- Foto: `ueber-uns/team/[vorname-nachname].jpg`
+- onerror-Fallback immer setzen: `onerror="this.onerror=null;this.src='UNSPLASH_URL'"`
+- Passende Unsplash-Fallback-URL aus dem Kontext wählen (Person, neutral)
+
+### Bilder
+- Hochgeladene JPG/PNG → **vor dem Einbinden in WebP konvertieren**
+- Skalieren auf max. 2400px (längste Seite): `python3 -c "from PIL import Image; ..."`
+- Dann: `cwebp -q 82 bild.jpg -o bild.webp`
+- Logos/UI-Grafiken: Qualität 90 statt 82
+- Ablage: im Post-Ordner `blog/[slug]/`
+- Originaldateien (jpg/png) danach löschen
+
+### Medien einbetten
+- **YouTube**: `youtube.com/watch?v=VIDEO_ID` → `<iframe src="youtube.com/embed/VIDEO_ID">`
+- **Audio**: HTML5 `<audio controls>` mit direkter MP3-URL, oder `<iframe>` für Spotify/SoundCloud
+- **Slider**: `<div class="photo-slider">` → `scripts/slider.js` einbinden; Modifier `photo-slider--portrait` für Hochkant-Galerien; Slides sind `<figure class="slide">` (wichtig: figure, nicht div)
+
+### posts.js – Felder für neuen Eintrag (ganz oben einfügen, neueste zuerst)
+```js
+{
+  slug:       'post-slug',
+  title:      'Vollständiger Titel',
+  excerpt:    'Teaser-Text, 2–3 Sätze, ca. 300 Zeichen.',
+  category:   'Rehabilitation',          // Rehabilitation | Straßencafé | Prävention | Dienstleistungen | Allgemein
+  badgeClass: 'badge-rehab',             // badge-rehab | badge-cafe | badge-prev | badge-dienst | badge-allg
+  date:       '12. Juni 2025',
+  author:     'Vorname Nachname',
+  authorRole: 'Leitung Rehabilitation',
+  readMin:    5,
+  thumb:      'https://...',             // erstes Bild des Posts (WebP-URL oder Unsplash)
+  thumbAlt:   'Kurze Bildbeschreibung',
+}
+```
+
+### Entwurf vs. Veröffentlichen
+- **Entwurf:** `<meta name="robots" content="noindex, nofollow">` + gelben Entwurfs-Banner einfügen, **kein** Eintrag in `blog/posts.js`
+- **Veröffentlichen:** noindex-Tag + Banner entfernen, Eintrag oben in `blog/posts.js` hinzufügen, commiten und pushen
 
 ---
 

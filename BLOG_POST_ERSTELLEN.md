@@ -9,17 +9,10 @@ Zwei Schritte: **① Entwurf** → **② Veröffentlichen**
 **Diesen Prompt an Claude schicken** (Bilder als Datei-Anhänge mitschicken):
 
 ```
-Lies BLOG_POST_ERSTELLEN.md und erstelle danach einen neuen Blog-Post-Entwurf.
+Lies BLOG_POST_ERSTELLEN.md und erstelle einen Blog-Post-Entwurf.
 
 Autor: [Vorname Nachname]
-
-Text:
-[Fertiger Artikeltext – oder Stichpunkte mit dem Hinweis "Bitte ausformulieren".
-Absätze durch Leerzeile trennen.
-Überschriften mit # (H2) oder ## (H3) markieren.
-Zitate / Pullquotes mit > einleiten.
-Bildunterschriften direkt nach dem Bild in [Klammern] angeben.]
-
+Text: [Fertig formuliert oder Stichpunkte – Claude strukturiert und formuliert aus]
 Medien: [Dateien hochladen und/oder Links einfügen]
 ```
 

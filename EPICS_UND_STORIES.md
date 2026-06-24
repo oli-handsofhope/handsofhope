@@ -198,9 +198,16 @@ Alle Stories starten bei ⬜.
 
 | # | User Story | Status |
 |---|------------|--------|
-| 15.1 | Als Redakteur pflege ich Blog-Posts, Teamdaten, Stellenangebote und Galerien im Sanity Studio. | ⬜ 🗺 |
+| 15.1 | Als Team klären wir, welche Inhaltsbereiche CMS-gesteuert sind und welche im Code bleiben. | ⬜ 🗺 Offen lt. Protokoll |
 | 15.2 | Als Entwickler definiere ich das Sanity-Schema mit erlaubten Inhaltsblöcken, sodass kein freies HTML möglich ist. | ⬜ 🗺 |
-| 15.3 | Als Team klären wir, welche Inhaltsbereiche CMS-gesteuert sind und welche im Code bleiben. | ⬜ 🗺 Offen lt. Protokoll |
+| 15.3 | Als Redakteur pflege ich **Blog-Posts** (Text, Bilder, Autor, Kategorie, Tags) im Sanity Studio. | ⬜ |
+| 15.4 | Als Redakteur pflege ich **Teammitglieder** (Foto, Name, Rolle, Kurztext) im Sanity Studio. | ⬜ |
+| 15.5 | Als Redakteur pflege ich **Stellenangebote** (Titel, Beschreibung, Bereich, Eintrittsdatum, aktiv/inaktiv) im Sanity Studio. | ⬜ |
+| 15.6 | Als Redakteur pflege ich **Veranstaltungen & Aktualitäten** (Datum, Ort, Kategorie, kurzfristige Hinweise) im Sanity Studio. | ⬜ |
+| 15.7 | Als Redakteur pflege ich **Bild-Galerien & Referenzprojekte** (z. B. für Dienstleistungen, Prävention) im Sanity Studio. | ⬜ |
+| 15.8 | Als Redakteur pflege ich **PDF-Downloads** (Bewerbungsunterlagen, Konzeptdokumente) im Sanity Studio. | ⬜ |
+| 15.9 | Als Redakteur passe ich **Kennzahlen der Startseite** (z. B. „über 1.000 Klienten") im Sanity Studio an. | ⬜ |
+| 15.10 | Als Redakteur aktualisiere ich **Kontaktdaten & Öffnungszeiten** (Straßencafé, Standorte) im Sanity Studio. | ⬜ |
 
 ---
 

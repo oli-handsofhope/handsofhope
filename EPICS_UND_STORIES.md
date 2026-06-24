@@ -2,7 +2,6 @@
 
 Projektstand: Statischer HTML-Prototyp als inhaltliche Referenz.
 Ziel-Stack (Protokoll 19.06.26): **Next.js / React + Sanity Headless CMS**, Hosting auf Vercel.
-Parallel in Planung: **Baustellenabwicklungs-App** (PWA, Microsoft-Integration).
 Alle Stories starten bei ⬜.
 
 ---
@@ -216,20 +215,6 @@ Alle Stories starten bei ⬜.
 
 ---
 
-## EPIC 17 – Baustellenabwicklungs-App (PWA)
-*Protokoll 19.06.26 — eigenständiges Produkt für den Dienstleistungsbereich.*
-
-| # | User Story | Status |
-|---|------------|--------|
-| 17.1 | Als Mitarbeiter lege ich Aufträge digital an (Kundendaten, Fotos, Aufgaben, Angebote) und verfolge ihren Status. | ⬜ 🗺 |
-| 17.2 | Als Mitarbeiter synchronisiere ich Termine mit meinem Outlook-Kalender und Aufgaben mit Microsoft Planner. | ⬜ 🗺 |
-| 17.3 | Als Mitarbeiter archiviere ich abgeschlossene Aufträge automatisch auf SharePoint. | ⬜ 🗺 |
-| 17.4 | Als Mitarbeiter erfasse ich Arbeitszeiten pro Auftrag. | ⬜ 🗺 |
-| 17.5 | Als Mitarbeiter nutze ich die App als PWA im Browser ohne App-Store-Installation. | ⬜ 🗺 PWA bevorzugt lt. Protokoll |
-| 17.6 | Als Entwickler kläre ich Pflicht-/Kann-Funktionen, Offline-Anforderungen und Tech-Stack, bevor mit dem Bau begonnen wird. | ⬜ 🗺 Offen lt. Protokoll |
-
----
-
 ## Priorisierung
 
 ### Jetzt — offene Entscheidungen (blockieren alles andere)
@@ -254,7 +239,6 @@ Alle Stories starten bei ⬜.
 - 13.1–13.3 SEO, Analytics, Performance-Monitoring
 - 14.1–14.3 Deployment, CDN, Wartungsstrategie
 
-### Längerfristig — neue Produkte
-- Epic 17 Baustellenabwicklungs-App
+### Längerfristig — neue Features
 - 11.2–11.4 Dauerspenden, Spendenbarometer, Corporate Giving
 - 2.3 Imagefilm Startseite

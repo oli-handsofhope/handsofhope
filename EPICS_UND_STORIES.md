@@ -215,6 +215,89 @@ Alle Stories starten bei ⬜.
 
 ---
 
+## EPIC 17 – Mehrsprachigkeit (i18n)
+*Architektonische Grundsatzentscheidung — beeinflusst URL-Struktur, Sanity-Schema und Routing.*
+
+| # | User Story / Task | Status |
+|---|------------|--------|
+| 17.1 | 🔍 Als Team entscheiden wir, ob Mehrsprachigkeit (z. B. Russisch, Arabisch, Englisch) benötigt wird und für welche Bereiche. | ⬜ 🗺 Entscheidung vor Architekturstart |
+| 17.2 | Als Entwickler richte ich Next.js i18n-Routing ein (`/de/`, `/en/`, …), sodass Sprachen sauber getrennt sind. | ⬜ |
+| 17.3 | Als Redakteur pflege ich übersetzte Inhalte im Sanity Studio je Sprache getrennt. | ⬜ |
+| 17.4 | Als Besucher wechsle ich die Sprache über einen Sprachumschalter in der Navigation. | ⬜ |
+
+---
+
+## EPIC 18 – E-Mail & Newsletter (Brevo)
+
+| # | User Story / Task | Status |
+|---|------------|--------|
+| 18.1 | 🔍 Als Entwickler richte ich Brevo als E-Mail-Provider ein (transaktionale Mails + Newsletter) und verbinde es mit der Website. | ⬜ |
+| 18.2 | Als Besucher melde ich mich für den Newsletter an und erhalte eine Double-Opt-In-Bestätigungsmail (DSGVO). | ⬜ |
+| 18.3 | Als Besucher erhalte ich nach jedem Formular-Absenden eine automatische Bestätigungsmail. | ⬜ |
+| 18.4 | Als Redakteur verwalte ich Newsletter-Kampagnen direkt in Brevo, ohne Entwicklerunterstützung. | ⬜ |
+| 18.5 | Als Team haben wir eine DSGVO-konforme Einwilligungshistorie für alle E-Mail-Abonnenten. | ⬜ |
+
+---
+
+## EPIC 19 – Veranstaltungen & Aktualitäten
+
+| # | User Story / Task | Status |
+|---|------------|--------|
+| 19.1 | 🔍 Als Team entscheiden wir, welche Eventtypen es gibt (Straßencafé-Ausfall, Fundraising, Gottesdienst, Schulprojekte) und wie sie sich auf der Website darstellen. | ⬜ 🗺 |
+| 19.2 | Als Redakteur lege ich Veranstaltungen im CMS an (Titel, Datum, Ort, Kategorie, Bild). | ⬜ |
+| 19.3 | Als Besucher sehe ich bevorstehende Veranstaltungen auf einer Übersichtsseite und als Widget auf der Startseite. | ⬜ |
+| 19.4 | Als Redakteur veröffentliche ich kurzfristige Hinweise (z. B. „Straßencafé fällt heute aus") als Banner oder Aushang. | ⬜ |
+
+---
+
+## EPIC 20 – Datenmigration & URL-Strategie
+*Umzug vom statischen Prototyp auf den Next.js/Vercel-Stack ohne Ranking- und Bookmark-Verlust.*
+
+| # | User Story / Task | Status |
+|---|------------|--------|
+| 20.1 | 🔍 Als Entwickler lege ich eine vollständige URL-Map an (alt → neu) und identifiziere alle Weiterleitungen, die benötigt werden. | ⬜ |
+| 20.2 | Als Entwickler richte ich 301-Weiterleitungen in `next.config.js` ein, sodass alle alten URLs korrekt weiterleiten. | ⬜ |
+| 20.3 | Als Redakteur migriere ich vorhandene Inhalte (Blog-Posts, Teamseite, Stellenangebote) in das Sanity CMS. | ⬜ |
+| 20.4 | Als Team prüfen wir nach dem Go-Live, dass keine toten Links oder fehlenden Weiterleitungen in der Search Console auftauchen. | ⬜ |
+
+---
+
+## EPIC 21 – Testing & Qualitätssicherung
+
+| # | User Story / Task | Status |
+|---|------------|--------|
+| 21.1 | 🔍 Als Team legen wir die Testing-Strategie fest (E2E mit Playwright, visuelle Regression, manuelle Checklisten). | ⬜ 🗺 |
+| 21.2 | Als Entwickler habe ich E2E-Tests für kritische Pfade: Kontaktformular, Newsletter-Anmeldung, Spendenflow. | ⬜ |
+| 21.3 | Als Entwickler stelle ich sicher, dass jedes Deployment automatisch getestet wird (CI-Pipeline auf GitHub Actions). | ⬜ |
+| 21.4 | Als Team haben wir eine manuelle Abnahme-Checkliste für neue Seiten (Design, Mobile, Links, Formulare). | ⬜ |
+| 21.5 | Als Besucher lande ich bei unbekannten URLs auf einer gestalteten 404-Seite mit Navigationshilfe. | ⬜ |
+
+---
+
+## EPIC 22 – Barrierefreiheit (WCAG 2.1 AA / EAA)
+*Ab 2025 gilt der European Accessibility Act auch für viele gemeinnützige Organisationen.*
+
+| # | User Story / Task | Status |
+|---|------------|--------|
+| 22.1 | 🔍 Als Team klären wir, ob der EAA für Hands of Hope verpflichtend gilt, und legen den Ziel-Konformitätslevel fest. | ⬜ 🗺 |
+| 22.2 | Als Besucher mit Sehbehinderung kann ich die Website vollständig mit einem Screenreader (NVDA/VoiceOver) bedienen. | ⬜ |
+| 22.3 | Als Besucher mit motorischer Einschränkung navigiere ich die Website ausschließlich per Tastatur. | ⬜ |
+| 22.4 | Als Besucher mit Sehschwäche finde ich überall ausreichende Farbkontraste (Kontrastverhältnis ≥ 4,5:1). | ⬜ |
+| 22.5 | Als Entwickler führe ich einen automatisierten Accessibility-Scan (axe-core oder Lighthouse) in der CI-Pipeline aus. | ⬜ |
+
+---
+
+## EPIC 23 – Projektübergabe & Betriebsdokumentation
+
+| # | User Story / Task | Status |
+|---|------------|--------|
+| 23.1 | Als Redakteur habe ich eine kurze Schulungseinheit (Video oder Screencasts) für das Sanity Studio erhalten. | ⬜ |
+| 23.2 | Als Team haben wir eine zentrale Ablage aller Zugangsdaten und Credentials (Passwort-Manager). | ⬜ |
+| 23.3 | Als Entwickler-Nachfolger finde ich eine technische Dokumentation: Stack, Architekturentscheidungen, Deployment-Prozess. | ⬜ |
+| 23.4 | Als Team haben wir einen definierten Ansprechpartner und Prozess für laufende Wartung nach Go-Live. | ⬜ |
+
+---
+
 ## Priorisierung
 
 ### Jetzt — offene Entscheidungen (blockieren alles andere)
@@ -224,10 +307,14 @@ Alle Stories starten bei ⬜.
 - 15.3 Klären welche Inhalte ins CMS kommen
 - 16.3 Auth-Entscheidung: Supabase vs. Microsoft Entra
 - 12.3 Vercel EU-Hosting / DSGVO-Prüfung (Bob Held)
+- **17.1 Mehrsprachigkeit: Ja/Nein-Entscheidung (beeinflusst Architektur)**
+- **22.1 EAA-Prüfung: Verpflichtung klären**
 
 ### Kurzfristig — Produktions-Stack & Pflichtinhalte
 - 0.1–0.4 Next.js + Sanity aufsetzen
 - 15.1–15.2 CMS-Schema und Redaktionsworkflow
+- 20.1–20.2 URL-Map und 301-Weiterleitungen
+- 18.1 Brevo einrichten
 - 12.1 Impressum und Datenschutzerklärung
 - 16.1–16.2 2FA und Secrets-Management
 - 10.1–10.2 Formular-Backend + DSGVO-Hinweise
@@ -236,9 +323,14 @@ Alle Stories starten bei ⬜.
 ### Mittelfristig — Inhalte und Features ausbauen
 - Epics 3–8 Alle Bereichsseiten vollständig befüllen
 - 9.1–9.4 Blog vollständig (inkl. Kategoriefilter, Social Share)
+- 19.1–19.4 Veranstaltungen & Aktualitäten
 - 13.1–13.3 SEO, Analytics, Performance-Monitoring
 - 14.1–14.3 Deployment, CDN, Wartungsstrategie
+- 21.1–21.5 Testing & QA
+- 22.2–22.5 Barrierefreiheit umsetzen
 
-### Längerfristig — neue Features
+### Längerfristig — neue Features & Abschluss
 - 11.2–11.4 Dauerspenden, Spendenbarometer, Corporate Giving
 - 2.3 Imagefilm Startseite
+- 20.3–20.4 Inhaltsmigration + Post-Launch-Prüfung
+- 23.1–23.4 Übergabe & Dokumentation

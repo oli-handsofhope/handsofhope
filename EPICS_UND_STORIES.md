@@ -1,9 +1,41 @@
 # Hands of Hope – Epics & User Stories
 
-Projektstand: Erste Ebene (One-Pager-Struktur) weitgehend gebaut.
-Tiefere Ebenen, Formulare, rechtliche Seiten und Betriebsprozesse folgen.
+Projektstand: Statischer HTML-Prototyp als inhaltliche Referenz.
+Ziel-Stack (Protokoll 19.06.26): **Next.js / React + Sanity Headless CMS**, Hosting auf Vercel.
+Parallel in Planung: **Baustellenabwicklungs-App** (PWA, Microsoft-Integration).
+Alle Stories starten bei ⬜.
 
-Legende: ✅ gebaut · 🔧 teilweise/Platzhalter · ⬜ offen
+---
+
+## Rollen
+
+| Rolle | Beschreibung |
+|-------|-------------|
+| **Besucher** | Allgemeiner Websitebesucher ohne spezifischen Kontext |
+| **Betroffener** | Person mit Suchterkrankung, sucht Hilfe oder Information |
+| **Angehöriger** | Familienmitglied oder nahestehende Person eines Betroffenen |
+| **Fachkraft** | Sozialarbeiter, Lehrer, Jugendamtsmitarbeiter o. Ä. |
+| **Ehrenamtlicher** | Interessent oder aktiver Freiwilliger |
+| **Auftraggeber** | Unternehmen oder Privatperson, die Dienstleistungen anfragen |
+| **Spender** | Person oder Organisation, die finanziell unterstützen möchte |
+| **Bewerber** | Kandidat für Stelle, Praktikum, FSJ oder BFD |
+| **Redakteur** | Teammitglied, das Inhalte im CMS pflegt |
+| **Entwickler** | Technisch Verantwortlicher |
+
+---
+
+## EPIC 0 – Tech-Stack & Projektsetup
+*Protokoll 19.06.26 — Wechsel vom Prototyp zum Produktions-Stack.*
+
+| # | User Story | Status |
+|---|------------|--------|
+| 0.1 | Als Entwickler richte ich Next.js/React als Basis ein, sodass wiederverwendbare Komponenten und serverseitiges Rendering möglich sind. | ⬜ 🗺 |
+| 0.2 | Als Redakteur kann ich Sanity als Headless CMS nutzen, um Inhalte ohne Entwicklerkenntnisse zu pflegen. | ⬜ 🗺 |
+| 0.3 | Als Team betreiben wir die Website auf Vercel mit automatischen Preview-Deployments pro Branch (~20 €/Monat Pro). | ⬜ 🗺 |
+| 0.4 | Als Entwickler lege ich React-Komponenten und Claude-Regelwerk (Markdown) an, damit KI-generierter Code im Design-System bleibt. | ⬜ 🗺 |
+| 0.5 | Als Team haben wir GitHub und VS Code auf allen Entwickler-Rechnern eingerichtet. | ⬜ 🗺 Nächster Schritt lt. Protokoll |
+| 0.6 | Als Team klären wir die Markenbezeichnungen verbindlich, bevor der Aufbau beginnt. | ⬜ 🗺 Blockiert, offen lt. Protokoll |
+| 0.7 | Als Team warten wir auf Heikos Design-Komponenten als Grundlage für das Seiten-Layout-Meeting. | ⬜ 🗺 Blockiert auf Heiko |
 
 ---
 
@@ -11,18 +43,15 @@ Legende: ✅ gebaut · 🔧 teilweise/Platzhalter · ⬜ offen
 
 | # | User Story | Status |
 |---|------------|--------|
-| 1.1 | Als Besucher möchte ich auf jeder Seite eine konsistente Navigation sehen, damit ich mich sofort orientieren kann. | ✅ |
-| 1.2 | Als Besucher möchte ich, dass die Navigation beim Scrollen verschwindet und bei Aufwärtsbewegung zurückkehrt, um mehr Leseraum zu haben. | ✅ |
-| 1.3 | Als Besucher möchte ich im Footer alle wichtigen Links und Kontaktdaten finden, ohne zurück nach oben scrollen zu müssen. | ✅ |
-| 1.4 | Als Besucher möchte ich über Cookie-Einstellungen informiert werden und diese ablehnen können. | 🔧 Banner vorhanden, keine echte Consent-Logik |
-| 1.5 | Als Besucher möchte ich die Website auch auf dem Smartphone gut bedienen können. | ✅ |
-| 1.6 | Als Besucher mit eingeschränkter Sehkraft möchte ich ausreichende Kontraste und semantisches HTML vorfinden. | 🔧 Grundstruktur ok, kein Audit |
-| 1.7 | Als Besucher möchte ich, dass Seiten schnell laden, auch auf mobilen Verbindungen. | 🔧 WebP done, kein CDN/Caching-Konzept |
-| 1.8 | Als Besucher möchte ich ein Favicon sehen, das die Marke widerspiegelt. | 🔧 Kommentiert/ausgeblendet |
-| 1.9 | Als Team möchten wir ein konsistentes Farbsystem pro Arbeitsbereich, damit Besucher Bereiche visuell unterscheiden können. | ✅ |
-| 1.10 | Als Entwickler möchte ich Header und Footer zentral pflegen, ohne jede Seite anfassen zu müssen. | ✅ includes.js |
-| 1.11 | Als Besucher möchte ich korrekte Open-Graph-Meta-Tags vorfinden, damit geteilte Links in sozialen Medien schön aussehen. | ⬜ |
-| 1.12 | Als Team möchten wir eine robots.txt und sitemap.xml, damit Suchmaschinen die Seite korrekt indexieren. | 🔧 Dateien referenziert, Inhalt prüfen |
+| 1.1 | Als Besucher finde ich auf jeder Seite eine konsistente Navigation mit Hide-on-Scroll und aktivem Bereichsindikator. | ⬜ |
+| 1.2 | Als Besucher finde ich im Footer alle wichtigen Links, Kontaktdaten und Social-Media-Verknüpfungen. | ⬜ |
+| 1.3 | Als Besucher kann ich Cookie-Einwilligung erteilen oder verweigern (DSGVO-konform). | ⬜ |
+| 1.4 | Als Besucher nutze ich die Website uneingeschränkt auf Smartphone, Tablet und Desktop. | ⬜ |
+| 1.5 | Als Besucher mit Einschränkungen finde ich ausreichende Kontraste, semantisches HTML und Tastaturnavigation. | ⬜ |
+| 1.6 | Als Besucher lädt jede Seite schnell — Core Web Vitals im grünen Bereich. | ⬜ |
+| 1.7 | Als Besucher sehe ich ein Favicon und korrekte Open-Graph-Tags, sodass geteilte Links ansprechend aussehen. | ⬜ |
+| 1.8 | Als Entwickler pflege ich Navigation und Footer zentral an einer Stelle. | ⬜ |
+| 1.9 | Als Team werden wir in Suchmaschinen gefunden — robots.txt, sitemap.xml und Meta-Descriptions sind vollständig. | ⬜ |
 
 ---
 
@@ -30,13 +59,11 @@ Legende: ✅ gebaut · 🔧 teilweise/Platzhalter · ⬜ offen
 
 | # | User Story | Status |
 |---|------------|--------|
-| 2.1 | Als Erstbesucher möchte ich sofort verstehen, wer Hands of Hope ist und was die Organisation tut. | ✅ |
-| 2.2 | Als Besucher möchte ich alle fünf Arbeitsbereiche auf einen Blick sehen und direkt navigieren können. | ✅ |
-| 2.3 | Als potenzieller Spender möchte ich einen klaren Handlungsaufruf zur Spende sehen. | 🔧 CTA vorhanden, Link zu Platzhalter |
-| 2.4 | Als Besucher möchte ich aktuelle Blog-Posts auf der Startseite als Teaser sehen. | ✅ |
-| 2.5 | Als interessierter Besucher möchte ich mich für einen Newsletter anmelden können. | 🔧 Formular vorhanden, kein Backend |
-| 2.6 | Als Besucher möchte ich Kennzahlen der Organisation sehen (Mitarbeiter, Jahre, Klienten etc.). | ✅ |
-| 2.7 | Als Besucher möchte ich einen kurzen Videoeindruck der Organisation bekommen. | ⬜ Imagefilm-Einbindung offen |
+| 2.1 | Als Erstbesucher verstehe ich sofort, wer Hands of Hope ist, was die Organisation tut und welche Bereiche es gibt — inklusive Kennzahlen und Einstieg in alle Arbeitsbereiche. | ⬜ |
+| 2.2 | Als Besucher sehe ich aktuelle Blog-Posts als Teaser. | ⬜ |
+| 2.3 | Als Besucher bekomme ich einen Videoeindruck der Organisation (Imagefilm). | ⬜ |
+| 2.4 | Als Spender sehe ich einen klaren Handlungsaufruf zur Spende. | ⬜ |
+| 2.5 | Als interessierter Besucher kann ich mich für den Newsletter anmelden. | ⬜ |
 
 ---
 
@@ -44,14 +71,11 @@ Legende: ✅ gebaut · 🔧 teilweise/Platzhalter · ⬜ offen
 
 | # | User Story | Status |
 |---|------------|--------|
-| 3.1 | Als Betroffener möchte ich verstehen, was das Rehabilitationsangebot umfasst. | ✅ |
-| 3.2 | Als Betroffener möchte ich den Aufnahme- und Bewerbungsprozess Schritt für Schritt nachvollziehen. | ✅ |
-| 3.3 | Als Betroffener möchte ich wissen, wie das Nachsorgehaus funktioniert. | ✅ |
-| 3.4 | Als Betroffener oder Angehöriger möchte ich direkt Kontakt aufnehmen oder eine Anfrage stellen. | ✅ Kontaktbox |
-| 3.5 | Als Betroffener möchte ich Bewerbungsunterlagen herunterladen können. | 🔧 PDF-Link referenziert, Datei fehlt |
-| 3.6 | Als Betroffener möchte ich das Wiedereingliederungskonzept als Dokument einsehen. | 🔧 PDF-Link referenziert, Datei fehlt |
-| 3.7 | Als Angehöriger möchte ich verstehen, wie ich jemanden bei der Aufnahme unterstützen kann. | ⬜ Angehörigen-Abschnitt fehlt |
-| 3.8 | Als Besucher möchte ich Erfahrungsberichte von ehemaligen Klienten lesen. | 🔧 Über Blog teilweise abgedeckt |
+| 3.1 | Als Betroffener oder Angehöriger verstehe ich das Gesamtangebot: Konzept, Tagesstruktur, Aufnahmeprozess und Nachsorgehaus — auf einer Seite. | ⬜ |
+| 3.2 | Als Angehöriger erfahre ich, wie ich jemanden bei der Aufnahme konkret unterstützen kann. | ⬜ |
+| 3.3 | Als Betroffener kann ich Bewerbungsunterlagen und das Wiedereingliederungskonzept herunterladen. | ⬜ |
+| 3.4 | Als Betroffener oder Angehöriger nehme ich direkt Kontakt auf oder stelle eine Aufnahmeanfrage. | ⬜ |
+| 3.5 | Als Besucher lese ich Erfahrungsberichte ehemaliger Klienten. | ⬜ |
 
 ---
 
@@ -59,12 +83,9 @@ Legende: ✅ gebaut · 🔧 teilweise/Platzhalter · ⬜ offen
 
 | # | User Story | Status |
 |---|------------|--------|
-| 4.1 | Als Interessierter möchte ich verstehen, was das Straßencafé ist und an wen es sich richtet. | ✅ |
-| 4.2 | Als potenzieller Gast möchte ich wissen, wann und wo das Café stattfindet. | ✅ |
-| 4.3 | Als potenzieller Ehrenamtlicher möchte ich erfahren, wie ich mich engagieren kann. | ✅ |
-| 4.4 | Als Besucher möchte ich den Sonntagsgottesdienst als weiteres Angebot entdecken. | ✅ |
-| 4.5 | Als Ehrenamtlicher möchte ich mich direkt über ein Formular anmelden. | ⬜ Ehrenamts-Formular fehlt |
-| 4.6 | Als Spender möchte ich wissen, wie meine Spende das Straßencafé direkt unterstützt. | ⬜ Spenden-Kontext für Straßencafé fehlt |
+| 4.1 | Als Besucher verstehe ich das Angebot vollständig: was das Straßencafé ist, wann und wo es stattfindet, und welche weiteren Angebote (Gottesdienst) es gibt. | ⬜ |
+| 4.2 | Als Ehrenamtlicher melde ich mich über ein Formular an. | ⬜ |
+| 4.3 | Als Spender erfahre ich, wie meine Spende das Straßencafé direkt unterstützt. | ⬜ |
 
 ---
 
@@ -72,11 +93,8 @@ Legende: ✅ gebaut · 🔧 teilweise/Platzhalter · ⬜ offen
 
 | # | User Story | Status |
 |---|------------|--------|
-| 5.1 | Als Lehrer oder Schulsozialarbeiter möchte ich verstehen, welche Präventionsangebote es gibt. | ✅ |
-| 5.2 | Als Schule möchte ich eine Anfrage für ein Schulprojekt stellen können. | ✅ Kontaktbox |
-| 5.3 | Als Jugendlicher möchte ich niedrigschwellige Informationen zu Sucht und Hilfsangeboten finden. | ⬜ Eigene Zielgruppenansicht fehlt |
-| 5.4 | Als Elternteil möchte ich Informationen zu Früherkennung und Gesprächshilfen finden. | ⬜ |
-| 5.5 | Als Besucher möchte ich Referenzen und Reichweite der Präventionsarbeit sehen (Schulen, Zahlen). | 🔧 Teilweise vorhanden |
+| 5.1 | Als Fachkraft, Elternteil oder Jugendlicher finde ich zielgruppengerecht aufbereitete Informationen zum Präventionsangebot — inklusive Reichweite und Referenzen. | ⬜ |
+| 5.2 | Als Schule oder Fachkraft stelle ich eine Projektanfrage. | ⬜ |
 
 ---
 
@@ -84,12 +102,8 @@ Legende: ✅ gebaut · 🔧 teilweise/Platzhalter · ⬜ offen
 
 | # | User Story | Status |
 |---|------------|--------|
-| 6.1 | Als potenzieller Auftraggeber möchte ich verstehen, welche Leistungen angeboten werden. | ✅ |
-| 6.2 | Als Auftraggeber möchte ich wissen, warum ein Auftrag an Hands of Hope sinnvoll ist (sozialer Mehrwert). | ✅ |
-| 6.3 | Als Auftraggeber möchte ich Referenzen und Kundenstimmen sehen. | ✅ |
-| 6.4 | Als Auftraggeber möchte ich direkt eine Anfrage stellen. | ✅ Kontaktbox |
-| 6.5 | Als Auftraggeber möchte ich einen Kostenvoranschlag anfordern. | ⬜ Angebotsanfrage-Formular fehlt |
-| 6.6 | Als Besucher möchte ich Vorher-Nachher-Bilder oder Projektgalerien sehen. | ⬜ |
+| 6.1 | Als Auftraggeber verstehe ich das Leistungsangebot, den sozialen Mehrwert und sehe Referenzen sowie Bildgalerien. | ⬜ |
+| 6.2 | Als Auftraggeber stelle ich eine Anfrage oder fordere einen Kostenvoranschlag an. | ⬜ |
 
 ---
 
@@ -97,12 +111,10 @@ Legende: ✅ gebaut · 🔧 teilweise/Platzhalter · ⬜ offen
 
 | # | User Story | Status |
 |---|------------|--------|
-| 7.1 | Als Fachkraft der Jugendhilfe möchte ich verstehen, was das Konzept ist. | 🔧 Entwurf, "Bald verfügbar" |
-| 7.2 | Als betroffener Jugendlicher oder Familie möchte ich das Angebot und die Aufnahme verstehen. | ⬜ |
-| 7.3 | Als Besucher möchte ich den Baufortschritt verfolgen können. | ✅ Baufortschritts-Sektion |
-| 7.4 | Als Unterstützer möchte ich erfahren, wie ich das Projekt fördern kann. | 🔧 Mitmachen-Sektion vorhanden |
-| 7.5 | Als Fachkraft möchte ich Belegungsanfragen stellen können. | ⬜ |
-| 7.6 | Als Besucher möchte ich bei Fertigstellung automatisch benachrichtigt werden. | ⬜ Wartelisten-/Benachrichtigungs-Feature |
+| 7.1 | Als Fachkraft oder betroffene Familie verstehe ich Konzept und Aufnahme des Jugendhilfe-Angebots. | ⬜ |
+| 7.2 | Als Besucher verfolge ich den Baufortschritt und erfahre, wie ich das Projekt fördern kann. | ⬜ |
+| 7.3 | Als Fachkraft stelle ich eine Belegungsanfrage. | ⬜ |
+| 7.4 | Als Interessierter trage ich mich auf eine Benachrichtigungsliste für die Fertigstellung ein. | ⬜ |
 
 ---
 
@@ -110,124 +122,139 @@ Legende: ✅ gebaut · 🔧 teilweise/Platzhalter · ⬜ offen
 
 | # | User Story | Status |
 |---|------------|--------|
-| 8.1 | Als Besucher möchte ich die Geschichte der Organisation kennenlernen. | ✅ |
-| 8.2 | Als Besucher möchte ich das Team mit Namen, Rollen und Fotos sehen. | ✅ |
-| 8.3 | Als Interessierter möchte ich verstehen, welche Werte und christliche Grundlage die Arbeit trägt. | ✅ |
-| 8.4 | Als potenzieller Mitarbeiter möchte ich offene Stellen finden und mich bewerben. | 🔧 Stellenangebote referenziert, Seite fehlt |
-| 8.5 | Als Student möchte ich mich für ein Praktikum bewerben. | ✅ |
-| 8.6 | Als junger Mensch möchte ich mich für FSJ oder BFD informieren und bewerben. | ✅ |
-| 8.7 | Als Spender möchte ich sicher und unkompliziert spenden können. | 🔧 PayPal-Button mit Platzhalter-ID |
-| 8.8 | Als Spender möchte ich erfahren, wofür meine Spende konkret eingesetzt wird. | 🔧 Kurz erwähnt, kein Detailbereich |
-| 8.9 | Als Besucher möchte ich per Kontaktformular eine allgemeine Anfrage stellen. | 🔧 Formular vorhanden, kein Backend |
-| 8.10 | Als Besucher möchte ich Hands of Hope auf sozialen Medien folgen. | ✅ Footer-Links |
-| 8.11 | Als Kooperationspartner möchte ich erfahren, wie eine Zusammenarbeit aussehen kann. | ⬜ |
+| 8.1 | Als Besucher lerne ich Geschichte, Werte und christliche Grundlage der Organisation kennen und sehe das Team. | ⬜ |
+| 8.2 | Als Bewerber finde ich offene Stellen und erfahre, was Hands of Hope als Arbeitgeber auszeichnet. | ⬜ |
+| 8.3 | Als Bewerber informiere ich mich über Praktikum, FSJ und BFD und bewerbe mich direkt. | ⬜ |
+| 8.4 | Als Spender spende ich unkompliziert und erfahre, wofür mein Geld konkret eingesetzt wird. | ⬜ |
+| 8.5 | Als Besucher stelle ich per Kontaktformular eine allgemeine Anfrage. | ⬜ |
+| 8.6 | Als Kooperationspartner erfahre ich, wie eine Zusammenarbeit aussehen kann. | ⬜ |
 
 ---
 
-## EPIC 9 – Stellenangebote (ueber-uns/jobs/)
+## EPIC 9 – Blog
 
 | # | User Story | Status |
 |---|------------|--------|
-| 9.1 | Als Besucher möchte ich eine Übersicht aller offenen Stellen sehen. | 🔧 Seite referenziert, fehlt |
-| 9.2 | Als Bewerber möchte ich Details zu einer Stelle lesen (Aufgaben, Profil, Benefits). | 🔧 Unterseiten referenziert (hausmeister, sozialarbeiter, hauswirtschaft), fehlen |
-| 9.3 | Als Bewerber möchte ich mich direkt online bewerben oder Kontakt aufnehmen. | ⬜ |
-| 9.4 | Als Bewerber möchte ich wissen, was Hands of Hope als Arbeitgeber auszeichnet. | ⬜ Arbeitgeber-Profil fehlt |
+| 9.1 | Als Besucher entdecke ich Posts, lese sie und sehe Lesezeit und ähnliche Beiträge. | ⬜ |
+| 9.2 | Als Besucher filtere ich Posts nach Kategorie. | ⬜ |
+| 9.3 | Als Leser teile ich einen Post in sozialen Medien. | ⬜ |
+| 9.4 | Als Redakteur erstelle ich Posts im Entwurfsmodus, prüfe sie per direktem Link und veröffentliche sie ohne Entwicklerkenntnisse. | ⬜ |
 
 ---
 
-## EPIC 10 – Blog
+## EPIC 10 – Formulare & Backend
 
 | # | User Story | Status |
 |---|------------|--------|
-| 10.1 | Als Besucher möchte ich Blog-Posts entdecken und lesen. | ✅ |
-| 10.2 | Als Besucher möchte ich Posts nach Kategorie filtern. | ⬜ Filterung fehlt |
-| 10.3 | Als Leser möchte ich am Ende eines Posts ähnliche Beiträge vorgeschlagen bekommen. | ✅ Sidebar |
-| 10.4 | Als Leser möchte ich einen Post teilen können (Social Share). | ⬜ |
-| 10.5 | Als Leser möchte ich die Lesezeit eines Posts vorab einschätzen können. | ✅ |
-| 10.6 | Als Team möchten wir neue Posts einfach ohne Entwicklungskenntnisse hinzufügen. | ✅ BLOG_POST_ERSTELLEN.md |
-| 10.7 | Als Team möchten wir Posts im Entwurfsmodus prüfen, bevor sie veröffentlicht werden. | ✅ noindex-Workflow |
-| 10.8 | Als Besucher möchte ich Posts auch als Audio hören können (Barrierefreiheit). | ⬜ |
+| 10.1 | Als Besucher erhalte ich nach dem Absenden eines Formulars eine Bestätigung, und das Team erhält die Einsendung per E-Mail. | ⬜ |
+| 10.2 | Als Team schützen alle Formulare mit Spam-Schutz (Honeypot oder CAPTCHA) und enthalten DSGVO-Hinweistext. | ⬜ |
+| 10.3 | Als Ehrenamtlicher melde ich mich über ein dediziertes Formular an. | ⬜ |
+| 10.4 | Als Auftraggeber fordere ich über ein Formular ein Angebot an. | ⬜ |
 
 ---
 
-## EPIC 11 – Rechtliches & Compliance
+## EPIC 11 – Spendenintegration
 
 | # | User Story | Status |
 |---|------------|--------|
-| 11.1 | Als Besucher möchte ich ein vollständiges Impressum abrufen können. | 🔧 Referenziert, Datei fehlt |
-| 11.2 | Als Besucher möchte ich eine vollständige Datenschutzerklärung lesen. | 🔧 Referenziert, Datei fehlt |
-| 11.3 | Als Besucher möchte ich Cookie-Einwilligung gezielt erteilen oder verweigern (DSGVO). | 🔧 Banner ohne echte Consent-Verwaltung |
-| 11.4 | Als Spender möchte ich eine Spendenquittung anfordern können. | ⬜ |
-| 11.5 | Als Besucher möchte ich, dass Kontaktformulare DSGVO-konform sind. | ⬜ Hinweistext in Formularen fehlt |
+| 11.1 | Als Spender spende ich per PayPal oder Banküberweisung. | ⬜ |
+| 11.2 | Als Spender richte ich eine Dauerspende ein. | ⬜ |
+| 11.3 | Als Spender sehe ich ein Spendenbarometer oder konkreten Verwendungsnachweis. | ⬜ |
+| 11.4 | Als Unternehmen erfahre ich Corporate-Giving-Optionen. | ⬜ |
 
 ---
 
-## EPIC 12 – Formulare & Backend-Anbindung
+## EPIC 12 – Rechtliches & Compliance
 
 | # | User Story | Status |
 |---|------------|--------|
-| 12.1 | Als Besucher möchte ich das Kontaktformular absenden und eine Bestätigung erhalten. | 🔧 JS-Pseudo-Submit, kein Backend |
-| 12.2 | Als Besucher möchte ich mich für den Newsletter anmelden und eine Bestätigungs-Mail erhalten. | 🔧 JS-Pseudo-Submit, kein Backend |
-| 12.3 | Als Team möchten wir Formular-Einsendungen per E-Mail oder CRM erhalten. | ⬜ Formspree / Netlify Forms / eigenes Backend |
-| 12.4 | Als Team möchten wir Spam-Schutz für alle Formulare (Honeypot oder CAPTCHA). | ⬜ |
-| 12.5 | Als potenzieller Ehrenamtlicher möchte ich mich über ein Formular anmelden. | ⬜ |
-| 12.6 | Als Auftraggeber möchte ich ein Angebotsanfrage-Formular nutzen. | ⬜ |
+| 12.1 | Als Besucher rufe ich ein vollständiges Impressum und eine Datenschutzerklärung ab. | ⬜ |
+| 12.2 | Als Spender fordere ich eine Spendenquittung an. | ⬜ |
+| 12.3 | Als Team haben wir AV-Verträge mit allen Drittanbietern und nutzen EU-konformes Hosting. | ⬜ 🗺 Bob Held |
 
 ---
 
-## EPIC 13 – Spendenintegration
+## EPIC 13 – SEO, Performance & Analytics
 
 | # | User Story | Status |
 |---|------------|--------|
-| 13.1 | Als Spender möchte ich per PayPal spenden können. | 🔧 Button-ID ist Platzhalter |
-| 13.2 | Als Spender möchte ich per Überweisung spenden und die Bankverbindung finden. | ✅ IBAN im Spendenbereich |
-| 13.3 | Als Spender möchte ich Dauerspenden einrichten können. | ⬜ |
-| 13.4 | Als Spender möchte ich sehen, wie viel bereits gesammelt wurde (optional: Spendenbarometer). | ⬜ |
-| 13.5 | Als Unternehmen möchte ich Corporate-Giving-Optionen kennen. | ⬜ |
+| 13.1 | Als Team werden wir regional gefunden — strukturierte Daten (Schema.org), vollständige Meta-Tags und sitemap.xml. | ⬜ |
+| 13.2 | Als Team messen wir Traffic datenschutzkonform (DSGVO-konforme Analytics-Alternative). | ⬜ |
+| 13.3 | Als Team halten wir Core Web Vitals grün und überwachen Performance aktiv. | ⬜ |
 
 ---
 
-## EPIC 14 – SEO & Performance
+## EPIC 14 – Deployment & Betrieb
 
 | # | User Story | Status |
 |---|------------|--------|
-| 14.1 | Als Team möchten wir für jeden Bereich in der regionalen Suche gefunden werden. | 🔧 Meta-Descriptions vorhanden, kein strukturiertes Markup |
-| 14.2 | Als Team möchten wir strukturierte Daten (Schema.org) für Organisation und Artikel. | ⬜ |
-| 14.3 | Als Team möchten wir eine vollständige sitemap.xml mit allen URLs. | 🔧 Datei referenziert, Inhalt prüfen |
-| 14.4 | Als Team möchten wir Google Analytics oder eine datenschutzkonforme Alternative einbinden. | ⬜ |
-| 14.5 | Als Team möchten wir Core Web Vitals grün halten (LCP, CLS, FID). | ⬜ kein Monitoring |
+| 14.1 | Als Team ist die Website unter handsofhope.de erreichbar mit automatischem Deployment bei jedem Push auf main. | ⬜ |
+| 14.2 | Als Team haben wir einen Branch-Review-Prozess (PR → Review → Merge) und CDN-Auslieferung für Assets. | ⬜ |
+| 14.3 | Als Team haben wir eine definierte Wartungsstrategie für Updates, Monitoring und Backups. | ⬜ 🗺 |
 
 ---
 
-## EPIC 15 – Deployment & Betrieb
+## EPIC 15 – Headless CMS (Sanity)
+*Protokoll 19.06.26 — Inhaltspflege ohne Entwickler.*
 
 | # | User Story | Status |
 |---|------------|--------|
-| 15.1 | Als Team möchten wir die Website unter der eigenen Domain handsofhope.de erreichbar haben. | 🔧 CNAME-Anleitung vorhanden |
-| 15.2 | Als Team möchten wir automatische Deployments bei jedem Push auf main. | ⬜ GitHub Actions / Pages konfigurieren |
-| 15.3 | Als Team möchten wir einen Branch-Review-Prozess (PR → Review → Merge). | 🔧 Branch-Workflow genutzt, kein formaler PR-Prozess |
-| 15.4 | Als Team möchten wir Bilder und Assets über ein CDN ausliefern. | ⬜ |
-| 15.5 | Als Team möchten wir regelmäßige Backups des Repos sicherstellen. | ✅ GitHub als Backup |
+| 15.1 | Als Redakteur pflege ich Blog-Posts, Teamdaten, Stellenangebote und Galerien im Sanity Studio. | ⬜ 🗺 |
+| 15.2 | Als Entwickler definiere ich das Sanity-Schema mit erlaubten Inhaltsblöcken, sodass kein freies HTML möglich ist. | ⬜ 🗺 |
+| 15.3 | Als Team klären wir, welche Inhaltsbereiche CMS-gesteuert sind und welche im Code bleiben. | ⬜ 🗺 Offen lt. Protokoll |
 
 ---
 
-## Priorisierungsvorschlag (nächste Sprints)
+## EPIC 16 – Sicherheit & Authentifizierung
+*Protokoll 19.06.26.*
 
-### Sofort (blockierend / rechtlich)
-- 11.1 Impressum erstellen
-- 11.2 Datenschutzerklärung erstellen
-- 11.3 Cookie-Consent mit echter Logik (z. B. Klaro, CookieYes)
-- 13.1 PayPal-Button-ID eintragen
-- 12.3 Formulare an Backend anbinden (Formspree reicht für den Start)
+| # | User Story | Status |
+|---|------------|--------|
+| 16.1 | Als Team haben wir 2-Faktor-Authentifizierung für alle Admin-Zugänge (CMS, Hosting, GitHub). | ⬜ 🗺 |
+| 16.2 | Als Entwickler stelle ich sicher, dass keine API-Keys oder Secrets clientseitig ausgeliefert werden. | ⬜ 🗺 |
+| 16.3 | Als Team entscheiden wir uns für eine Auth-Plattform (Supabase vs. Microsoft Entra) und setzen sie ein. | ⬜ 🗺 Entscheidung offen |
 
-### Kurzfristig (fehlende Seiten)
-- 9.1–9.3 Stellenangebote-Seiten anlegen
-- 3.5–3.6 PDF-Downloads bereitstellen
-- 7.1–7.5 Jugendhilfe vollständig ausbauen
+---
 
-### Mittelfristig (Wachstum)
-- 10.2 Blog-Kategoriefilter
-- 10.4 Social Share
-- 2.7 Imagefilm Startseite
-- 6.5 Angebotsanfrage Dienstleistungen
-- 14.2 Schema.org strukturierte Daten
+## EPIC 17 – Baustellenabwicklungs-App (PWA)
+*Protokoll 19.06.26 — eigenständiges Produkt für den Dienstleistungsbereich.*
+
+| # | User Story | Status |
+|---|------------|--------|
+| 17.1 | Als Mitarbeiter lege ich Aufträge digital an (Kundendaten, Fotos, Aufgaben, Angebote) und verfolge ihren Status. | ⬜ 🗺 |
+| 17.2 | Als Mitarbeiter synchronisiere ich Termine mit meinem Outlook-Kalender und Aufgaben mit Microsoft Planner. | ⬜ 🗺 |
+| 17.3 | Als Mitarbeiter archiviere ich abgeschlossene Aufträge automatisch auf SharePoint. | ⬜ 🗺 |
+| 17.4 | Als Mitarbeiter erfasse ich Arbeitszeiten pro Auftrag. | ⬜ 🗺 |
+| 17.5 | Als Mitarbeiter nutze ich die App als PWA im Browser ohne App-Store-Installation. | ⬜ 🗺 PWA bevorzugt lt. Protokoll |
+| 17.6 | Als Entwickler kläre ich Pflicht-/Kann-Funktionen, Offline-Anforderungen und Tech-Stack, bevor mit dem Bau begonnen wird. | ⬜ 🗺 Offen lt. Protokoll |
+
+---
+
+## Priorisierung
+
+### Jetzt — offene Entscheidungen (blockieren alles andere)
+- 0.6 Markenbezeichnungen klären
+- 0.7 Heikos Design-Komponenten → Seiten-Layout-Meeting
+- 0.5 GitHub + VS Code bei allen Entwicklern einrichten
+- 15.3 Klären welche Inhalte ins CMS kommen
+- 16.3 Auth-Entscheidung: Supabase vs. Microsoft Entra
+- 12.3 Vercel EU-Hosting / DSGVO-Prüfung (Bob Held)
+
+### Kurzfristig — Produktions-Stack & Pflichtinhalte
+- 0.1–0.4 Next.js + Sanity aufsetzen
+- 15.1–15.2 CMS-Schema und Redaktionsworkflow
+- 12.1 Impressum und Datenschutzerklärung
+- 16.1–16.2 2FA und Secrets-Management
+- 10.1–10.2 Formular-Backend + DSGVO-Hinweise
+- 11.1 PayPal-Integration live schalten
+
+### Mittelfristig — Inhalte und Features ausbauen
+- Epics 3–8 Alle Bereichsseiten vollständig befüllen
+- 9.1–9.4 Blog vollständig (inkl. Kategoriefilter, Social Share)
+- 13.1–13.3 SEO, Analytics, Performance-Monitoring
+- 14.1–14.3 Deployment, CDN, Wartungsstrategie
+
+### Längerfristig — neue Produkte
+- Epic 17 Baustellenabwicklungs-App
+- 11.2–11.4 Dauerspenden, Spendenbarometer, Corporate Giving
+- 2.3 Imagefilm Startseite
